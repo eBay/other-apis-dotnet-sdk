@@ -7,6 +7,8 @@
     <LangVersion>latest</LangVersion>
     <RootNamespace>EBay.OtherApis</RootNamespace>
     <AssemblyName>EBay.OtherApis</AssemblyName>
+    <PackageProjectUrl>https://github.com/eBay/other-apis-dotnet-sdk</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/eBay/other-apis-dotnet-sdk</RepositoryUrl>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 

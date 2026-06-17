@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="EBay.OtherApis/EBay.OtherApis.csproj" />
+  <Project Path="EBay.OtherApis.Sample/EBay.OtherApis.Sample.csproj" />
+</Solution>

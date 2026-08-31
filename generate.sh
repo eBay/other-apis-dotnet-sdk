@@ -66,6 +66,9 @@ dotnet kiota generate \
   -o EBay.OtherApis/Generated/Negotiation \
   --ebc --co
 
+echo "Adding license headers to generated files..."
+./add-license-headers.sh ./EBay.OtherApis/Generated
+
 echo "Building SDK..."
 dotnet build EBay.OtherApis/EBay.OtherApis.csproj
 

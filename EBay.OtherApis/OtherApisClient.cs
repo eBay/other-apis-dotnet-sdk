@@ -130,7 +130,6 @@ public sealed class OtherApisClient : IDisposable
                 ServiceCollectionExtensions.IdentityClientName    => _config.IdentityBaseUrl,
                 ServiceCollectionExtensions.TranslationClientName => _config.TranslationBaseUrl,
                 ServiceCollectionExtensions.VeroClientName        => _config.VeroBaseUrl,
-                ServiceCollectionExtensions.NegotiationClientName => _config.NegotiationBaseUrl,
                 _ => throw new ArgumentException($"Unknown client name: {name}")
             };
 

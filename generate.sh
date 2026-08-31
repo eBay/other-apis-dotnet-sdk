@@ -57,15 +57,6 @@ dotnet kiota generate \
   -o EBay.OtherApis/Generated/Vero \
   --ebc --co
 
-# Negotiation API
-dotnet kiota generate \
-  -l csharp \
-  -d specs/sell_negotiation_v1_oas3.yaml \
-  -c NegotiationApiClient \
-  -n EBay.OtherApis.Generated.Negotiation \
-  -o EBay.OtherApis/Generated/Negotiation \
-  --ebc --co
-
 echo "Adding license headers to generated files..."
 ./add-license-headers.sh ./EBay.OtherApis/Generated
 

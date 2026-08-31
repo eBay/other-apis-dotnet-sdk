@@ -25,7 +25,6 @@ public static class ServiceCollectionExtensions
     internal const string IdentityClientName = nameof(OtherApisClient) + ".Identity";
     internal const string TranslationClientName = nameof(OtherApisClient) + ".Translation";
     internal const string VeroClientName = nameof(OtherApisClient) + ".Vero";
-    internal const string NegotiationClientName = nameof(OtherApisClient) + ".Negotiation";
 
     public static IServiceCollection AddOtherApisSdk(
         this IServiceCollection services,
@@ -56,11 +55,6 @@ public static class ServiceCollectionExtensions
             .ConfigureHttpClient((sp, c) => c.Timeout = sp.GetRequiredService<OtherApisConfiguration>().HttpTimeout)
             .AddHttpMessageHandler(sp => new DiagnosticLoggingHandler(sp.GetRequiredService<OtherApisConfiguration>()));
 
-        services.AddHttpClient(NegotiationClientName, (sp, c) =>
-                c.BaseAddress = new Uri(sp.GetRequiredService<OtherApisConfiguration>().NegotiationBaseUrl))
-            .ConfigureHttpClient((sp, c) => c.Timeout = sp.GetRequiredService<OtherApisConfiguration>().HttpTimeout)
-            .AddHttpMessageHandler(sp => new DiagnosticLoggingHandler(sp.GetRequiredService<OtherApisConfiguration>()));
-
         // Register facade
         services.AddScoped<OtherApisClient>(sp =>
             new OtherApisClient(
@@ -73,7 +67,6 @@ public static class ServiceCollectionExtensions
         services.AddScoped(sp => sp.GetRequiredService<OtherApisClient>().Identity);
         services.AddScoped(sp => sp.GetRequiredService<OtherApisClient>().Translation);
         services.AddScoped(sp => sp.GetRequiredService<OtherApisClient>().Vero);
-        services.AddScoped(sp => sp.GetRequiredService<OtherApisClient>().Negotiation);
 
         return services;
     }

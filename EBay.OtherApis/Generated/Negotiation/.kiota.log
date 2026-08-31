@@ -1,0 +1,1 @@
+Critical: KiotaBuilder error generating the client: Could not open the file at /Users/pemoen/dev/sdks/dotnet/other-apis-dotnet-sdk/specs/sell_negotiation_v1_oas3.yaml, reason: Could not find file '/Users/pemoen/dev/sdks/dotnet/other-apis-dotnet-sdk/specs/sell_negotiation_v1_oas3.yaml'.

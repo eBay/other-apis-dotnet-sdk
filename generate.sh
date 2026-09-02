@@ -61,6 +61,6 @@ echo "Adding license headers to generated files..."
 ./add-license-headers.sh ./EBay.OtherApis/Generated
 
 echo "Building SDK..."
-dotnet build EBay.OtherApis/EBay.OtherApis.csproj
+DOTNET_ROLL_FORWARD=LatestMajor dotnet build EBay.OtherApis/EBay.OtherApis.csproj
 
 echo "Done."

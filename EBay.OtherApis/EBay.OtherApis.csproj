@@ -7,6 +7,11 @@
     <LangVersion>latest</LangVersion>
     <RootNamespace>EBay.OtherApis</RootNamespace>
     <AssemblyName>EBay.OtherApis</AssemblyName>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageId>EBay.OtherApis</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>eBay</Authors>
+    <Description>Other APIs SDK for eBay</Description>
     <PackageProjectUrl>https://github.com/eBay/other-apis-dotnet-sdk</PackageProjectUrl>
     <RepositoryUrl>https://github.com/eBay/other-apis-dotnet-sdk</RepositoryUrl>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>

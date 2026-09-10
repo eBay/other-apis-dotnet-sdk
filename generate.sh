@@ -24,7 +24,7 @@ echo "Regenerating REST clients via Kiota..."
 # EDIS Shipping API
 dotnet kiota generate \
   -l csharp \
-  -d specs/sell_edelivery_international_shipping_oas3.yaml \
+  -d specs/openapi/international-shipping.yaml \
   -c ShippingApiClient \
   -n EBay.OtherApis.Generated.Shipping \
   -o EBay.OtherApis/Generated/Shipping \
@@ -33,7 +33,7 @@ dotnet kiota generate \
 # Identity API
 dotnet kiota generate \
   -l csharp \
-  -d specs/commerce_identity_v1_oas3.yaml \
+  -d specs/openapi/identity.yaml \
   -c IdentityApiClient \
   -n EBay.OtherApis.Generated.Identity \
   -o EBay.OtherApis/Generated/Identity \
@@ -42,7 +42,7 @@ dotnet kiota generate \
 # Translation API
 dotnet kiota generate \
   -l csharp \
-  -d specs/commerce_translation_v1_beta_oas3.yaml \
+  -d specs/openapi/translation.yaml \
   -c TranslationApiClient \
   -n EBay.OtherApis.Generated.Translation \
   -o EBay.OtherApis/Generated/Translation \
@@ -51,22 +51,16 @@ dotnet kiota generate \
 # Vero API
 dotnet kiota generate \
   -l csharp \
-  -d specs/commerce_vero_v1_oas3.yaml \
+  -d specs/openapi/vero.yaml \
   -c VeroApiClient \
   -n EBay.OtherApis.Generated.Vero \
   -o EBay.OtherApis/Generated/Vero \
   --ebc --co
 
-# Negotiation API
-dotnet kiota generate \
-  -l csharp \
-  -d specs/sell_negotiation_v1_oas3.yaml \
-  -c NegotiationApiClient \
-  -n EBay.OtherApis.Generated.Negotiation \
-  -o EBay.OtherApis/Generated/Negotiation \
-  --ebc --co
+echo "Adding license headers to generated files..."
+./add-license-headers.sh ./EBay.OtherApis/Generated
 
 echo "Building SDK..."
-dotnet build EBay.OtherApis/EBay.OtherApis.csproj
+DOTNET_ROLL_FORWARD=LatestMajor dotnet build EBay.OtherApis/EBay.OtherApis.csproj
 
 echo "Done."

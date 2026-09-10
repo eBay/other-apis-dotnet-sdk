@@ -21,7 +21,6 @@ public sealed class OtherApisConfiguration
     private string _identityBaseUrl = "https://apiz.ebay.com/commerce/identity/v1";
     private string _translationBaseUrl = "https://apim.ebay.com/commerce/translation/v1_beta";
     private string _veroBaseUrl = "https://api.ebay.com/commerce/vero/v1";
-    private string _negotiationBaseUrl = "https://api.ebay.com/sell/negotiation/v1";
 
     public string ShippingBaseUrl
     {
@@ -45,12 +44,6 @@ public sealed class OtherApisConfiguration
     {
         get => _veroBaseUrl;
         set => _veroBaseUrl = RequireHttps(value, nameof(VeroBaseUrl));
-    }
-
-    public string NegotiationBaseUrl
-    {
-        get => _negotiationBaseUrl;
-        set => _negotiationBaseUrl = RequireHttps(value, nameof(NegotiationBaseUrl));
     }
 
     /// <summary>Fallback bearer token used when no per-call accessToken is supplied.</summary>

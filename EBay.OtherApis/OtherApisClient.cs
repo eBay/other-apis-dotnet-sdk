@@ -27,7 +27,6 @@ namespace EBay.OtherApis;
 
 public sealed class OtherApisClient : IDisposable
 {
-    // Non-null only in the standalone (non-DI) path; these clients are owned by this instance.
     private readonly StandaloneHttpClientFactory? _standaloneFactory;
 
     public ShippingClient Shipping { get; }
@@ -98,11 +97,6 @@ public sealed class OtherApisClient : IDisposable
 
     public void Dispose() => _standaloneFactory?.Dispose();
 
-    /// <summary>
-    /// Minimal IHttpClientFactory for the standalone (non-DI) path.
-    /// Each CreateClient call produces a fresh HttpClient with the diagnostic handler chain
-    /// and the correct BaseAddress. Dispose releases all created clients.
-    /// </summary>
     private sealed class StandaloneHttpClientFactory : IHttpClientFactory, IDisposable
     {
         private readonly OtherApisConfiguration _config;

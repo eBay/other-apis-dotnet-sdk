@@ -14,9 +14,8 @@ A .NET SDK for eBay Other APIs. Wraps four REST APIs (Kiota-generated) behind a 
 | `Identity` | Commerce Identity API | REST (Kiota) |
 | `Translation` | Commerce Translation API (beta) | REST (Kiota) |
 | `Vero` | Commerce Vero API | REST (Kiota) |
-| `Negotiation` | Sell Negotiation API (Best Offer & Seller-Initiated Offers) | REST (Kiota) |
 
-All five are exposed on `OtherApisClient` and can also be injected directly via DI.
+All four are exposed on `OtherApisClient` and can also be injected directly via DI.
 
 ## APIs Overview
 
@@ -41,11 +40,6 @@ VERO (Verified Rights Owner) reporting:
 - Create and manage VERO reports
 - Get VERO reason codes
 - Manage reported items
-
-### Negotiation API (2 operations)
-Seller-initiated discount offers to interested buyers:
-- Find eligible items (buyers showed interest)
-- Send discount offers to interested buyers
 
 ## Authentication
 
@@ -84,9 +78,6 @@ var translated = await client.Translation.TranslateAsync(...);
 
 // Vero
 var report = await client.Vero.CreateVeroReportAsync(...);
-
-// Negotiation
-var eligibleItems = await client.Negotiation.FindEligibleItemsAsync(...);
 ```
 
 ### With DI (ASP.NET Core)
@@ -113,9 +104,6 @@ app.MapPost("/translate", async (TranslationClient client) =>
 
 app.MapGet("/vero-reason-codes", async (VeroClient client) =>
     Results.Ok(await client.GetVeroReasonCodesAsync()));
-
-app.MapGet("/negotiation/eligible-items", async (NegotiationClient client) =>
-    Results.Ok(await client.FindEligibleItemsAsync()));
 ```
 
 ### Sandbox
@@ -130,7 +118,6 @@ var config = new OtherApisConfiguration
     IdentityBaseUrl = "https://apim.sandbox.ebay.com/commerce/identity/v1",
     TranslationBaseUrl = "https://apim.sandbox.ebay.com/commerce/translation/v1_beta",
     VeroBaseUrl = "https://apim.sandbox.ebay.com/commerce/vero/v1",
-    NegotiationBaseUrl = "https://api.sandbox.ebay.com/sell/negotiation/v1",
 };
 ```
 

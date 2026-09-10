@@ -20,7 +20,6 @@ using EBay.OtherApis.Generated.Shipping;
 using EBay.OtherApis.Generated.Identity;
 using EBay.OtherApis.Generated.Translation;
 using EBay.OtherApis.Generated.Vero;
-using EBay.OtherApis.Generated.Negotiation;
 using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
 
@@ -35,7 +34,6 @@ public sealed class OtherApisClient : IDisposable
     public IdentityClient Identity { get; }
     public TranslationClient Translation { get; }
     public VeroClient Vero { get; }
-    public NegotiationClient Negotiation { get; }
 
     /// <summary>
     /// DI-friendly constructor. Uses named HttpClients from IHttpClientFactory so that
@@ -63,11 +61,6 @@ public sealed class OtherApisClient : IDisposable
         Vero = new VeroClient(
             new VeroApiClient(new HttpClientRequestAdapter(auth,
                 httpClient: factory.CreateClient(ServiceCollectionExtensions.VeroClientName))),
-            config, tokenContext);
-
-        Negotiation = new NegotiationClient(
-            new NegotiationApiClient(new HttpClientRequestAdapter(auth,
-                httpClient: factory.CreateClient(ServiceCollectionExtensions.NegotiationClientName))),
             config, tokenContext);
     }
 
@@ -100,11 +93,6 @@ public sealed class OtherApisClient : IDisposable
         Vero = new VeroClient(
             new VeroApiClient(new HttpClientRequestAdapter(auth,
                 httpClient: _standaloneFactory.CreateClient(ServiceCollectionExtensions.VeroClientName))),
-            config, tokenContext);
-
-        Negotiation = new NegotiationClient(
-            new NegotiationApiClient(new HttpClientRequestAdapter(auth,
-                httpClient: _standaloneFactory.CreateClient(ServiceCollectionExtensions.NegotiationClientName))),
             config, tokenContext);
     }
 

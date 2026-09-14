@@ -37,7 +37,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string InsuranceFee { get; set; }
 #endif
-        /// <summary>The package type.&lt;br&gt;&lt;br&gt;&lt;b&gt;Valid values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;PAK&lt;/code&gt; (limited weight ≤ 2.5KG)&lt;/li&gt;&lt;li&gt;&lt;code&gt;PACKAGE&lt;/code&gt; (limited weight 68KG)&lt;/li&gt;&lt;/ul&gt;</summary>
+        /// <summary>The package type.&lt;br&gt;&lt;br&gt;&lt;b&gt;Valid values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;PAK&lt;/code&gt; (limited weight &lt;= 2.5KG)&lt;/li&gt;&lt;li&gt;&lt;code&gt;PACKAGE&lt;/code&gt; (limited weight 68KG)&lt;/li&gt;&lt;/ul&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PackagingType { get; set; }

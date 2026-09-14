@@ -48,11 +48,13 @@ namespace EBay.OtherApis.Generated.Vero.Vero_reason_code.Item
         {
         }
         /// <summary>
-        /// &lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; You must be a member of the Verified Rights Owner (VeRO) Program to use this call.&lt;/p&gt;&lt;/div&gt;&lt;br&gt;This method is used to retrieve the details of a specific VeRO reason code, including a description of the code and the marketplace associated with the code.&lt;br&gt;&lt;br&gt;The &lt;b&gt;vero_reason_code_id&lt;/b&gt; of the VeRO reason code for which to retrieve details is required as a path parameter.
+        /// &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; All methods of the &lt;b&gt;VeRO API&lt;/b&gt; have been deprecated, and will be decommissioned on September 30th, 2026.&lt;/span&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; You must be a member of the Verified Rights Owner (VeRO) Program to use this call.&lt;/p&gt;&lt;/div&gt;&lt;br&gt;This method is used to retrieve the details of a specific VeRO reason code, including a description of the code and the marketplace associated with the code.&lt;br&gt;&lt;br&gt;The &lt;b&gt;vero_reason_code_id&lt;/b&gt; of the VeRO reason code for which to retrieve details is required as a path parameter.
         /// </summary>
         /// <returns>A <see cref="global::EBay.OtherApis.Generated.Vero.Models.VeroReasonCodeResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::EBay.OtherApis.Generated.Vero.Models.Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.Vero.Models.Error">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::EBay.OtherApis.Generated.Vero.Models.VeroReasonCodeResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -63,10 +65,15 @@ namespace EBay.OtherApis.Generated.Vero.Vero_reason_code.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::EBay.OtherApis.Generated.Vero.Models.VeroReasonCodeResponse>(requestInfo, global::EBay.OtherApis.Generated.Vero.Models.VeroReasonCodeResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::EBay.OtherApis.Generated.Vero.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::EBay.OtherApis.Generated.Vero.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::EBay.OtherApis.Generated.Vero.Models.VeroReasonCodeResponse>(requestInfo, global::EBay.OtherApis.Generated.Vero.Models.VeroReasonCodeResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; You must be a member of the Verified Rights Owner (VeRO) Program to use this call.&lt;/p&gt;&lt;/div&gt;&lt;br&gt;This method is used to retrieve the details of a specific VeRO reason code, including a description of the code and the marketplace associated with the code.&lt;br&gt;&lt;br&gt;The &lt;b&gt;vero_reason_code_id&lt;/b&gt; of the VeRO reason code for which to retrieve details is required as a path parameter.
+        /// &lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; All methods of the &lt;b&gt;VeRO API&lt;/b&gt; have been deprecated, and will be decommissioned on September 30th, 2026.&lt;/span&gt;&lt;br&gt;&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; You must be a member of the Verified Rights Owner (VeRO) Program to use this call.&lt;/p&gt;&lt;/div&gt;&lt;br&gt;This method is used to retrieve the details of a specific VeRO reason code, including a description of the code and the marketplace associated with the code.&lt;br&gt;&lt;br&gt;The &lt;b&gt;vero_reason_code_id&lt;/b&gt; of the VeRO reason code for which to retrieve details is required as a path parameter.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

@@ -45,7 +45,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string PackageId { get; set; }
 #endif
-        /// <summary>This type defines the monetary value of an amount. </summary>
+        /// <summary>The payment cost for the package.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.Amount? PaymentCost { get; set; }

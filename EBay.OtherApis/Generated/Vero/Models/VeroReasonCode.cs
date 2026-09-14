@@ -29,14 +29,8 @@ namespace EBay.OtherApis.Generated.Vero.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The eBay site for which reason code details are returned. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/vero/types/br:MarketplaceIdEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? MarketplaceId { get; set; }
-#nullable restore
-#else
-        public string MarketplaceId { get; set; }
-#endif
+        /// <summary>The eBay site for which reason code details are returned.</summary>
+        public global::EBay.OtherApis.Generated.Vero.Models.MarketplaceIdEnum? MarketplaceId { get; set; }
         /// <summary>This container includes both brief and detailed text descriptions for the VeRO program intellectual property right infringement reason, as well as the ID for the reason code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,7 +64,7 @@ namespace EBay.OtherApis.Generated.Vero.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "marketplaceId", n => { MarketplaceId = n.GetStringValue(); } },
+                { "marketplaceId", n => { MarketplaceId = n.GetEnumValue<global::EBay.OtherApis.Generated.Vero.Models.MarketplaceIdEnum>(); } },
                 { "reasonCodeDetails", n => { ReasonCodeDetails = n.GetCollectionOfObjectValues<global::EBay.OtherApis.Generated.Vero.Models.ReasonCodeDetailType>(global::EBay.OtherApis.Generated.Vero.Models.ReasonCodeDetailType.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -81,7 +75,7 @@ namespace EBay.OtherApis.Generated.Vero.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("marketplaceId", MarketplaceId);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.Vero.Models.MarketplaceIdEnum>("marketplaceId", MarketplaceId);
             writer.WriteCollectionOfObjectValues<global::EBay.OtherApis.Generated.Vero.Models.ReasonCodeDetailType>("reasonCodeDetails", ReasonCodeDetails);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -29,7 +29,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>This type defines the monetary value of an amount. </summary>
+        /// <summary>The estimated shipping cost of the package.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.Amount? EstimateCost { get; set; }
@@ -53,7 +53,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string PackageId { get; set; }
 #endif
-        /// <summary>This type defines the monetary value of an amount. </summary>
+        /// <summary>The actual payment cost of the package.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.Amount? PaymentCost { get; set; }

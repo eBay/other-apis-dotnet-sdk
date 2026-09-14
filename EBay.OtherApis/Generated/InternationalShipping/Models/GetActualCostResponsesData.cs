@@ -31,7 +31,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         public double? ActualWeight { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>This type defines the monetary value of an amount. </summary>
+        /// <summary>This container specifies the total monetary amount of the actual cost of the package. </summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.Amount? Amount { get; set; }

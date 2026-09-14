@@ -37,14 +37,8 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string PackageId { get; set; }
 #endif
-        /// <summary>The current status of the package. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/edelivery_international_shipping/types/api:PackageStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? PackageStatus { get; set; }
-#nullable restore
-#else
-        public string PackageStatus { get; set; }
-#endif
+        /// <summary>The current status of the package.</summary>
+        public global::EBay.OtherApis.Generated.InternationalShipping.Models.PackageStatusEnum? PackageStatus { get; set; }
         /// <summary>The tracking number of the package.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,7 +73,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "packageId", n => { PackageId = n.GetStringValue(); } },
-                { "packageStatus", n => { PackageStatus = n.GetStringValue(); } },
+                { "packageStatus", n => { PackageStatus = n.GetEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.PackageStatusEnum>(); } },
                 { "trackingNumber", n => { TrackingNumber = n.GetStringValue(); } },
             };
         }
@@ -91,7 +85,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("packageId", PackageId);
-            writer.WriteStringValue("packageStatus", PackageStatus);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.PackageStatusEnum>("packageStatus", PackageStatus);
             writer.WriteStringValue("trackingNumber", TrackingNumber);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -29,7 +29,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>This type specifies the package ID, payment cost, tracking number, and last-mile tracking number (if applicable) for the cloned package.</summary>
+        /// <summary>This container returns the package ID, payment cost, and tracking number for the cloned package.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.ClonePackageResponsesData? ClonePackageResult { get; set; }

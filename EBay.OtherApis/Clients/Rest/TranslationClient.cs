@@ -35,7 +35,7 @@ public sealed class TranslationClient
     }
 
     /// <summary>
-    /// This method translates listing title and listing description text from one language into another. For a full list of supported language translations, see the <see href="/develop/guides-v2/other-apis/other-apis-guide#supported-languages">table</see>.
+    /// Translate text from one language to another
     /// </summary>
     public Task<TranslateResponse?> TranslateAsync(
         TranslateRequest body,

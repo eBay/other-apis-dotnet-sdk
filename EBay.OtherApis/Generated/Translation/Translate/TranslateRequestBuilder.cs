@@ -26,7 +26,7 @@ using System;
 namespace EBay.OtherApis.Generated.Translation.Translate
 {
     /// <summary>
-    /// Builds and executes requests for operations under \translate
+    /// Translate listing content
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TranslateRequestBuilder : BaseRequestBuilder
@@ -48,12 +48,14 @@ namespace EBay.OtherApis.Generated.Translation.Translate
         {
         }
         /// <summary>
-        /// This method translates listing title and listing description text from one language into another. For a full list of supported language translations, see the &lt;a href=&quot;/develop/guides-v2/other-apis/other-apis-guide#supported-languages&quot;target=&quot;_blank &quot;&gt;table&lt;/a&gt;.
+        /// This method translates listing title and listing description text from one language into another. For a full list of supported language translations, see the &lt;a href=&quot;/develop/guides-v2/other-apis-guide#supported-languages&quot; target=&quot;_blank&quot;&gt;table&lt;/a&gt;.
         /// </summary>
         /// <returns>A <see cref="global::EBay.OtherApis.Generated.Translation.Models.TranslateResponse"/></returns>
         /// <param name="body">This is the base type of the &lt;b&gt;translate&lt;/b&gt; method request payload.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::EBay.OtherApis.Generated.Translation.Models.Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.Translation.Models.Error">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::EBay.OtherApis.Generated.Translation.Models.TranslateResponse?> PostAsync(global::EBay.OtherApis.Generated.Translation.Models.TranslateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -65,10 +67,15 @@ namespace EBay.OtherApis.Generated.Translation.Translate
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::EBay.OtherApis.Generated.Translation.Models.TranslateResponse>(requestInfo, global::EBay.OtherApis.Generated.Translation.Models.TranslateResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::EBay.OtherApis.Generated.Translation.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::EBay.OtherApis.Generated.Translation.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::EBay.OtherApis.Generated.Translation.Models.TranslateResponse>(requestInfo, global::EBay.OtherApis.Generated.Translation.Models.TranslateResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// This method translates listing title and listing description text from one language into another. For a full list of supported language translations, see the &lt;a href=&quot;/develop/guides-v2/other-apis/other-apis-guide#supported-languages&quot;target=&quot;_blank &quot;&gt;table&lt;/a&gt;.
+        /// This method translates listing title and listing description text from one language into another. For a full list of supported language translations, see the &lt;a href=&quot;/develop/guides-v2/other-apis-guide#supported-languages&quot; target=&quot;_blank&quot;&gt;table&lt;/a&gt;.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">This is the base type of the &lt;b&gt;translate&lt;/b&gt; method request payload.</param>

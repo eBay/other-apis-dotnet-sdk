@@ -53,6 +53,10 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Package.Item.Clone
         /// <returns>A <see cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.ClonePackageResponses"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::EBay.OtherApis.Generated.InternationalShipping.Models.ClonePackageResponses?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -63,7 +67,14 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Package.Item.Clone
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::EBay.OtherApis.Generated.InternationalShipping.Models.ClonePackageResponses>(requestInfo, global::EBay.OtherApis.Generated.InternationalShipping.Models.ClonePackageResponses.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+                { "401", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::EBay.OtherApis.Generated.InternationalShipping.Models.ClonePackageResponses>(requestInfo, global::EBay.OtherApis.Generated.InternationalShipping.Models.ClonePackageResponses.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// &lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; This method is only available for Greater-China based sellers with an active eDIS account.&lt;/p&gt;&lt;/div&gt;&lt;br&gt;This method can be used to clone a package for redelivery, resending the package with the same information input during the &lt;b&gt;createPackage&lt;/b&gt; call.&lt;br&gt;&lt;br&gt;The &lt;b&gt;packageId&lt;/b&gt; value of the package to be cloned must be input as a path parameter in the request.

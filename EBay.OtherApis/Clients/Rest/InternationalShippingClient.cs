@@ -297,6 +297,33 @@ public sealed class InternationalShippingClient
 
     /// <summary>
     /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// This method can be used to retrieve all Consumer Product Safety Committee (CPSC) profiles associated with a user's account.
+    /// Pagination query parameters are provided that allow users to control how many profiles are returned in the response.
+    /// </summary>
+    public Task<GetCpscProfilesResponse?> GetCpscProfilesAsync(
+        string? limit = null,
+        string? offset = null,
+        string? accessToken = null,
+        RequestOptions? requestOptions = null,
+        CancellationToken ct = default)
+        => RestInvocation.CallAsync(
+            _tokenContext,
+            accessToken,
+            () => _kiota.Cpsc_profiles.GetAsync(cfg =>
+        {
+            if (limit is not null)
+            {
+                cfg.QueryParameters.Limit = limit;
+            }
+            if (offset is not null)
+            {
+                cfg.QueryParameters.Offset = offset;
+            }
+            RestInvocation.ApplyHeaders(cfg.Headers, _config, requestOptions);
+        }, ct));
+
+    /// <summary>
+    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to retrieve metadata for one or more drop-off sites associated with a seller's eDIS account.
     /// Pagination query parameters are provided that allow users to control how many drop-off site locations are returned in the response.
     /// </summary>
@@ -545,7 +572,7 @@ public sealed class InternationalShippingClient
     /// <summary>
     /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to retrieve one or more packages based on the provided order line item ID.
-    /// This method can be followed up with <see href="/api-docs/sell/edelivery_international_shipping/resources/package/methods/getPackage">getPackage</see> call to retrieve more detailed information about a specific package.
+    /// This method can be followed up with <see href="/develop/api/sell/edelivery_international_shipping_api#sell-edelivery_international_shipping_api-package-getpackage">getPackage</see> call to retrieve more detailed information about a specific package.
     /// </summary>
     public Task<GetItemPackageIdResponses?> GetPackagesByLineItemIDAsync(
         string orderLineItemId,

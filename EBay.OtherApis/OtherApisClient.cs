@@ -18,6 +18,7 @@ using EBay.OtherApis.Generated.Identity;
 using EBay.OtherApis.Generated.InternationalShipping;
 using EBay.OtherApis.Generated.Translation;
 using EBay.OtherApis.Generated.Vero;
+using EBay.OtherApis.Generated.VeroApiV2;
 using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ public class OtherApisClient : IDisposable
     internal const string IdentityClientName = "OtherApisClient.Identity";
     internal const string InternationalShippingClientName = "OtherApisClient.InternationalShipping";
     internal const string TranslationClientName = "OtherApisClient.Translation";
+    internal const string VeroApiV2ClientName = "OtherApisClient.VeroApiV2";
     internal const string VeroClientName = "OtherApisClient.Vero";
 
     private readonly HttpClient[] _ownedClients;
@@ -38,6 +40,7 @@ public class OtherApisClient : IDisposable
     public IdentityClient Identity { get; private set; } = null!;
     public InternationalShippingClient InternationalShipping { get; private set; } = null!;
     public TranslationClient Translation { get; private set; } = null!;
+    public VeroApiV2Client VeroApiV2 { get; private set; } = null!;
     public VeroClient Vero { get; private set; } = null!;
 
     /// <summary>
@@ -85,6 +88,7 @@ public class OtherApisClient : IDisposable
         ("identity", IdentityClientName),
         ("international-shipping", InternationalShippingClientName),
         ("translation", TranslationClientName),
+        ("vero-api-v2", VeroApiV2ClientName),
         ("vero", VeroClientName)
     ];
 
@@ -104,6 +108,8 @@ public class OtherApisClient : IDisposable
         InternationalShipping = new InternationalShippingClient(new InternationalShippingApiClient(internationalShippingAdapter), config, tokenContext, internationalShippingAdapter);
         var translationAdapter = new HttpClientRequestAdapter(auth, httpClient: httpClientFor(endpoints.First(endpoint => endpoint.ApiId == "translation")));
         Translation = new TranslationClient(new TranslationApiClient(translationAdapter), config, tokenContext, translationAdapter);
+        var veroApiV2Adapter = new HttpClientRequestAdapter(auth, httpClient: httpClientFor(endpoints.First(endpoint => endpoint.ApiId == "vero-api-v2")));
+        VeroApiV2 = new VeroApiV2Client(new VeroApiV2ApiClient(veroApiV2Adapter), config, tokenContext, veroApiV2Adapter);
         var veroAdapter = new HttpClientRequestAdapter(auth, httpClient: httpClientFor(endpoints.First(endpoint => endpoint.ApiId == "vero")));
         Vero = new VeroClient(new VeroApiClient(veroAdapter), config, tokenContext, veroAdapter);
     }

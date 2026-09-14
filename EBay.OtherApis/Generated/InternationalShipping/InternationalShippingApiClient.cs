@@ -21,6 +21,7 @@ using EBay.OtherApis.Generated.InternationalShipping.Battery_qualifications;
 using EBay.OtherApis.Generated.InternationalShipping.Bundle;
 using EBay.OtherApis.Generated.InternationalShipping.Complaint;
 using EBay.OtherApis.Generated.InternationalShipping.Consign_preference;
+using EBay.OtherApis.Generated.InternationalShipping.Cpsc_profiles;
 using EBay.OtherApis.Generated.InternationalShipping.Dropoff_sites;
 using EBay.OtherApis.Generated.InternationalShipping.Handover_sheet;
 using EBay.OtherApis.Generated.InternationalShipping.Labels;
@@ -79,6 +80,11 @@ namespace EBay.OtherApis.Generated.InternationalShipping
         public global::EBay.OtherApis.Generated.InternationalShipping.Consign_preference.Consign_preferenceRequestBuilder Consign_preference
         {
             get => new global::EBay.OtherApis.Generated.InternationalShipping.Consign_preference.Consign_preferenceRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The cpsc_profiles property</summary>
+        public global::EBay.OtherApis.Generated.InternationalShipping.Cpsc_profiles.Cpsc_profilesRequestBuilder Cpsc_profiles
+        {
+            get => new global::EBay.OtherApis.Generated.InternationalShipping.Cpsc_profiles.Cpsc_profilesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The dropoff_sites property</summary>
         public global::EBay.OtherApis.Generated.InternationalShipping.Dropoff_sites.Dropoff_sitesRequestBuilder Dropoff_sites

@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "F73EAC57E44C614247E8C5E83F28E64F2C5DCDCE45EB57C4565E4A6000243EF1C59CD0B3AA752E900334177629FABB20411A728341241F77059FE34E6A9CE929",
-  "descriptionLocation": "../../../specs/openapi/identity.yaml",
+  "descriptionHash": "723A5EA2FE739551ACB57EAD6344E377C30814E9D4D65A64480E908573769A5A79A4E9D6BFF9EEF5F283F78890A9B04F2A7395D3F23B7FC8090A62150964DAB8",
+  "descriptionLocation": "../../../specs/openapi/identity.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.30.0",
+  "kiotaVersion": "1.35.0",
   "clientClassName": "IdentityApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "EBay.OtherApis.Generated.Identity",
@@ -30,5 +30,6 @@
   ],
   "includePatterns": [],
   "excludePatterns": [],
-  "disabledValidationRules": []
+  "disabledValidationRules": [],
+  "allowedExternalOrigins": []
 }

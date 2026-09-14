@@ -51,7 +51,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Package
             get => new global::EBay.OtherApis.Generated.InternationalShipping.Package.Bulk_delete_packages.Bulk_delete_packagesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the EBay.OtherApis.Generated.InternationalShipping.package.item collection</summary>
-        /// <param name="position">This path parameter specifies the unique identifier of the package being retrieved.&lt;br&gt;&lt;br&gt;This ID value is returned when creating a package through the &lt;a href=&quot;/api-docs/sell/edelivery_international_shipping/resources/package/methods/createPackage&quot; target=&quot;_blank&quot;&gt;createPackage&lt;/a&gt; method.</param>
+        /// <param name="position">This path parameter specifies the unique identifier of the package being retrieved.&lt;br&gt;&lt;br&gt;This ID value is returned when creating a package through the &lt;a href=&quot;/develop/api/sell/edelivery_international_shipping_api#sell-edelivery_international_shipping_api-package-createpackage&quot;&gt;createPackage&lt;/a&gt; method.</param>
         /// <returns>A <see cref="global::EBay.OtherApis.Generated.InternationalShipping.Package.Item.Order_line_item_ItemRequestBuilder"/></returns>
         public global::EBay.OtherApis.Generated.InternationalShipping.Package.Item.Order_line_item_ItemRequestBuilder this[string position]
         {
@@ -85,6 +85,9 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Package
         /// <param name="body">This type defines the request container used in the &lt;b&gt;createPackage&lt;/b&gt; method.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::EBay.OtherApis.Generated.InternationalShipping.Models.AddPackageResponses?> PostAsync(global::EBay.OtherApis.Generated.InternationalShipping.Models.AddPackageRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -96,7 +99,13 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Package
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::EBay.OtherApis.Generated.InternationalShipping.Models.AddPackageResponses>(requestInfo, global::EBay.OtherApis.Generated.InternationalShipping.Models.AddPackageResponses.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+                { "401", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::EBay.OtherApis.Generated.InternationalShipping.Models.AddPackageResponses>(requestInfo, global::EBay.OtherApis.Generated.InternationalShipping.Models.AddPackageResponses.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// &lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; This method is only available for Greater-China based sellers with an active eDIS account.&lt;/p&gt;&lt;/div&gt;&lt;br&gt;This method can be used to create a package for an order.&lt;br&gt;&lt;br&gt;To create a package, the package&apos;s shipping information, such as the dimensions, weight, ship from, and ship to address, as well as information about the item(s) it contains must be specified in the request.&lt;br&gt;&lt;br&gt;If the call is successful, the &lt;b&gt;packageId&lt;/b&gt; and tracking number for the newly created package will be returned.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Sellers should keep track of the returned &lt;b&gt;packageId&lt;/b&gt;, as there is no programmatic way to retrieve this value at this time.&lt;/span&gt;

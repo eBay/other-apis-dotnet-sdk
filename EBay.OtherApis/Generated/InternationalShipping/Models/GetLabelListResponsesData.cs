@@ -22,7 +22,7 @@ using System;
 namespace EBay.OtherApis.Generated.InternationalShipping.Models
 {
     /// <summary>
-    /// GetLabelListResponsesData
+    /// This type defines the response payload for the &lt;b&gt;getLabels&lt;/b&gt; method.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GetLabelListResponsesData : IAdditionalDataHolder, IParsable

@@ -53,6 +53,10 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Labels
         /// <returns>A <see cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.GetLabelListResponses"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::EBay.OtherApis.Generated.InternationalShipping.Models.GetLabelListResponses?> GetAsync(Action<RequestConfiguration<global::EBay.OtherApis.Generated.InternationalShipping.Labels.LabelsRequestBuilder.LabelsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -63,7 +67,14 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Labels
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::EBay.OtherApis.Generated.InternationalShipping.Models.GetLabelListResponses>(requestInfo, global::EBay.OtherApis.Generated.InternationalShipping.Models.GetLabelListResponses.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+                { "401", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::EBay.OtherApis.Generated.InternationalShipping.Models.GetLabelListResponses>(requestInfo, global::EBay.OtherApis.Generated.InternationalShipping.Models.GetLabelListResponses.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// &lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; This method is only available for Greater-China based sellers with an active eDIS account.&lt;/p&gt;&lt;/div&gt;&lt;br&gt;This method can be used to retrieve shipping labels for the one or more specified packages.&lt;br&gt;&lt;br&gt;The packages for which to retrieve shipping labels can be specified through the &lt;b&gt;tracking_numbers&lt;/b&gt; query parameter. The page size and print preference settings for the shipping label(s) can also be specified through the query parameters.&lt;br&gt;&lt;br&gt;Shipping labels are returned as base64 string values which can be converted to PDF files. A separate file will be returned for each tracking number specified in the request.
@@ -119,7 +130,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Labels
             [QueryParameter("print_preference")]
             public string PrintPreference { get; set; }
 #endif
-            /// <summary>This query parameter specifies an array of tracking numbers of the packages for which to retrieve shipping labels.&lt;br&gt;&lt;br&gt;Tracking numbers are returned when creating packages through the &lt;a href=&quot;/api-docs/sell/edelivery_international_shipping/resources/package/methods/createPackage&quot; target=&quot;_blank&quot;&gt;createPackage&lt;/a&gt; method.&lt;br&gt;&lt;br&gt;Up to 200 tracking numbers can be provided. Multiple tracking numbers can be input as individual query parameters.For example,&lt;br&gt;&lt;br&gt;&lt;code&gt;tracking_numbers=E***********************N&amp;tracking_numbers=E***********************Q&lt;/code&gt;</summary>
+            /// <summary>This query parameter specifies an array of tracking numbers of the packages for which to retrieve shipping labels.&lt;br&gt;&lt;br&gt;Tracking numbers are returned when creating packages through the &lt;a href=&quot;/develop/api/sell/edelivery_international_shipping_api#sell-edelivery_international_shipping_api-package-createpackage&quot;&gt;createPackage&lt;/a&gt; method.&lt;br&gt;&lt;br&gt;Up to 200 tracking numbers can be provided. Multiple tracking numbers can be input as individual query parameters.For example,&lt;br&gt;&lt;br&gt;&lt;code&gt;tracking_numbers=E***********************N&amp;tracking_numbers=E***********************Q&lt;/code&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("tracking_numbers")]

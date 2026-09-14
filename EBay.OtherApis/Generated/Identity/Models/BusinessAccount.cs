@@ -29,7 +29,7 @@ namespace EBay.OtherApis.Generated.Identity.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The type that defines the fields for an address.</summary>
+        /// <summary>The business address associated with the user&apos;s eBay business account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.Identity.Models.Address? Address { get; set; }
@@ -37,7 +37,7 @@ namespace EBay.OtherApis.Generated.Identity.Models
 #else
         public global::EBay.OtherApis.Generated.Identity.Models.Address Address { get; set; }
 #endif
-        /// <summary>An additional name that is used for their business on eBay. The business name is returned in the &lt;b&gt; name&lt;/b&gt; field.</summary>
+        /// <summary>An alternate business name or trade name used by the business on eBay.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DoingBusinessAs { get; set; }
@@ -45,7 +45,7 @@ namespace EBay.OtherApis.Generated.Identity.Models
 #else
         public string DoingBusinessAs { get; set; }
 #endif
-        /// <summary>The email address of the business account.</summary>
+        /// <summary>The email address associated with the business account on eBay.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Email { get; set; }
@@ -53,7 +53,7 @@ namespace EBay.OtherApis.Generated.Identity.Models
 #else
         public string Email { get; set; }
 #endif
-        /// <summary>The business name associated with the user&apos;s eBay account.</summary>
+        /// <summary>The official name of the business associated with the eBay user&apos;s account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -61,7 +61,7 @@ namespace EBay.OtherApis.Generated.Identity.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The type that defines the fields for the information of the contact person for the account.</summary>
+        /// <summary>The container that returns the contact details of the person who is the primary contact for this account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.Identity.Models.Contact? PrimaryContact { get; set; }
@@ -69,7 +69,7 @@ namespace EBay.OtherApis.Generated.Identity.Models
 #else
         public global::EBay.OtherApis.Generated.Identity.Models.Contact PrimaryContact { get; set; }
 #endif
-        /// <summary>The type that defines the fields for the details of a phone.</summary>
+        /// <summary>The container that returns the primary phone number for the business account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.Identity.Models.Phone? PrimaryPhone { get; set; }
@@ -77,7 +77,7 @@ namespace EBay.OtherApis.Generated.Identity.Models
 #else
         public global::EBay.OtherApis.Generated.Identity.Models.Phone PrimaryPhone { get; set; }
 #endif
-        /// <summary>The type that defines the fields for the details of a phone.</summary>
+        /// <summary>The container that returns the secondary phone number for the business account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.Identity.Models.Phone? SecondaryPhone { get; set; }

@@ -29,7 +29,15 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The unique identifier of the battery&apos;s electric qualification, which indicates that the battery has a certificate of approval for global shipping.&lt;br&gt;&lt;br&gt;This value is returned in the &lt;a href=&quot;/api-docs/sell/edelivery_international_shipping/resources/battery_qualifications/methods/getBatteryQualifications&quot; target=&quot;_blank&quot;&gt;getBatteryQualifications&lt;/a&gt; method.</summary>
+        /// <summary>The unique identifier of a CPSC profile.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CpscProfileId { get; set; }
+#nullable restore
+#else
+        public string CpscProfileId { get; set; }
+#endif
+        /// <summary>The unique identifier of the battery&apos;s electric qualification, which indicates that the battery has a certificate of approval for global shipping.&lt;br&gt;&lt;br&gt;This value is returned in the &lt;a href=&quot;/develop/api/sell/edelivery_international_shipping_api#sell-edelivery_international_shipping_api-battery_qualifications-getbatteryqualifications&quot;&gt;getBatteryQualifications&lt;/a&gt; method.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ElecQualificationId { get; set; }
@@ -37,6 +45,8 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string ElecQualificationId { get; set; }
 #endif
+        /// <summary>The exemption type associated with the CPSC profile.</summary>
+        public global::EBay.OtherApis.Generated.InternationalShipping.Models.ExemptionTypeEnum? ExemptionType { get; set; }
         /// <summary>This array lists the FDC SKUs associated with the item. An FDC SKU is the SKU label in a forward deployment center.&lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; Please contact customer service before using these fields.&lt;/p&gt;&lt;/div&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -51,14 +61,8 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         public bool? IsLiBattery { get; set; }
         /// <summary>The length of the item in centimeters.</summary>
         public double? Length { get; set; }
-        /// <summary>If the item contains a battery, this field indicates the type of battery the item contains. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/edelivery_international_shipping/types/api:LiBatteryTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? LiBatteryType { get; set; }
-#nullable restore
-#else
-        public string LiBatteryType { get; set; }
-#endif
+        /// <summary>If the item contains a battery, this field indicates the type of battery the item contains.</summary>
+        public global::EBay.OtherApis.Generated.InternationalShipping.Models.LiBatteryTypeEnum? LiBatteryType { get; set; }
         /// <summary>The English name of the item.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -83,7 +87,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string Origin { get; set; }
 #endif
-        /// <summary>This type defines the monetary value of an amount. </summary>
+        /// <summary>The declared price of the item.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.Amount? Price { get; set; }
@@ -144,12 +148,14 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "cpscProfileId", n => { CpscProfileId = n.GetStringValue(); } },
                 { "elecQualificationId", n => { ElecQualificationId = n.GetStringValue(); } },
+                { "exemptionType", n => { ExemptionType = n.GetEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.ExemptionTypeEnum>(); } },
                 { "fdcSkus", n => { FdcSkus = n.GetCollectionOfObjectValues<global::EBay.OtherApis.Generated.InternationalShipping.Models.FDCSkuRequest>(global::EBay.OtherApis.Generated.InternationalShipping.Models.FDCSkuRequest.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "height", n => { Height = n.GetDoubleValue(); } },
                 { "isLiBattery", n => { IsLiBattery = n.GetBoolValue(); } },
                 { "length", n => { Length = n.GetDoubleValue(); } },
-                { "liBatteryType", n => { LiBatteryType = n.GetStringValue(); } },
+                { "liBatteryType", n => { LiBatteryType = n.GetEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.LiBatteryTypeEnum>(); } },
                 { "nameEn", n => { NameEn = n.GetStringValue(); } },
                 { "nameZh", n => { NameZh = n.GetStringValue(); } },
                 { "origin", n => { Origin = n.GetStringValue(); } },
@@ -168,12 +174,14 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("cpscProfileId", CpscProfileId);
             writer.WriteStringValue("elecQualificationId", ElecQualificationId);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.ExemptionTypeEnum>("exemptionType", ExemptionType);
             writer.WriteCollectionOfObjectValues<global::EBay.OtherApis.Generated.InternationalShipping.Models.FDCSkuRequest>("fdcSkus", FdcSkus);
             writer.WriteDoubleValue("height", Height);
             writer.WriteBoolValue("isLiBattery", IsLiBattery);
             writer.WriteDoubleValue("length", Length);
-            writer.WriteStringValue("liBatteryType", LiBatteryType);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.LiBatteryTypeEnum>("liBatteryType", LiBatteryType);
             writer.WriteStringValue("nameEn", NameEn);
             writer.WriteStringValue("nameZh", NameZh);
             writer.WriteStringValue("origin", Origin);

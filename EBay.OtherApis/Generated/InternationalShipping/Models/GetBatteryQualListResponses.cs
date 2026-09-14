@@ -29,7 +29,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>This type defines the fields in a paginated result set of battery qualifications associated with a seller&apos;s eDIS account. The response consists of 0 or more sequenced pages that are returned from the complete result set, where each page consists of 0 or more items.</summary>
+        /// <summary>This container returns a list of all battery qualifications associated with an eDIS account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.GetBatteryQualListResponsesData? BatteryQualificationList { get; set; }

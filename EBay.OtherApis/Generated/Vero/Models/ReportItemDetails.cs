@@ -37,15 +37,15 @@ namespace EBay.OtherApis.Generated.Vero.Models
 #else
         public string Brand { get; set; }
 #endif
-        /// <summary>If the VeRO Program member wants a copy of the Notice of Claimed Infringement (NOCI) document sent to their email address, this field should be included in the request and set to &lt;code&gt;true&lt;/code&gt;. This same document is automatically sent to the seller of the reported item.&lt;br&gt;&lt;br&gt;As this field defaults to &lt;code&gt;true&lt;/b&gt;, the report will be automatically emailed if this field is omitted.&lt;br&gt;&lt;br&gt;&lt;b&gt;Default:&lt;/b&gt; true</summary>
+        /// <summary>If the VeRO Program member wants a copy of the Notice of Claimed Infringement (NOCI) document sent to their email address, this field should be included in the request and set to &lt;code&gt;true&lt;/code&gt;. This same document is automatically sent to the seller of the reported item.&lt;br&gt;&lt;br&gt;As this field defaults to &lt;code&gt;true&lt;/code&gt;, the report will be automatically emailed if this field is omitted.&lt;br&gt;&lt;br&gt;&lt;b&gt;Default:&lt;/b&gt; true</summary>
         public bool? CopyEmailToRightsOwner { get; set; }
         /// <summary>If the infringement type stated in the &lt;b&gt;VeroReasonCodeId&lt;/b&gt; has anything to do with which country the item is being shipped to, each country that would trigger this infringement type should be specified in this comma-delimited array.&lt;br&gt;&lt;br&gt;This field is required when the &lt;b&gt;veroReasonCodeId&lt;/b&gt; is &lt;code&gt;9037&lt;/code&gt; (Item(s) is unlawful importation of product bearing trademark).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Countries { get; set; }
+        public List<global::EBay.OtherApis.Generated.Vero.Models.CountryCodeEnum?>? Countries { get; set; }
 #nullable restore
 #else
-        public List<string> Countries { get; set; }
+        public List<global::EBay.OtherApis.Generated.Vero.Models.CountryCodeEnum?> Countries { get; set; }
 #endif
         /// <summary>This field is used to provide further information about the VeRO reason code.&lt;br&gt;&lt;br&gt;This field is required when the &lt;b&gt;veroReasonCodeId&lt;/b&gt; is &lt;code&gt;9052&lt;/code&gt; or &lt;code&gt;7052&lt;/code&gt; (Other - Provide details information in additional information box below).&lt;br&gt;&lt;br&gt;&lt;b&gt;Max length:&lt;/b&gt; 1000 characters</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -82,12 +82,12 @@ namespace EBay.OtherApis.Generated.Vero.Models
         /// <summary>If the infringement type stated in the &lt;b&gt;veroReasonCodeId&lt;/b&gt; has anything to do with which geographical region the item is being shipped to, each region that would trigger this infringement type should be specified in this comma-delimited array.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Regions { get; set; }
+        public List<global::EBay.OtherApis.Generated.Vero.Models.WorldRegionEnum?>? Regions { get; set; }
 #nullable restore
 #else
-        public List<string> Regions { get; set; }
+        public List<global::EBay.OtherApis.Generated.Vero.Models.WorldRegionEnum?> Regions { get; set; }
 #endif
-        /// <summary>The unique identifier for the type of claimed infringement.&lt;br&gt;&lt;br&gt;Use &lt;a href=&quot;/api-docs/commerce/vero/resources/vero_reason_code/methods/getVeroReasonCodes&quot; target=&quot;_blank &quot;&gt;getVeroReasonCodes&lt;/a&gt; to retrieve a list of valid reason codes for a given eBay site.</summary>
+        /// <summary>The unique identifier for the type of claimed infringement.&lt;br&gt;&lt;br&gt;Use &lt;a href=&quot;/develop/api/sell/vero_public_apis#sell-vero_public_apis-vero_reason_code-getveroreasoncodes&quot;&gt;getVeroReasonCodes&lt;/a&gt; to retrieve a list of valid reason codes for a given eBay site.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? VeroReasonCodeId { get; set; }
@@ -122,12 +122,12 @@ namespace EBay.OtherApis.Generated.Vero.Models
             {
                 { "brand", n => { Brand = n.GetStringValue(); } },
                 { "copyEmailToRightsOwner", n => { CopyEmailToRightsOwner = n.GetBoolValue(); } },
-                { "countries", n => { Countries = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "countries", n => { Countries = n.GetCollectionOfEnumValues<global::EBay.OtherApis.Generated.Vero.Models.CountryCodeEnum>()?.AsList(); } },
                 { "detailedMessage", n => { DetailedMessage = n.GetStringValue(); } },
                 { "itemId", n => { ItemId = n.GetStringValue(); } },
                 { "messageToSeller", n => { MessageToSeller = n.GetStringValue(); } },
                 { "patent", n => { Patent = n.GetStringValue(); } },
-                { "regions", n => { Regions = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "regions", n => { Regions = n.GetCollectionOfEnumValues<global::EBay.OtherApis.Generated.Vero.Models.WorldRegionEnum>()?.AsList(); } },
                 { "veroReasonCodeId", n => { VeroReasonCodeId = n.GetStringValue(); } },
             };
         }
@@ -140,12 +140,12 @@ namespace EBay.OtherApis.Generated.Vero.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("brand", Brand);
             writer.WriteBoolValue("copyEmailToRightsOwner", CopyEmailToRightsOwner);
-            writer.WriteCollectionOfPrimitiveValues<string>("countries", Countries);
+            writer.WriteCollectionOfEnumValues<global::EBay.OtherApis.Generated.Vero.Models.CountryCodeEnum>("countries", Countries);
             writer.WriteStringValue("detailedMessage", DetailedMessage);
             writer.WriteStringValue("itemId", ItemId);
             writer.WriteStringValue("messageToSeller", MessageToSeller);
             writer.WriteStringValue("patent", Patent);
-            writer.WriteCollectionOfPrimitiveValues<string>("regions", Regions);
+            writer.WriteCollectionOfEnumValues<global::EBay.OtherApis.Generated.Vero.Models.WorldRegionEnum>("regions", Regions);
             writer.WriteStringValue("veroReasonCodeId", VeroReasonCodeId);
             writer.WriteAdditionalData(AdditionalData);
         }

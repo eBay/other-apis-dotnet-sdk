@@ -69,14 +69,8 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public List<global::EBay.OtherApis.Generated.InternationalShipping.Models.DirectionsResponses> Directions { get; set; }
 #endif
-        /// <summary>The incoterm information associated with the the shipping service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Supported values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;DDP&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;DDU&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/edelivery_international_shipping/types/api:IncotermEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Incoterm { get; set; }
-#nullable restore
-#else
-        public string Incoterm { get; set; }
-#endif
+        /// <summary>The incoterm information associated with the the shipping service.&lt;br&gt;&lt;br&gt;&lt;b&gt;Supported values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;DDP&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;DDU&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
+        public global::EBay.OtherApis.Generated.InternationalShipping.Models.IncotermEnum? Incoterm { get; set; }
         /// <summary>This value indicates the maximum length (in centimeters) of the shipping package that the shipping service allows.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field is always returned, but will show as null or have an empty value if not defined/applicable.&lt;/span&gt;</summary>
         public double? MaxLength { get; set; }
         /// <summary>This value indicates the total maximum value of the length, width, and height of the package.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field is always returned, but will show as null or have an empty value if not defined/applicable.&lt;/span&gt;</summary>
@@ -115,7 +109,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string NameZh { get; set; }
 #endif
-        /// <summary>The unique identifier of the shipping service being retrieved.&lt;br&gt;&lt;br&gt;This value can be input in the &lt;a href=&quot;/api-docs/sell/edelivery_international_shipping/resources/package/methods/createPackage#request.packageInfo.shippingServiceId&quot; target=&quot;_blank&quot;&gt;shippingServiceId&lt;/a&gt; field when creating a package through the the &lt;b&gt;createPackage&lt;/b&gt; method.</summary>
+        /// <summary>The unique identifier of the shipping service being retrieved.&lt;br&gt;&lt;br&gt;This value can be input in the &lt;a href=&quot;/develop/api/sell/edelivery_international_shipping_api#sell-edelivery_international_shipping_api-package-createpackage.packageinforequest.shippingserviceid&quot;&gt;shippingServiceId&lt;/a&gt; field when creating a package through the the &lt;b&gt;createPackage&lt;/b&gt; method.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ShippingServiceId { get; set; }
@@ -153,7 +147,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
                 { "descriptionJp", n => { DescriptionJp = n.GetStringValue(); } },
                 { "descriptionZh", n => { DescriptionZh = n.GetStringValue(); } },
                 { "directions", n => { Directions = n.GetCollectionOfObjectValues<global::EBay.OtherApis.Generated.InternationalShipping.Models.DirectionsResponses>(global::EBay.OtherApis.Generated.InternationalShipping.Models.DirectionsResponses.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "incoterm", n => { Incoterm = n.GetStringValue(); } },
+                { "incoterm", n => { Incoterm = n.GetEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.IncotermEnum>(); } },
                 { "maxLength", n => { MaxLength = n.GetDoubleValue(); } },
                 { "maxTotalLength", n => { MaxTotalLength = n.GetDoubleValue(); } },
                 { "maxWeight", n => { MaxWeight = n.GetDoubleValue(); } },
@@ -176,7 +170,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
             writer.WriteStringValue("descriptionJp", DescriptionJp);
             writer.WriteStringValue("descriptionZh", DescriptionZh);
             writer.WriteCollectionOfObjectValues<global::EBay.OtherApis.Generated.InternationalShipping.Models.DirectionsResponses>("directions", Directions);
-            writer.WriteStringValue("incoterm", Incoterm);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.IncotermEnum>("incoterm", Incoterm);
             writer.WriteDoubleValue("maxLength", MaxLength);
             writer.WriteDoubleValue("maxTotalLength", MaxTotalLength);
             writer.WriteDoubleValue("maxWeight", MaxWeight);

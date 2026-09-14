@@ -22,7 +22,7 @@ using System;
 namespace EBay.OtherApis.Generated.Translation.Models
 {
     /// <summary>
-    /// This type is used by the &lt;b&gt;translations&lt;/b&gt; array, which shows the original text supplied by the user in the request payload, and the text translated by eBay.&lt;br&gt;&lt;br&gt;Only one input string can be translated at this time. Support for multiple continuous text strings is expected in the future.
+    /// This type is used by the &lt;b&gt;translations&lt;/b&gt; array, which shows the original text supplied by the user in the request payload, and the text translated by eBay.&lt;br&gt;&lt;br&gt;Only one input string can be translated at this time. Support for multiple continuous text strings are expected in the future.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Translation : IAdditionalDataHolder, IParsable

@@ -37,14 +37,8 @@ namespace EBay.OtherApis.Generated.Vero.Models
 #else
         public string VeroReportId { get; set; }
 #endif
-        /// <summary>The processing status of the VeRO report. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/vero/types/VeroReportStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? VeroReportStatus { get; set; }
-#nullable restore
-#else
-        public string VeroReportStatus { get; set; }
-#endif
+        /// <summary>The processing status of the VeRO report.</summary>
+        public global::EBay.OtherApis.Generated.Vero.Models.VeroReportStatusEnum? VeroReportStatus { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::EBay.OtherApis.Generated.Vero.Models.VeroReportItemsResponse"/> and sets the default values.
         /// </summary>
@@ -71,7 +65,7 @@ namespace EBay.OtherApis.Generated.Vero.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "veroReportId", n => { VeroReportId = n.GetStringValue(); } },
-                { "veroReportStatus", n => { VeroReportStatus = n.GetStringValue(); } },
+                { "veroReportStatus", n => { VeroReportStatus = n.GetEnumValue<global::EBay.OtherApis.Generated.Vero.Models.VeroReportStatusEnum>(); } },
             };
         }
         /// <summary>
@@ -82,7 +76,7 @@ namespace EBay.OtherApis.Generated.Vero.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("veroReportId", VeroReportId);
-            writer.WriteStringValue("veroReportStatus", VeroReportStatus);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.Vero.Models.VeroReportStatusEnum>("veroReportStatus", VeroReportStatus);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

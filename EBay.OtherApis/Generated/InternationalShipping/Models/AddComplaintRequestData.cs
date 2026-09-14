@@ -29,7 +29,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>This array specifies a list of packages, specified by their &lt;b&gt;packageId&lt;/b&gt;, affected by the issue causing the complaint.&lt;br&gt;&lt;br&gt;Package ID values are returned when creating a package through the &lt;a href=&quot;/api-docs/sell/edelivery_international_shipping/resources/package/methods/createPackage&quot; target=&quot;_blank&quot;&gt;createPackage&lt;/a&gt; method&lt;br&gt;&lt;br&gt;This array is required if the complaint being filed is for a missing package.</summary>
+        /// <summary>This array specifies a list of packages, specified by their &lt;b&gt;packageId&lt;/b&gt;, affected by the issue causing the complaint.&lt;br&gt;&lt;br&gt;Package ID values are returned when creating a package through the &lt;a href=&quot;/develop/api/sell/edelivery_international_shipping_api#sell-edelivery_international_shipping_api-package-createpackage&quot;&gt;createPackage&lt;/a&gt; method&lt;br&gt;&lt;br&gt;This array is required if the complaint being filed is for a missing package.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? AffectedPackages { get; set; }
@@ -53,14 +53,8 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string ComplaintReason { get; set; }
 #endif
-        /// <summary>The type of complaint being filed.&lt;br&gt;&lt;br&gt;&lt;b&gt;Valid values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;ABNORMAL_COLLECTION_COMPLAINT&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;LOST_PACKAGE_COMPLAINT&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/edelivery_international_shipping/types/api:ComplaintTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ComplaintType { get; set; }
-#nullable restore
-#else
-        public string ComplaintType { get; set; }
-#endif
+        /// <summary>The type of complaint being filed.&lt;br&gt;&lt;br&gt;&lt;b&gt;Valid values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;ABNORMAL_COLLECTION_COMPLAINT&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;LOST_PACKAGE_COMPLAINT&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
+        public global::EBay.OtherApis.Generated.InternationalShipping.Models.ComplaintTypeEnum? ComplaintType { get; set; }
         /// <summary>The unique identifier of the address associated with the complaint.&lt;br&gt;&lt;br&gt;This field is required if the complain being filed is associated with a specific address.</summary>
         public int? PreferenceId { get; set; }
         /// <summary>A remark to the seller themselves.</summary>
@@ -99,7 +93,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
                 { "affectedPackages", n => { AffectedPackages = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "complaintDate", n => { ComplaintDate = n.GetStringValue(); } },
                 { "complaintReason", n => { ComplaintReason = n.GetStringValue(); } },
-                { "complaintType", n => { ComplaintType = n.GetStringValue(); } },
+                { "complaintType", n => { ComplaintType = n.GetEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.ComplaintTypeEnum>(); } },
                 { "preferenceId", n => { PreferenceId = n.GetIntValue(); } },
                 { "remark", n => { Remark = n.GetStringValue(); } },
             };
@@ -114,7 +108,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
             writer.WriteCollectionOfPrimitiveValues<string>("affectedPackages", AffectedPackages);
             writer.WriteStringValue("complaintDate", ComplaintDate);
             writer.WriteStringValue("complaintReason", ComplaintReason);
-            writer.WriteStringValue("complaintType", ComplaintType);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.ComplaintTypeEnum>("complaintType", ComplaintType);
             writer.WriteIntValue("preferenceId", PreferenceId);
             writer.WriteStringValue("remark", Remark);
             writer.WriteAdditionalData(AdditionalData);

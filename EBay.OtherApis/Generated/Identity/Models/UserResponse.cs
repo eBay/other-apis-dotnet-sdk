@@ -27,17 +27,11 @@ namespace EBay.OtherApis.Generated.Identity.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UserResponse : IAdditionalDataHolder, IParsable
     {
-        /// <summary>Indicates the user account type. This is determined when the user registers with eBay. If they register for a business account, this value will be BUSINESS. If they register for a private account, this value will be INDIVIDUAL. This designation is required by the tax laws in the following countries:   &lt;br /&gt;&lt;br /&gt;EBAY_AT, EBAY_BE, EBAY_CH, EBAY_DE, EBAY_ES, EBAY_FR, EBAY_GB, EBAY_IE, EBAY_IT, EBAY_PL &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Valid Values:&lt;/b&gt; BUSINESS or INDIVIDUAL &lt;br /&gt;&lt;br /&gt;Code so that your app gracefully handles any future changes to this list. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/identity/types/api:AccountTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AccountType { get; set; }
-#nullable restore
-#else
-        public string AccountType { get; set; }
-#endif
+        /// <summary>Indicates the user account type. This is determined when the user registers with eBay. If they register for a business account, this value will be &lt;code&gt;BUSINESS&lt;/code&gt;. If they register for a private account, this value will be &lt;code&gt;INDIVIDUAL&lt;/code&gt;. This designation is required by the tax laws in the following countries:   &lt;ul&gt;&lt;li&gt;EBAY_AT&lt;/li&gt;&lt;li&gt;EBAY_BE&lt;/li&gt;&lt;li&gt;EBAY_CH&lt;/li&gt;&lt;li&gt;EBAY_DE&lt;/li&gt;&lt;li&gt;EBAY_ES&lt;/li&gt;&lt;li&gt;EBAY_FR&lt;/li&gt;&lt;li&gt;EBAY_GB&lt;/li&gt;&lt;li&gt;EBAY_IE&lt;/li&gt;&lt;li&gt;EBAY_IT&lt;/li&gt;&lt;li&gt;EBAY_PL&lt;/li&gt;&lt;/ul&gt; &lt;br /&gt;&lt;b&gt; Valid Values:&lt;/b&gt; &lt;code&gt;BUSINESS&lt;/code&gt; or &lt;code&gt;INDIVIDUAL&lt;/code&gt; &lt;br /&gt;&lt;br /&gt;Code so that your app gracefully handles any future changes to this list.</summary>
+        public global::EBay.OtherApis.Generated.Identity.Models.AccountTypeEnum? AccountType { get; set; }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The type that defines the fields for the business account information.</summary>
+        /// <summary>The container that returns the business account information of the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.Identity.Models.BusinessAccount? BusinessAccount { get; set; }
@@ -45,7 +39,7 @@ namespace EBay.OtherApis.Generated.Identity.Models
 #else
         public global::EBay.OtherApis.Generated.Identity.Models.BusinessAccount BusinessAccount { get; set; }
 #endif
-        /// <summary>The type that defines the fields for the information of an individual account.</summary>
+        /// <summary>The account information of the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.Identity.Models.IndividualAccount? IndividualAccount { get; set; }
@@ -53,22 +47,10 @@ namespace EBay.OtherApis.Generated.Identity.Models
 #else
         public global::EBay.OtherApis.Generated.Identity.Models.IndividualAccount IndividualAccount { get; set; }
 #endif
-        /// <summary>The eBay site on which the account is registered. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/identity/types/bas:MarketplaceIdEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? RegistrationMarketplaceId { get; set; }
-#nullable restore
-#else
-        public string RegistrationMarketplaceId { get; set; }
-#endif
-        /// <summary>Indicates the user&apos;s account status. Possible values: &lt;code&gt;CONFIRMED&lt;/code&gt;, &lt;code&gt;UNCONFIRMED&lt;/code&gt;, &lt;code&gt;ACCOUNTONHOLD&lt;/code&gt; and &lt;code&gt;UNDETERMINED&lt;/code&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/identity/types/api:UserStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Status { get; set; }
-#nullable restore
-#else
-        public string Status { get; set; }
-#endif
+        /// <summary>The unique identifier for the eBay marketplace in which the user registered their account.</summary>
+        public global::EBay.OtherApis.Generated.Identity.Models.MarketplaceIdEnum? RegistrationMarketplaceId { get; set; }
+        /// <summary>The current status of the user&apos;s eBay account, such as whether it is confirmed, unconfirmed, on hold, or undetermined.</summary>
+        public global::EBay.OtherApis.Generated.Identity.Models.UserStatusEnum? Status { get; set; }
         /// <summary>The eBay immutable user ID of the user&apos;s account and can always be used to identify the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,7 +59,7 @@ namespace EBay.OtherApis.Generated.Identity.Models
 #else
         public string UserId { get; set; }
 #endif
-        /// <summary>The user name, which was specific by the user when they created the account. &lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note: &lt;/b&gt; This value can be changed by the user.&lt;/span&gt;</summary>
+        /// <summary>The user name, which was specified by the user when they created the account. &lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note: &lt;/b&gt; This value can be changed by the user.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Effective September 26, 2025, select developers will no longer receive username data for U.S. users through this field. Instead, an immutable user ID will be returned in its place. For more information, please refer to &lt;a href=&quot;/api-docs/static/data-handling-update.html&quot;&gt;Data Handling Compliance&lt;/a&gt;. &lt;/span&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Username { get; set; }
@@ -110,11 +92,11 @@ namespace EBay.OtherApis.Generated.Identity.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "accountType", n => { AccountType = n.GetStringValue(); } },
+                { "accountType", n => { AccountType = n.GetEnumValue<global::EBay.OtherApis.Generated.Identity.Models.AccountTypeEnum>(); } },
                 { "businessAccount", n => { BusinessAccount = n.GetObjectValue<global::EBay.OtherApis.Generated.Identity.Models.BusinessAccount>(global::EBay.OtherApis.Generated.Identity.Models.BusinessAccount.CreateFromDiscriminatorValue); } },
                 { "individualAccount", n => { IndividualAccount = n.GetObjectValue<global::EBay.OtherApis.Generated.Identity.Models.IndividualAccount>(global::EBay.OtherApis.Generated.Identity.Models.IndividualAccount.CreateFromDiscriminatorValue); } },
-                { "registrationMarketplaceId", n => { RegistrationMarketplaceId = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetStringValue(); } },
+                { "registrationMarketplaceId", n => { RegistrationMarketplaceId = n.GetEnumValue<global::EBay.OtherApis.Generated.Identity.Models.MarketplaceIdEnum>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::EBay.OtherApis.Generated.Identity.Models.UserStatusEnum>(); } },
                 { "userId", n => { UserId = n.GetStringValue(); } },
                 { "username", n => { Username = n.GetStringValue(); } },
             };
@@ -126,11 +108,11 @@ namespace EBay.OtherApis.Generated.Identity.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("accountType", AccountType);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.Identity.Models.AccountTypeEnum>("accountType", AccountType);
             writer.WriteObjectValue<global::EBay.OtherApis.Generated.Identity.Models.BusinessAccount>("businessAccount", BusinessAccount);
             writer.WriteObjectValue<global::EBay.OtherApis.Generated.Identity.Models.IndividualAccount>("individualAccount", IndividualAccount);
-            writer.WriteStringValue("registrationMarketplaceId", RegistrationMarketplaceId);
-            writer.WriteStringValue("status", Status);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.Identity.Models.MarketplaceIdEnum>("registrationMarketplaceId", RegistrationMarketplaceId);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.Identity.Models.UserStatusEnum>("status", Status);
             writer.WriteStringValue("userId", UserId);
             writer.WriteStringValue("username", Username);
             writer.WriteAdditionalData(AdditionalData);

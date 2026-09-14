@@ -29,7 +29,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The unique identifier of the consign address to be associated with the bundle.&lt;br&gt;&lt;br&gt;This ID can be retrieved using the &lt;a href=&quot;/api-docs/sell/edelivery_international_shipping/resources/consign_preference/methods/getConsignPreferences&quot; target=&quot;_blank&quot;&gt;getConsignPreferences&lt;/a&gt; method.</summary>
+        /// <summary>The unique identifier of the consign address to be associated with the bundle.&lt;br&gt;&lt;br&gt;This ID can be retrieved using the &lt;a href=&quot;/develop/api/sell/edelivery_international_shipping_api#sell-edelivery_international_shipping_api-consign_preference-getconsignpreferences&quot;&gt;getConsignPreferences&lt;/a&gt; method.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ConsignPreferenceId { get; set; }
@@ -37,7 +37,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string ConsignPreferenceId { get; set; }
 #endif
-        /// <summary>This array specifies the tracking numbers of the packages to be included in the bundle.&lt;br&gt;&lt;br&gt;Tracking numbers are returned when creating a package through the &lt;a href=&quot;/api-docs/sell/edelivery_international_shipping/resources/package/methods/createPackage&quot; target=&quot;_blank&quot;&gt;createPackage&lt;/a&gt; method.</summary>
+        /// <summary>This array specifies the tracking numbers of the packages to be included in the bundle.&lt;br&gt;&lt;br&gt;Tracking numbers are returned when creating a package through the &lt;a href=&quot;/develop/api/sell/edelivery_international_shipping_api#sell-edelivery_international_shipping_api-package-createpackage&quot;&gt;createPackage&lt;/a&gt; method.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? TrackingNumbers { get; set; }

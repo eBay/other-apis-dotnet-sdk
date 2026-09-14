@@ -1,6 +1,6 @@
 {
   "descriptionHash": "F73EAC57E44C614247E8C5E83F28E64F2C5DCDCE45EB57C4565E4A6000243EF1C59CD0B3AA752E900334177629FABB20411A728341241F77059FE34E6A9CE929",
-  "descriptionLocation": "../../../specs/commerce_identity_v1_oas3.yaml",
+  "descriptionLocation": "../../../specs/openapi/identity.yaml",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "1.30.0",
   "clientClassName": "IdentityApiClient",

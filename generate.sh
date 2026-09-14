@@ -20,17 +20,8 @@ echo "Restoring tools..."
 dotnet tool restore
 
 echo "Regenerating REST clients via Kiota..."
+rm -rf ./EBay.OtherApis/Generated
 
-# EDIS Shipping API
-dotnet kiota generate \
-  -l csharp \
-  -d specs/openapi/international-shipping.yaml \
-  -c ShippingApiClient \
-  -n EBay.OtherApis.Generated.Shipping \
-  -o EBay.OtherApis/Generated/Shipping \
-  --ebc --co
-
-# Identity API
 dotnet kiota generate \
   -l csharp \
   -d specs/openapi/identity.yaml \
@@ -39,7 +30,14 @@ dotnet kiota generate \
   -o EBay.OtherApis/Generated/Identity \
   --ebc --co
 
-# Translation API
+dotnet kiota generate \
+  -l csharp \
+  -d specs/openapi/international-shipping.yaml \
+  -c InternationalShippingApiClient \
+  -n EBay.OtherApis.Generated.InternationalShipping \
+  -o EBay.OtherApis/Generated/InternationalShipping \
+  --ebc --co
+
 dotnet kiota generate \
   -l csharp \
   -d specs/openapi/translation.yaml \
@@ -48,7 +46,6 @@ dotnet kiota generate \
   -o EBay.OtherApis/Generated/Translation \
   --ebc --co
 
-# Vero API
 dotnet kiota generate \
   -l csharp \
   -d specs/openapi/vero.yaml \
@@ -60,7 +57,7 @@ dotnet kiota generate \
 echo "Adding license headers to generated files..."
 ./add-license-headers.sh ./EBay.OtherApis/Generated
 
-echo "Building SDK..."
+echo "Building (triggers StrawberryShake GraphQL codegen)..."
 DOTNET_ROLL_FORWARD=LatestMajor dotnet build EBay.OtherApis/EBay.OtherApis.csproj
 
 echo "Done."

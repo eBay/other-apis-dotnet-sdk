@@ -12,50 +12,48 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 namespace EBay.OtherApis.Configuration;
 
 public sealed class OtherApisConfiguration
 {
-    private string _shippingBaseUrl = "https://api.ebay.com/sell/edelivery/international_shipping/v1";
     private string _identityBaseUrl = "https://apiz.ebay.com/commerce/identity/v1";
-    private string _translationBaseUrl = "https://apim.ebay.com/commerce/translation/v1_beta";
+    private string _internationalShippingBaseUrl = "https://api.ebay.com/sell/edelivery_international_shipping/v1";
+    private string _translationBaseUrl = "https://api.ebay.com/commerce/translation/v1_beta";
     private string _veroBaseUrl = "https://api.ebay.com/commerce/vero/v1";
-
-    public string ShippingBaseUrl
-    {
-        get => _shippingBaseUrl;
-        set => _shippingBaseUrl = RequireHttps(value, nameof(ShippingBaseUrl));
-    }
 
     public string IdentityBaseUrl
     {
         get => _identityBaseUrl;
-        set => _identityBaseUrl = RequireHttps(value, nameof(IdentityBaseUrl));
+        set => _identityBaseUrl = RequireHttps(value);
+    }
+
+    public string InternationalShippingBaseUrl
+    {
+        get => _internationalShippingBaseUrl;
+        set => _internationalShippingBaseUrl = RequireHttps(value);
     }
 
     public string TranslationBaseUrl
     {
         get => _translationBaseUrl;
-        set => _translationBaseUrl = RequireHttps(value, nameof(TranslationBaseUrl));
+        set => _translationBaseUrl = RequireHttps(value);
     }
 
     public string VeroBaseUrl
     {
         get => _veroBaseUrl;
-        set => _veroBaseUrl = RequireHttps(value, nameof(VeroBaseUrl));
+        set => _veroBaseUrl = RequireHttps(value);
     }
 
     /// <summary>Fallback bearer token used when no per-call accessToken is supplied.</summary>
     public string? AccessToken { get; set; }
 
     /// <summary>
-    /// When true, logs the HTTP method, URL, and status code of non-success responses to stderr.
-    /// Response bodies are intentionally excluded to avoid leaking PII.
+    /// When true, logs the HTTP method, URL, status code, and response reason phrase for all
+    /// non-success responses to stderr.
     /// <para>
-    /// <b>WARNING — PII risk.</b> URLs may contain item IDs and query parameters that are
-    /// sensitive in context. Never enable this in production. Ensure logs are access-controlled
-    /// and not persisted to any external system when enabled in non-production environments.
+    /// <b>WARNING — PII risk.</b> Response bodies and headers may contain personally identifiable
+    /// information. Do not enable in production without appropriate data-handling controls.
     /// </para>
     /// </summary>
     public bool DiagnosticLogging { get; set; }
@@ -66,17 +64,27 @@ public sealed class OtherApisConfiguration
     /// <summary>Default headers applied to every REST request. Per-call RequestOptions override these.</summary>
     public RequestOptions DefaultRequestOptions { get; set; } = new();
 
+    internal string RestBaseUrl(string apiId) => apiId switch
+    {
+        "identity" => _identityBaseUrl,
+        "international-shipping" => _internationalShippingBaseUrl,
+        "translation" => _translationBaseUrl,
+        "vero" => _veroBaseUrl,
+        _ => throw new ArgumentOutOfRangeException(nameof(apiId), apiId, "Unknown REST API.")
+    };
+
     internal static IEnumerable<string> AllowedHosts =>
     [
-        "api.ebay.com",
-        "apim.ebay.com",
         "apiz.ebay.com",
+        "api.ebay.com"
     ];
 
-    private static string RequireHttps(string value, string paramName)
+    private static string RequireHttps(string value)
     {
         if (!value.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
-            throw new ArgumentException("Only HTTPS endpoints are allowed.", paramName);
+        {
+            throw new ArgumentException($"URL must use HTTPS: '{value}'", nameof(value));
+        }
         return value;
     }
 }

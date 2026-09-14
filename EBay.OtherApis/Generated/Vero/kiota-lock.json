@@ -1,6 +1,6 @@
 {
   "descriptionHash": "1C8F84AD79AF5FC7E5B35051B20075F2FD1AD03BF1EA5252EDE8D5FEB275C075689C8221D114B2B824E260357470973F40A21334FB82FB36783590C5A7FEB9FD",
-  "descriptionLocation": "../../../specs/commerce_vero_v1_oas3.yaml",
+  "descriptionLocation": "../../../specs/openapi/vero.yaml",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "1.30.0",
   "clientClassName": "VeroApiClient",

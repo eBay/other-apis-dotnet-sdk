@@ -12,120 +12,142 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 using EBay.OtherApis.Configuration;
-using EBay.OtherApis.Generated.Vero;
 using EBay.OtherApis.Generated.Vero.Models;
-using EBay.OtherApis.Exceptions;
+using EBay.OtherApis.Generated.Vero;
 using Microsoft.Kiota.Abstractions;
 
 namespace EBay.OtherApis.Clients.Rest;
 
-/// <summary>
-/// Wrapper for Vero API (commerce_vero).
-/// Provides VERO reporting and management operations.
-/// </summary>
 public sealed class VeroClient
 {
     private readonly VeroApiClient _kiota;
     private readonly OtherApisConfiguration _config;
     private readonly ITokenContext _tokenContext;
+    private readonly IRequestAdapter _adapter;
 
-    internal VeroClient(VeroApiClient kiota, OtherApisConfiguration config, ITokenContext tokenContext)
-        => (_kiota, _config, _tokenContext) = (kiota, config, tokenContext);
-
-    private void ApplyHeaders(RequestHeaders headers, RequestOptions? callOptions)
+    internal VeroClient(VeroApiClient kiota, OtherApisConfiguration config, ITokenContext tokenContext, IRequestAdapter adapter)
     {
-        foreach (var (k, v) in _config.DefaultRequestOptions.Headers)
-            headers.TryAdd(k, v);
-        if (callOptions is null) return;
-        foreach (var (k, v) in callOptions.Headers)
-            headers[k] = new[] { v };
-    }
-
-    // ── VERO Reports ──────────────────────────────────────────────────────────
-
-    /// <summary>
-    /// Creates a VERO report for intellectual property violations.
-    /// </summary>
-    public async Task<VeroReportItemsResponse?> CreateVeroReportAsync(VeroReportItemsRequest body, string? accessToken = null, RequestOptions? requestOptions = null, CancellationToken ct = default)
-    {
-        try
-        {
-            return await _tokenContext.RunAsync(accessToken, () =>
-                _kiota.Vero_report.PostAsync(body, cfg => ApplyHeaders(cfg.Headers, requestOptions), ct));
-        }
-        catch (Microsoft.Kiota.Abstractions.ApiException ex) when (ex.ResponseStatusCode == 401)
-        {
-            throw new UnauthorizedException(ex);
-        }
+        _kiota = kiota;
+        _config = config;
+        _tokenContext = tokenContext;
+        _adapter = adapter;
     }
 
     /// <summary>
-    /// Retrieves a specific VERO report by ID.
+    /// Important! </b>"&gt;<b>Important!</b> You must be a member of the Verified Rights Owner (VeRO) Program to use this call.
+    /// This method is used to retrieve the details of a specific VeRO reason code, including a description of the code and the marketplace associated with the code.
+    /// The <b>vero_reason_code_id</b> of the VeRO reason code for which to retrieve details is required as a path parameter.
     /// </summary>
-    public async Task<ReportStatusResponse?> GetVeroReportAsync(string veroReportId, string? accessToken = null, RequestOptions? requestOptions = null, CancellationToken ct = default)
-    {
-        try
+    public Task<VeroReasonCodeResponse?> GetVeroReasonCodeAsync(
+        string veroReasonCodeId,
+        string? accessToken = null,
+        RequestOptions? requestOptions = null,
+        CancellationToken ct = default)
+        => RestInvocation.CallAsync(
+            _tokenContext,
+            accessToken,
+            () => _kiota.Vero_reason_code[veroReasonCodeId].GetAsync(cfg =>
         {
-            return await _tokenContext.RunAsync(accessToken, () =>
-                _kiota.Vero_report[veroReportId].GetAsync(cfg => ApplyHeaders(cfg.Headers, requestOptions), ct));
-        }
-        catch (Microsoft.Kiota.Abstractions.ApiException ex) when (ex.ResponseStatusCode == 401)
-        {
-            throw new UnauthorizedException(ex);
-        }
-    }
-
-    // ── VERO Reason Codes ─────────────────────────────────────────────────────
+            RestInvocation.ApplyHeaders(cfg.Headers, _config, requestOptions);
+        }, ct));
 
     /// <summary>
-    /// Retrieves a list of all available VERO reason codes.
+    /// Important! </b>"&gt;<b>Important!</b> You must be a member of the Verified Rights Owner (VeRO) Program to use this call.
+    /// This method is used to retrieve the details of an array of VeRO reason codes. This information includes the descriptions of each code, as well as the marketplace associated with each code.
+    /// If the <b>X-EBAY-C-MARKETPLACE-ID</b> header is present, only VeRO reason codes for that specific site will be returned. If this header is not included, all reason codes for all sites are returned.
     /// </summary>
-    public async Task<VeroReasonCodeDetailResponse?> GetVeroReasonCodesAsync(string? accessToken = null, RequestOptions? requestOptions = null, CancellationToken ct = default)
-    {
-        try
+    public Task<VeroReasonCodeDetailResponse?> GetVeroReasonCodesAsync(
+        string? xEBAYCMARKETPLACEID = null,
+        string? accessToken = null,
+        RequestOptions? requestOptions = null,
+        CancellationToken ct = default)
+        => RestInvocation.CallAsync(
+            _tokenContext,
+            accessToken,
+            () => _kiota.Vero_reason_code.GetAsync(cfg =>
         {
-            return await _tokenContext.RunAsync(accessToken, () =>
-                _kiota.Vero_reason_code.GetAsync(cfg => ApplyHeaders(cfg.Headers, requestOptions), ct));
-        }
-        catch (Microsoft.Kiota.Abstractions.ApiException ex) when (ex.ResponseStatusCode == 401)
-        {
-            throw new UnauthorizedException(ex);
-        }
-    }
+            if (xEBAYCMARKETPLACEID is not null)
+            {
+                cfg.Headers.TryAdd("X-EBAY-C-MARKETPLACE-ID", xEBAYCMARKETPLACEID);
+            }
+            RestInvocation.ApplyHeaders(cfg.Headers, _config, requestOptions);
+        }, ct));
 
     /// <summary>
-    /// Retrieves a specific VERO reason code by ID.
+    /// Important! </b>"&gt;<b>Important!</b> You must be a member of the Verified Rights Owner (VeRO) Program to use this call.
+    /// This method can be used to create a VeRO report for a listing. VeRO reports can be used to report items that your copyright, trademark, or other intellectual property rights.
+    /// The <b>itemId</b> of the item being reported must be provided in the request, as well as the <b>veroReasonCodeId</b> of the claimed infringement.
+    /// You can report one or more items at a time using this method. A maximum of 150 items can be reported using this method.
     /// </summary>
-    public async Task<VeroReasonCodeResponse?> GetVeroReasonCodeAsync(string veroReasonCodeId, string? accessToken = null, RequestOptions? requestOptions = null, CancellationToken ct = default)
-    {
-        try
+    public Task<VeroReportItemsResponse?> CreateVeroReportAsync(
+        VeroReportItemsRequest body,
+        string? accessToken = null,
+        RequestOptions? requestOptions = null,
+        CancellationToken ct = default)
+        => RestInvocation.CallAsync(
+            _tokenContext,
+            accessToken,
+            () => _kiota.Vero_report.PostAsync(body, cfg =>
         {
-            return await _tokenContext.RunAsync(accessToken, () =>
-                _kiota.Vero_reason_code[veroReasonCodeId].GetAsync(cfg => ApplyHeaders(cfg.Headers, requestOptions), ct));
-        }
-        catch (Microsoft.Kiota.Abstractions.ApiException ex) when (ex.ResponseStatusCode == 401)
-        {
-            throw new UnauthorizedException(ex);
-        }
-    }
-
-    // ── VERO Report Items ─────────────────────────────────────────────────────
+            RestInvocation.ApplyHeaders(cfg.Headers, _config, requestOptions);
+        }, ct));
 
     /// <summary>
-    /// Retrieves all items associated with VERO reports.
+    /// Important! </b>"&gt;<b>Important!</b> You must be a member of the Verified Rights Owner (VeRO) Program to use this call.
+    /// This method can be used to retrieve status information about a VeRO report you have submitted to eBay for copyright, trademark, or other intellectual property rights infringement.
+    /// The <b>vero_report_id</b> path parameter is used to specify the eBay report for which to retrieve status information.
     /// </summary>
-    public async Task<VeroReportStatusResponse?> GetVeroReportItemsAsync(string? accessToken = null, RequestOptions? requestOptions = null, CancellationToken ct = default)
-    {
-        try
+    public Task<ReportStatusResponse?> GetVeroReportAsync(
+        string veroReportId,
+        string? includeItemDetails = null,
+        string? accessToken = null,
+        RequestOptions? requestOptions = null,
+        CancellationToken ct = default)
+        => RestInvocation.CallAsync(
+            _tokenContext,
+            accessToken,
+            () => _kiota.Vero_report[veroReportId].GetAsync(cfg =>
         {
-            return await _tokenContext.RunAsync(accessToken, () =>
-                _kiota.Vero_report_items.GetAsync(cfg => ApplyHeaders(cfg.Headers, requestOptions), ct));
-        }
-        catch (Microsoft.Kiota.Abstractions.ApiException ex) when (ex.ResponseStatusCode == 401)
+            if (includeItemDetails is not null)
+            {
+                cfg.QueryParameters.IncludeItemDetails = includeItemDetails;
+            }
+            RestInvocation.ApplyHeaders(cfg.Headers, _config, requestOptions);
+        }, ct));
+
+    /// <summary>
+    /// Retrieves status for VERO infringement reports by Brand.
+    /// </summary>
+    public Task<VeroReportStatusResponse?> GetVeroReportItemsAsync(
+        string? filter = null,
+        string? itemId = null,
+        string? limit = null,
+        string? offset = null,
+        string? accessToken = null,
+        RequestOptions? requestOptions = null,
+        CancellationToken ct = default)
+        => RestInvocation.CallAsync(
+            _tokenContext,
+            accessToken,
+            () => _kiota.Vero_report_items.GetAsync(cfg =>
         {
-            throw new UnauthorizedException(ex);
-        }
-    }
+            if (filter is not null)
+            {
+                cfg.QueryParameters.Filter = filter;
+            }
+            if (itemId is not null)
+            {
+                cfg.QueryParameters.ItemId = itemId;
+            }
+            if (limit is not null)
+            {
+                cfg.QueryParameters.Limit = limit;
+            }
+            if (offset is not null)
+            {
+                cfg.QueryParameters.Offset = offset;
+            }
+            RestInvocation.ApplyHeaders(cfg.Headers, _config, requestOptions);
+        }, ct));
 }

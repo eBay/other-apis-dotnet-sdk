@@ -66,7 +66,7 @@ public sealed class OtherApisConfiguration
     /// <summary>Default headers applied to every REST request. Per-call RequestOptions override these.</summary>
     public RequestOptions DefaultRequestOptions { get; set; } = new();
 
-    internal IEnumerable<string> AllowedHosts =>
+    internal static IEnumerable<string> AllowedHosts =>
     [
         "api.ebay.com",
         "apim.ebay.com",

@@ -12,123 +12,112 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 using EBay.OtherApis.Clients.Rest;
 using EBay.OtherApis.Configuration;
-using EBay.OtherApis.Extensions;
-using EBay.OtherApis.Generated.Shipping;
 using EBay.OtherApis.Generated.Identity;
+using EBay.OtherApis.Generated.InternationalShipping;
 using EBay.OtherApis.Generated.Translation;
 using EBay.OtherApis.Generated.Vero;
 using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
 
 namespace EBay.OtherApis;
 
-public sealed class OtherApisClient : IDisposable
+public class OtherApisClient : IDisposable
 {
-    private readonly StandaloneHttpClientFactory? _standaloneFactory;
+    internal const string IdentityClientName = "OtherApisClient.Identity";
+    internal const string InternationalShippingClientName = "OtherApisClient.InternationalShipping";
+    internal const string TranslationClientName = "OtherApisClient.Translation";
+    internal const string VeroClientName = "OtherApisClient.Vero";
 
-    public ShippingClient Shipping { get; }
-    public IdentityClient Identity { get; }
-    public TranslationClient Translation { get; }
-    public VeroClient Vero { get; }
+    private readonly HttpClient[] _ownedClients;
+
+    public IdentityClient Identity { get; private set; } = null!;
+    public InternationalShippingClient InternationalShipping { get; private set; } = null!;
+    public TranslationClient Translation { get; private set; } = null!;
+    public VeroClient Vero { get; private set; } = null!;
 
     /// <summary>
-    /// DI-friendly constructor. Uses named HttpClients from IHttpClientFactory so that
-    /// Polly retry/circuit-breaker/telemetry handlers registered by the application are honoured.
+    /// DI-friendly constructor. Named HttpClients come from <see cref="IHttpClientFactory"/>.
     /// </summary>
-    internal OtherApisClient(OtherApisConfiguration config, IHttpClientFactory factory, ITokenContext tokenContext)
+    internal OtherApisClient(
+        OtherApisConfiguration config,
+        IHttpClientFactory factory,
+        ITokenContext tokenContext)
     {
+        _ownedClients = [];
         var auth = new BaseBearerTokenAuthenticationProvider(new KiotaAuthProvider(config, tokenContext));
-
-        Shipping = new ShippingClient(
-            new ShippingApiClient(new HttpClientRequestAdapter(auth,
-                httpClient: factory.CreateClient(ServiceCollectionExtensions.ShippingClientName))),
-            config, tokenContext);
-
-        Identity = new IdentityClient(
-            new IdentityApiClient(new HttpClientRequestAdapter(auth,
-                httpClient: factory.CreateClient(ServiceCollectionExtensions.IdentityClientName))),
-            config, tokenContext);
-
-        Translation = new TranslationClient(
-            new TranslationApiClient(new HttpClientRequestAdapter(auth,
-                httpClient: factory.CreateClient(ServiceCollectionExtensions.TranslationClientName))),
-            config, tokenContext);
-
-        Vero = new VeroClient(
-            new VeroApiClient(new HttpClientRequestAdapter(auth,
-                httpClient: factory.CreateClient(ServiceCollectionExtensions.VeroClientName))),
-            config, tokenContext);
+        InitializeRestClients(auth, config, tokenContext, endpoint => factory.CreateClient(endpoint.HttpClientName));
     }
 
     /// <summary>
     /// Standalone constructor for use outside DI (tests, scripts).
-    /// Builds its own HttpClients (one per sub-API) with the diagnostic handler chain.
+    /// Creates its own HttpClients with DiagnosticLoggingHandler.
     /// </summary>
     public OtherApisClient(OtherApisConfiguration config)
     {
-        _standaloneFactory = new StandaloneHttpClientFactory(config);
-
         var tokenContext = new AsyncLocalTokenContext();
         var auth = new BaseBearerTokenAuthenticationProvider(new KiotaAuthProvider(config, tokenContext));
-
-        Shipping = new ShippingClient(
-            new ShippingApiClient(new HttpClientRequestAdapter(auth,
-                httpClient: _standaloneFactory.CreateClient(ServiceCollectionExtensions.ShippingClientName))),
-            config, tokenContext);
-
-        Identity = new IdentityClient(
-            new IdentityApiClient(new HttpClientRequestAdapter(auth,
-                httpClient: _standaloneFactory.CreateClient(ServiceCollectionExtensions.IdentityClientName))),
-            config, tokenContext);
-
-        Translation = new TranslationClient(
-            new TranslationApiClient(new HttpClientRequestAdapter(auth,
-                httpClient: _standaloneFactory.CreateClient(ServiceCollectionExtensions.TranslationClientName))),
-            config, tokenContext);
-
-        Vero = new VeroClient(
-            new VeroApiClient(new HttpClientRequestAdapter(auth,
-                httpClient: _standaloneFactory.CreateClient(ServiceCollectionExtensions.VeroClientName))),
-            config, tokenContext);
+        var owned = new List<HttpClient>();
+        InitializeRestClients(auth, config, tokenContext, endpoint =>
+        {
+            var client = BuildStandaloneHttpClient(config, endpoint.BaseUrl);
+            owned.Add(client);
+            return client;
+        });
+        _ownedClients = [.. owned];
     }
 
-    public void Dispose() => _standaloneFactory?.Dispose();
-
-    private sealed class StandaloneHttpClientFactory : IHttpClientFactory, IDisposable
+    private static HttpClient BuildStandaloneHttpClient(OtherApisConfiguration config, string baseUrl)
     {
-        private readonly OtherApisConfiguration _config;
-        private readonly List<HttpClient> _created = [];
-
-        internal StandaloneHttpClientFactory(OtherApisConfiguration config) => _config = config;
-
-        public HttpClient CreateClient(string name)
+        var handler = new DiagnosticLoggingHandler(config)
         {
-            var baseUrl = name switch
-            {
-                ServiceCollectionExtensions.ShippingClientName    => _config.ShippingBaseUrl,
-                ServiceCollectionExtensions.IdentityClientName    => _config.IdentityBaseUrl,
-                ServiceCollectionExtensions.TranslationClientName => _config.TranslationBaseUrl,
-                ServiceCollectionExtensions.VeroClientName        => _config.VeroBaseUrl,
-                _ => throw new ArgumentException($"Unknown client name: {name}")
-            };
+            InnerHandler = new SocketsHttpHandler { PooledConnectionLifetime = TimeSpan.FromMinutes(2) }
+        };
+        return new HttpClient(handler) { BaseAddress = new Uri(baseUrl), Timeout = config.HttpTimeout };
+    }
 
-            var handler = new DiagnosticLoggingHandler(_config)
-            {
-                InnerHandler = new SocketsHttpHandler { PooledConnectionLifetime = TimeSpan.FromMinutes(2) }
-            };
-            var client = new HttpClient(handler) { BaseAddress = new Uri(baseUrl), Timeout = _config.HttpTimeout };
-            _created.Add(client);
-            return client;
-        }
+    internal static IReadOnlyList<(string ApiId, string HttpClientName)> RestEndpointNames { get; } =
+    [
+        ("identity", IdentityClientName),
+        ("international-shipping", InternationalShippingClientName),
+        ("translation", TranslationClientName),
+        ("vero", VeroClientName)
+    ];
 
-        public void Dispose()
+    internal static IReadOnlyList<RestEndpoint> RestEndpoints(OtherApisConfiguration config) =>
+        [.. RestEndpointNames.Select(name => new RestEndpoint(name.ApiId, name.HttpClientName, config.RestBaseUrl(name.ApiId)))];
+
+    private void InitializeRestClients(
+        IAuthenticationProvider auth,
+        OtherApisConfiguration config,
+        ITokenContext tokenContext,
+        RestHttpClientProvider httpClientFor)
+    {
+        var endpoints = RestEndpoints(config);
+        var identityAdapter = new HttpClientRequestAdapter(auth, httpClient: httpClientFor(endpoints.First(endpoint => endpoint.ApiId == "identity")));
+        Identity = new IdentityClient(new IdentityApiClient(identityAdapter), config, tokenContext, identityAdapter);
+        var internationalShippingAdapter = new HttpClientRequestAdapter(auth, httpClient: httpClientFor(endpoints.First(endpoint => endpoint.ApiId == "international-shipping")));
+        InternationalShipping = new InternationalShippingClient(new InternationalShippingApiClient(internationalShippingAdapter), config, tokenContext, internationalShippingAdapter);
+        var translationAdapter = new HttpClientRequestAdapter(auth, httpClient: httpClientFor(endpoints.First(endpoint => endpoint.ApiId == "translation")));
+        Translation = new TranslationClient(new TranslationApiClient(translationAdapter), config, tokenContext, translationAdapter);
+        var veroAdapter = new HttpClientRequestAdapter(auth, httpClient: httpClientFor(endpoints.First(endpoint => endpoint.ApiId == "vero")));
+        Vero = new VeroClient(new VeroApiClient(veroAdapter), config, tokenContext, veroAdapter);
+    }
+
+    public void Dispose()
+    {
+        foreach (var client in _ownedClients)
         {
-            foreach (var c in _created)
-                c.Dispose();
-            _created.Clear();
+            client.Dispose();
         }
+        GC.SuppressFinalize(this);
     }
 }
+
+internal sealed record RestEndpoint(string ApiId, string HttpClientName, string BaseUrl);
+
+internal delegate HttpClient RestHttpClientProvider(RestEndpoint endpoint);

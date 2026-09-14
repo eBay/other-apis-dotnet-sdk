@@ -1,6 +1,6 @@
 {
   "descriptionHash": "6E2BC2F80C384C19E255E3D2475163A6385EB7890D1A7F1001EE172495960DAF3965B6C12B4A70B3FC2954F602922F05EBC18BCC1E30F277C32E83119E58CEB7",
-  "descriptionLocation": "../../../specs/commerce_translation_v1_beta_oas3.yaml",
+  "descriptionLocation": "../../../specs/openapi/translation.yaml",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "1.30.0",
   "clientClassName": "TranslationApiClient",

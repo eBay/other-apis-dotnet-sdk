@@ -35,10 +35,9 @@ public sealed class IdentityClient
     }
 
     /// <summary>
-    /// This method retrieves the account profile information for an authenticated user, which requires a <see href="/api-docs/static/oauth-authorization-code-grant.html">User access token</see>. What is returned is controlled by the <see href="#scopes">scopes</see>.
-    /// For a business account you use the default scope <c>commerce.identity.readonly</c>, which returns all the fields in the <see href="/api-docs/commerce/identity/resources/user/methods/getUser#response.businessAccount">businessAccount</see> container. These are returned because this is all public information.
-    /// For an individual account, the fields returned in the <see href="/api-docs/commerce/identity/resources/user/methods/getUser#response.individualAccount">individualAccount</see> container are based on the scope you use. Using the default scope, only public information, such as eBay user ID, are returned. For details about what each scope returns, see the <see href="/api-docs/commerce/identity/overview.html">Identity API Overview</see>.
-    /// In the Sandbox, this API returns mock data. <b>Note: </b> You must use the correct scope or scopes for the data you want returned.
+    /// This method retrieves the account profile information for an authenticated user, which requires a <b>User access token</b>. What is returned is controlled by the <b>scopes</b>.
+    /// For a business account you use the default scope <c>commerce.identity.readonly</c>, which returns all the fields in the <b>businessAccount</b> container. These are returned because this is all public information.
+    /// For an individual account, the fields returned in the <b>individualAccount</b> container are based on the scope you use. Using the default scope, only public information, such as eBay user ID, are returned. For details about what each scope returns, see the <b>Identity API scopes</b>.
     /// </summary>
     public Task<UserResponse?> GetUserAsync(
         string? accessToken = null,

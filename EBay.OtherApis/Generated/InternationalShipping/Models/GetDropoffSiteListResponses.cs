@@ -29,7 +29,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>This type defines the list of drop-off site locations associated with an eDIS account.</summary>
+        /// <summary>This container returns a list of all of the drop-off site locations associated with an eDIS account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.GetDropoffSitesResponsesData? DropoffSiteList { get; set; }

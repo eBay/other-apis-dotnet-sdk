@@ -29,7 +29,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>This type is used to specify information, such as the tracking numbers and consign preference ID, of a bundle.</summary>
+        /// <summary>This container returns information about the retrieved bundle, such as its tracking numbers and consign preference ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.BundleDetailResponseData? BundleDetail { get; set; }

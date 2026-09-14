@@ -33,7 +33,7 @@ namespace EBay.OtherApis.Generated.Translation
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TranslationApiClient : BaseRequestBuilder
     {
-        /// <summary>The translate property</summary>
+        /// <summary>Translate listing content</summary>
         public global::EBay.OtherApis.Generated.Translation.Translate.TranslateRequestBuilder Translate
         {
             get => new global::EBay.OtherApis.Generated.Translation.Translate.TranslateRequestBuilder(PathParameters, RequestAdapter);

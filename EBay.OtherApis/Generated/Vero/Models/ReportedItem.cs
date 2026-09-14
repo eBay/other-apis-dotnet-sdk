@@ -45,14 +45,8 @@ namespace EBay.OtherApis.Generated.Vero.Models
 #else
         public string ReasonForFailure { get; set; }
 #endif
-        /// <summary>The current status of the VeRO reported item. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/vero/types/VeroReportedItemStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Status { get; set; }
-#nullable restore
-#else
-        public string Status { get; set; }
-#endif
+        /// <summary>The current status of the VeRO reported item.</summary>
+        public global::EBay.OtherApis.Generated.Vero.Models.VeroReportedItemStatusEnum? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::EBay.OtherApis.Generated.Vero.Models.ReportedItem"/> and sets the default values.
         /// </summary>
@@ -80,7 +74,7 @@ namespace EBay.OtherApis.Generated.Vero.Models
             {
                 { "itemId", n => { ItemId = n.GetStringValue(); } },
                 { "reasonForFailure", n => { ReasonForFailure = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<global::EBay.OtherApis.Generated.Vero.Models.VeroReportedItemStatusEnum>(); } },
             };
         }
         /// <summary>
@@ -92,7 +86,7 @@ namespace EBay.OtherApis.Generated.Vero.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("itemId", ItemId);
             writer.WriteStringValue("reasonForFailure", ReasonForFailure);
-            writer.WriteStringValue("status", Status);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.Vero.Models.VeroReportedItemStatusEnum>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

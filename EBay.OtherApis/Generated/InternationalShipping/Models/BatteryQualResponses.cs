@@ -29,14 +29,8 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The type of the battery. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/edelivery_international_shipping/types/api:LiBatteryTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? BatteryType { get; set; }
-#nullable restore
-#else
-        public string BatteryType { get; set; }
-#endif
+        /// <summary>The type of the battery.</summary>
+        public global::EBay.OtherApis.Generated.InternationalShipping.Models.LiBatteryTypeEnum? BatteryType { get; set; }
         /// <summary>The unique identifier of the battery&apos;s electric qualification, which indicates that the battery has a certificate of approval for global shipping.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -94,7 +88,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "batteryType", n => { BatteryType = n.GetStringValue(); } },
+                { "batteryType", n => { BatteryType = n.GetEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.LiBatteryTypeEnum>(); } },
                 { "elecQualificationId", n => { ElecQualificationId = n.GetStringValue(); } },
                 { "elecQualificationName", n => { ElecQualificationName = n.GetStringValue(); } },
                 { "expireDate", n => { ExpireDate = n.GetStringValue(); } },
@@ -108,7 +102,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("batteryType", BatteryType);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.LiBatteryTypeEnum>("batteryType", BatteryType);
             writer.WriteStringValue("elecQualificationId", ElecQualificationId);
             writer.WriteStringValue("elecQualificationName", ElecQualificationName);
             writer.WriteStringValue("expireDate", ExpireDate);

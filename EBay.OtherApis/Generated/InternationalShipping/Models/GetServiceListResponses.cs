@@ -29,7 +29,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>This type defines the details returned for the retrieved shipping service(s).</summary>
+        /// <summary>This container returns shipping service metadata associated with a seller&apos;s eDIS account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.GetServiceListResponsesData? ServiceList { get; set; }

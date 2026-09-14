@@ -29,23 +29,11 @@ namespace EBay.OtherApis.Generated.Translation.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The enumeration value indicates the language of the input text. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/translation/types/api:LanguageEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? From { get; set; }
-#nullable restore
-#else
-        public string From { get; set; }
-#endif
-        /// <summary>The enumeration value indicates the language of the translated text. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/translation/types/api:LanguageEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? To { get; set; }
-#nullable restore
-#else
-        public string To { get; set; }
-#endif
-        /// <summary>An array showing the input and translated text. Only one input string can be translated at this time. Support for multiple continuous text strings is expected in the future.</summary>
+        /// <summary>The enumeration value indicates the language of the input text.</summary>
+        public global::EBay.OtherApis.Generated.Translation.Models.LanguageEnum? From { get; set; }
+        /// <summary>The enumeration value indicates the language of the translated text.</summary>
+        public global::EBay.OtherApis.Generated.Translation.Models.LanguageEnum? To { get; set; }
+        /// <summary>An array showing the input and translated text. Only one input string can be translated at this time. Support for multiple continuous text strings are expected in the future.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::EBay.OtherApis.Generated.Translation.Models.Translation>? Translations { get; set; }
@@ -78,8 +66,8 @@ namespace EBay.OtherApis.Generated.Translation.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "from", n => { From = n.GetStringValue(); } },
-                { "to", n => { To = n.GetStringValue(); } },
+                { "from", n => { From = n.GetEnumValue<global::EBay.OtherApis.Generated.Translation.Models.LanguageEnum>(); } },
+                { "to", n => { To = n.GetEnumValue<global::EBay.OtherApis.Generated.Translation.Models.LanguageEnum>(); } },
                 { "translations", n => { Translations = n.GetCollectionOfObjectValues<global::EBay.OtherApis.Generated.Translation.Models.Translation>(global::EBay.OtherApis.Generated.Translation.Models.Translation.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -90,8 +78,8 @@ namespace EBay.OtherApis.Generated.Translation.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("from", From);
-            writer.WriteStringValue("to", To);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.Translation.Models.LanguageEnum>("from", From);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.Translation.Models.LanguageEnum>("to", To);
             writer.WriteCollectionOfObjectValues<global::EBay.OtherApis.Generated.Translation.Models.Translation>("translations", Translations);
             writer.WriteAdditionalData(AdditionalData);
         }

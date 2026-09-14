@@ -1,5 +1,16 @@
 # ChangeLog
 
+## 1.1.0 (09/14/2026)
+
+- The following clients were added:
+  - `VeroApiV2Client`
+- The following operations were added to `InternationalShippingClient`:
+  - `GetCpscProfilesAsync(string?, string?, string?, RequestOptions?, CancellationToken)`
+- The following members were added to `OtherApisClient`:
+  - `VeroApiV2`
+- The following members were added to `OtherApisConfiguration`:
+  - `VeroApiV2BaseUrl`
+
 ## 1.0.0 (09/14/2026)
 
 **Breaking changes**

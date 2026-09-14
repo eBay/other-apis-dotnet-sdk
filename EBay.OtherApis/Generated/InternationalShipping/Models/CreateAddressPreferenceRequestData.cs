@@ -29,7 +29,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The city code of the address.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;https://www.edisebay.com/open/development-guide-detail?id=36&quot; target=&quot;_blank&quot;&gt;商户API地址编码主数据&lt;/a&gt; for valid city codes.</summary>
+        /// <summary>The city code of the address.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;https://www.edisebay.com/open/development-guide-detail?id=36&quot; target=&quot;_blank&quot;&gt;eDIS Address Code Reference Data&lt;/a&gt; for valid city codes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? City { get; set; }
@@ -61,7 +61,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string CountryCode { get; set; }
 #endif
-        /// <summary>The district code of the address.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;https://www.edisebay.com/open/development-guide-detail?id=36&quot; target=&quot;_blank&quot;&gt;商户API地址编码主数据&lt;/a&gt; for valid district codes.</summary>
+        /// <summary>The district code of the address.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;https://www.edisebay.com/open/development-guide-detail?id=36&quot; target=&quot;_blank&quot;&gt;eDIS Address Code Reference Data&lt;/a&gt; for valid district codes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? District { get; set; }
@@ -93,7 +93,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string Postcode { get; set; }
 #endif
-        /// <summary>The province code of the address.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;https://www.edisebay.com/open/development-guide-detail?id=36&quot; target=&quot;_blank&quot;&gt;商户API地址编码主数据&lt;/a&gt; for valid province codes.</summary>
+        /// <summary>The province code of the address.&lt;br&gt;&lt;br&gt;See &lt;a href=&quot;https://www.edisebay.com/open/development-guide-detail?id=36&quot; target=&quot;_blank&quot;&gt;eDIS Address Code Reference Data&lt;/a&gt; for valid province codes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Province { get; set; }
@@ -125,14 +125,8 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string Street3 { get; set; }
 #endif
-        /// <summary>The address type of the address being created.&lt;br&gt;&lt;br&gt;&lt;b&gt;Valid values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;SHIP_FROM_ADDRESS&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;RETURN_ADRESS&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/edelivery_international_shipping/types/api:AddressTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        /// <summary>The address type of the address being created.&lt;br&gt;&lt;br&gt;&lt;b&gt;Valid values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;SHIP_FROM_ADDRESS&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;RETURN_ADRESS&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
+        public global::EBay.OtherApis.Generated.InternationalShipping.Models.AddressTypeEnum? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.CreateAddressPreferenceRequestData"/> and sets the default values.
         /// </summary>
@@ -170,7 +164,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
                 { "street1", n => { Street1 = n.GetStringValue(); } },
                 { "street2", n => { Street2 = n.GetStringValue(); } },
                 { "street3", n => { Street3 = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.AddressTypeEnum>(); } },
             };
         }
         /// <summary>
@@ -192,7 +186,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
             writer.WriteStringValue("street1", Street1);
             writer.WriteStringValue("street2", Street2);
             writer.WriteStringValue("street3", Street3);
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.AddressTypeEnum>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

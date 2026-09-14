@@ -29,7 +29,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>This type defines information about an EU AR agent, such as their address, name, and phone number.</summary>
+        /// <summary>This container specifies the EU AR agent information associated with the package.&lt;br&gt;&lt;br&gt;This information can be retrieved using the &lt;a href=&quot;/develop/api/sell/edelivery_international_shipping_api#sell-edelivery_international_shipping_api-agents-getagents&quot;&gt;getAgents&lt;/a&gt;  method.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.AgentInfoData? AgentInfoRequest { get; set; }
@@ -37,7 +37,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.AgentInfoData AgentInfoRequest { get; set; }
 #endif
-        /// <summary>The unique identifier of the consign address to be associated with the package.&lt;br&gt;&lt;br&gt;This ID can be retrieved using the &lt;a href=&quot;/api-docs/sell/edelivery_international_shipping/resources/consign_preference/methods/getConsignPreferences&quot; target=&quot;_blank&quot;&gt;getConsignPreferences&lt;/a&gt; method.</summary>
+        /// <summary>The unique identifier of the consign address to be associated with the package.&lt;br&gt;&lt;br&gt;This ID can be retrieved using the &lt;a href=&quot;/develop/api/sell/edelivery_international_shipping_api#sell-edelivery_international_shipping_api-consign_preference-getconsignpreferences&quot;&gt;getConsignPreferences&lt;/a&gt; method.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ConsignPreferenceId { get; set; }
@@ -45,14 +45,8 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string ConsignPreferenceId { get; set; }
 #endif
-        /// <summary>The incoterm information associated with the package.&lt;br&gt;&lt;br&gt;&lt;b&gt;Supported values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;DDP&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;DDU&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/edelivery_international_shipping/types/api:IncotermEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Incoterm { get; set; }
-#nullable restore
-#else
-        public string Incoterm { get; set; }
-#endif
+        /// <summary>The incoterm information associated with the package.&lt;br&gt;&lt;br&gt;&lt;b&gt;Supported values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;DDP&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;DDU&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
+        public global::EBay.OtherApis.Generated.InternationalShipping.Models.IncotermEnum? Incoterm { get; set; }
         /// <summary>This array is used to specify applicable information about the eBay line item(s) that will be included in the package.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,7 +73,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         public double? PackageWeight { get; set; }
         /// <summary>The width of the package in centimeters.</summary>
         public double? PackageWidth { get; set; }
-        /// <summary>The unique identifier of the ship-from address used for the package.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/api-docs/sell/edelivery_international_shipping/resources/address_preference/methods/getAddressPreferences&quot; target=&quot;_blank&quot;&gt;getAddressPreferences&lt;/a&gt; method to retrieve valid ship-from &lt;b&gt;addressId&lt;/b&gt; values associated with your account.</summary>
+        /// <summary>The unique identifier of the ship-from address used for the package.&lt;br&gt;&lt;br&gt;Use the &lt;a href=&quot;/develop/api/sell/edelivery_international_shipping_api#sell-edelivery_international_shipping_api-address_preference-getaddresspreferences&quot;&gt;getAddressPreferences&lt;/a&gt; method to retrieve valid ship-from &lt;b&gt;addressId&lt;/b&gt; values associated with your account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ShipFromAddressId { get; set; }
@@ -87,7 +81,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string ShipFromAddressId { get; set; }
 #endif
-        /// <summary>The unique identifier of the shipping service being used for the package.&lt;br&gt;&lt;br&gt;This value can be retrieved using the &lt;a href=&quot;/api-docs/sell/edelivery_international_shipping/resources/services/methods/getServices&quot; target=&quot;_blank&quot;&gt;getServices&lt;/a&gt; method.</summary>
+        /// <summary>The unique identifier of the shipping service being used for the package.&lt;br&gt;&lt;br&gt;This value can be retrieved using the &lt;a href=&quot;/develop/api/sell/edelivery_international_shipping_api#sell-edelivery_international_shipping_api-services-getservices&quot;&gt;getServices&lt;/a&gt; method.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ShippingServiceId { get; set; }
@@ -95,7 +89,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string ShippingServiceId { get; set; }
 #endif
-        /// <summary>This type is used to specify the address fields of the ship-to address location.</summary>
+        /// <summary>This container specifies the address details of the address ship-to address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.ShipToAddressRequestData? ShipToAddress { get; set; }
@@ -103,7 +97,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.ShipToAddressRequestData ShipToAddress { get; set; }
 #endif
-        /// <summary>This type defines the special service details available for a package.</summary>
+        /// <summary>This container specifies any special service details about the package, such as any insurance fee, required signatures, or delivery exceptions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.SpecialServiceDetail? SpecialServiceDetail { get; set; }
@@ -146,7 +140,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
             {
                 { "agentInfoRequest", n => { AgentInfoRequest = n.GetObjectValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.AgentInfoData>(global::EBay.OtherApis.Generated.InternationalShipping.Models.AgentInfoData.CreateFromDiscriminatorValue); } },
                 { "consignPreferenceId", n => { ConsignPreferenceId = n.GetStringValue(); } },
-                { "incoterm", n => { Incoterm = n.GetStringValue(); } },
+                { "incoterm", n => { Incoterm = n.GetEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.IncotermEnum>(); } },
                 { "items", n => { Items = n.GetCollectionOfObjectValues<global::EBay.OtherApis.Generated.InternationalShipping.Models.ItemRequest>(global::EBay.OtherApis.Generated.InternationalShipping.Models.ItemRequest.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "maxQuantityLimit", n => { MaxQuantityLimit = n.GetIntValue(); } },
                 { "packageComment", n => { PackageComment = n.GetStringValue(); } },
@@ -170,7 +164,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.AgentInfoData>("agentInfoRequest", AgentInfoRequest);
             writer.WriteStringValue("consignPreferenceId", ConsignPreferenceId);
-            writer.WriteStringValue("incoterm", Incoterm);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.IncotermEnum>("incoterm", Incoterm);
             writer.WriteCollectionOfObjectValues<global::EBay.OtherApis.Generated.InternationalShipping.Models.ItemRequest>("items", Items);
             writer.WriteIntValue("maxQuantityLimit", MaxQuantityLimit);
             writer.WriteStringValue("packageComment", PackageComment);

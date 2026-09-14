@@ -29,7 +29,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>This type defines information about an EU AR agent, such as their address, name, and phone number.</summary>
+        /// <summary>This container returns EU AR agent information associated with the package.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.AgentInfoData? AgentInfoResponse { get; set; }
@@ -45,14 +45,8 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string ConsignPreferenceId { get; set; }
 #endif
-        /// <summary>The incoterm information associated with the package.&lt;br&gt;&lt;br&gt;&lt;b&gt;Supported values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;DDP&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;DDU&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/edelivery_international_shipping/types/api:IncotermEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Incoterm { get; set; }
-#nullable restore
-#else
-        public string Incoterm { get; set; }
-#endif
+        /// <summary>The incoterm information associated with the package.&lt;br&gt;&lt;br&gt;&lt;b&gt;Supported values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;DDP&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;DDU&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
+        public global::EBay.OtherApis.Generated.InternationalShipping.Models.IncotermEnum? Incoterm { get; set; }
         /// <summary>This array returns information about the eBay line item(s) that are included in the package.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -89,19 +83,13 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #endif
         /// <summary>The length of the package in centimeters.</summary>
         public double? PackageLength { get; set; }
-        /// <summary>The current status of the package. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/edelivery_international_shipping/types/api:PackageStatusEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? PackageStatus { get; set; }
-#nullable restore
-#else
-        public string PackageStatus { get; set; }
-#endif
+        /// <summary>The current status of the package.</summary>
+        public global::EBay.OtherApis.Generated.InternationalShipping.Models.PackageStatusEnum? PackageStatus { get; set; }
         /// <summary>The weight of the package in grams.</summary>
         public double? PackageWeight { get; set; }
         /// <summary>The width of the package in centimeters.</summary>
         public double? PackageWidth { get; set; }
-        /// <summary>This type defines the monetary value of an amount. </summary>
+        /// <summary>The actual payment cost of the package.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.Amount? PaymentCost { get; set; }
@@ -125,7 +113,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string ShippingServiceId { get; set; }
 #endif
-        /// <summary>This type specifies the ship-to address information for a retrieved package.</summary>
+        /// <summary>This container returns information about the address the package is being shipped to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.ShipToAddressResponsesData? ShipToAddress { get; set; }
@@ -133,7 +121,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.ShipToAddressResponsesData ShipToAddress { get; set; }
 #endif
-        /// <summary>This type defines the special service details available for a package.</summary>
+        /// <summary>This container returns any special services associated with this package.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This field is always returned, but will show as null or have an empty value if not defined/applicable.&lt;/span&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.SpecialServiceDetail? SpecialServiceDetail { get; set; }
@@ -176,14 +164,14 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
             {
                 { "agentInfoResponse", n => { AgentInfoResponse = n.GetObjectValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.AgentInfoData>(global::EBay.OtherApis.Generated.InternationalShipping.Models.AgentInfoData.CreateFromDiscriminatorValue); } },
                 { "consignPreferenceId", n => { ConsignPreferenceId = n.GetStringValue(); } },
-                { "incoterm", n => { Incoterm = n.GetStringValue(); } },
+                { "incoterm", n => { Incoterm = n.GetEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.IncotermEnum>(); } },
                 { "items", n => { Items = n.GetCollectionOfObjectValues<global::EBay.OtherApis.Generated.InternationalShipping.Models.ItemResponses>(global::EBay.OtherApis.Generated.InternationalShipping.Models.ItemResponses.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "lastMileTrackingNumber", n => { LastMileTrackingNumber = n.GetStringValue(); } },
                 { "packageComment", n => { PackageComment = n.GetStringValue(); } },
                 { "packageHeight", n => { PackageHeight = n.GetDoubleValue(); } },
                 { "packageId", n => { PackageId = n.GetStringValue(); } },
                 { "packageLength", n => { PackageLength = n.GetDoubleValue(); } },
-                { "packageStatus", n => { PackageStatus = n.GetStringValue(); } },
+                { "packageStatus", n => { PackageStatus = n.GetEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.PackageStatusEnum>(); } },
                 { "packageWeight", n => { PackageWeight = n.GetDoubleValue(); } },
                 { "packageWidth", n => { PackageWidth = n.GetDoubleValue(); } },
                 { "paymentCost", n => { PaymentCost = n.GetObjectValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.Amount>(global::EBay.OtherApis.Generated.InternationalShipping.Models.Amount.CreateFromDiscriminatorValue); } },
@@ -203,14 +191,14 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.AgentInfoData>("agentInfoResponse", AgentInfoResponse);
             writer.WriteStringValue("consignPreferenceId", ConsignPreferenceId);
-            writer.WriteStringValue("incoterm", Incoterm);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.IncotermEnum>("incoterm", Incoterm);
             writer.WriteCollectionOfObjectValues<global::EBay.OtherApis.Generated.InternationalShipping.Models.ItemResponses>("items", Items);
             writer.WriteStringValue("lastMileTrackingNumber", LastMileTrackingNumber);
             writer.WriteStringValue("packageComment", PackageComment);
             writer.WriteDoubleValue("packageHeight", PackageHeight);
             writer.WriteStringValue("packageId", PackageId);
             writer.WriteDoubleValue("packageLength", PackageLength);
-            writer.WriteStringValue("packageStatus", PackageStatus);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.PackageStatusEnum>("packageStatus", PackageStatus);
             writer.WriteDoubleValue("packageWeight", PackageWeight);
             writer.WriteDoubleValue("packageWidth", PackageWidth);
             writer.WriteObjectValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.Amount>("paymentCost", PaymentCost);

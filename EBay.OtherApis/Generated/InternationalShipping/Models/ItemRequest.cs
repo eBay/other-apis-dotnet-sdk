@@ -22,14 +22,14 @@ using System;
 namespace EBay.OtherApis.Generated.InternationalShipping.Models
 {
     /// <summary>
-    /// This container specifies information about the items being included in a package.
+    /// This type specifies information about the items being included in a package.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ItemRequest : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The buyer&apos;s eBay user ID.</summary>
+        /// <summary>The buyer&apos;s eBay user ID.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Effective September 26, 2025, both usernames and public user IDs will be accepted in this field. For more information, please refer to &lt;a href=&quot;/api-docs/static/data-handling-update.html&quot; target=&quot;_blank&quot;&gt;Data Handling Compliance&lt;/a&gt;.&lt;/span&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BuyerId { get; set; }
@@ -139,7 +139,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         public int? PostedQuantity { get; set; }
         /// <summary>The unique identifier of the eBay site in which the order occurred.</summary>
         public int? SiteId { get; set; }
-        /// <summary>This type specifies information relating to the SKU item in a package.</summary>
+        /// <summary>This container specifies information relating to the item being shipped in the package.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.SkuRequest? Sku { get; set; }
@@ -155,7 +155,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string SoldDate { get; set; }
 #endif
-        /// <summary>This type defines the monetary value of an amount. </summary>
+        /// <summary>The price for which the item was sold.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.Amount? SoldPrice { get; set; }

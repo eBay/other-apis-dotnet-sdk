@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "1C8F84AD79AF5FC7E5B35051B20075F2FD1AD03BF1EA5252EDE8D5FEB275C075689C8221D114B2B824E260357470973F40A21334FB82FB36783590C5A7FEB9FD",
-  "descriptionLocation": "../../../specs/openapi/vero.yaml",
+  "descriptionHash": "D240872AEC78346006D459583746DB110B8F9B5C20157CCD4FB32A9B2AA0CE73FC148A1A8DCE067EAFD99E14EDE4E4CA2DAF17E02FD52019001153FCBB978075",
+  "descriptionLocation": "../../../specs/openapi/vero.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.30.0",
+  "kiotaVersion": "1.35.0",
   "clientClassName": "VeroApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "EBay.OtherApis.Generated.Vero",
@@ -30,5 +30,6 @@
   ],
   "includePatterns": [],
   "excludePatterns": [],
-  "disabledValidationRules": []
+  "disabledValidationRules": [],
+  "allowedExternalOrigins": []
 }

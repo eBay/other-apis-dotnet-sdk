@@ -22,7 +22,7 @@ using System;
 namespace EBay.OtherApis.Generated.InternationalShipping.Models
 {
     /// <summary>
-    /// This container specifies direction information for a shipping service.
+    /// This type specifies direction information for a shipping service.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DirectionsResponses : IAdditionalDataHolder, IParsable

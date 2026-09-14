@@ -19,6 +19,7 @@ public sealed class OtherApisConfiguration
     private string _identityBaseUrl = "https://apiz.ebay.com/commerce/identity/v1";
     private string _internationalShippingBaseUrl = "https://api.ebay.com/sell/edelivery_international_shipping/v1";
     private string _translationBaseUrl = "https://api.ebay.com/commerce/translation/v1_beta";
+    private string _veroApiV2BaseUrl = "https://api.ebay.com/commerce/vero/v2";
     private string _veroBaseUrl = "https://api.ebay.com/commerce/vero/v1";
 
     public string IdentityBaseUrl
@@ -37,6 +38,12 @@ public sealed class OtherApisConfiguration
     {
         get => _translationBaseUrl;
         set => _translationBaseUrl = RequireHttps(value);
+    }
+
+    public string VeroApiV2BaseUrl
+    {
+        get => _veroApiV2BaseUrl;
+        set => _veroApiV2BaseUrl = RequireHttps(value);
     }
 
     public string VeroBaseUrl
@@ -69,6 +76,7 @@ public sealed class OtherApisConfiguration
         "identity" => _identityBaseUrl,
         "international-shipping" => _internationalShippingBaseUrl,
         "translation" => _translationBaseUrl,
+        "vero-api-v2" => _veroApiV2BaseUrl,
         "vero" => _veroBaseUrl,
         _ => throw new ArgumentOutOfRangeException(nameof(apiId), apiId, "Unknown REST API.")
     };

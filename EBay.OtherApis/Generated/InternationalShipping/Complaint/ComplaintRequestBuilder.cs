@@ -54,6 +54,9 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Complaint
         /// <param name="body">This type is used to define the request container of the &lt;b&gt;createComplaint&lt;/b&gt; method.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::EBay.OtherApis.Generated.InternationalShipping.Complaint.ComplaintPostResponse?> PostAsync(global::EBay.OtherApis.Generated.InternationalShipping.Models.AddComplaintRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -65,7 +68,13 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Complaint
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::EBay.OtherApis.Generated.InternationalShipping.Complaint.ComplaintPostResponse>(requestInfo, global::EBay.OtherApis.Generated.InternationalShipping.Complaint.ComplaintPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+                { "401", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::EBay.OtherApis.Generated.InternationalShipping.Complaint.ComplaintPostResponse>(requestInfo, global::EBay.OtherApis.Generated.InternationalShipping.Complaint.ComplaintPostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// &lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; This method is only available for Greater-China based sellers with an active eDIS account.&lt;/p&gt;&lt;/div&gt;&lt;br&gt;This method can be used to create a complaint about a shipment order. Complaints can be filed if there is a pickup delay on an order or if an item has been lost in transit.&lt;br&gt;&lt;br&gt;The complaint reason, complaint type, and the date the issue occurred must be specified in the request. If the complaint is being filed for a missing package, the affected &lt;b&gt;packageId&lt;/b&gt; values must also be specified in the &lt;b&gt;affectedPackages&lt;/b&gt; array.&lt;br&gt;&lt;br&gt;If the call was successful, HTTP status code &lt;b&gt;201 Created&lt;/b&gt; will be returned, and the complaint will be created.

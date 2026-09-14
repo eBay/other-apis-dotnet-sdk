@@ -29,14 +29,8 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>This enum value represents the type of currency being used. Both the &lt;b&gt;value&lt;/b&gt; and &lt;b&gt;currency fields&lt;/b&gt; are required/always returned when expressing cost.&lt;br&gt;&lt;br&gt; See the &lt;a href=&quot;/api-docs/sell/edelivery_international_shipping/types/bas:CurrencyCodeEnum&quot; target=&quot;_blank&quot;&gt;CurrencyCodeEnum&lt;/a&gt; type for the full list of supported values.&lt;br&gt;&lt;br&gt;Both the &lt;b&gt;value&lt;/b&gt; and &lt;b&gt;currency&lt;/b&gt; fields are required/always returned when expressing cost. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/edelivery_international_shipping/types/bas:CurrencyCodeEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Currency { get; set; }
-#nullable restore
-#else
-        public string Currency { get; set; }
-#endif
+        /// <summary>This enum value represents the type of currency being used. Both the &lt;b&gt;value&lt;/b&gt; and &lt;b&gt;currency fields&lt;/b&gt; are required/always returned when expressing cost.&lt;br&gt;&lt;br&gt; See the &lt;b&gt;CurrencyCodeEnum&lt;/b&gt; type for the full list of supported values.&lt;br&gt;&lt;br&gt;Both the &lt;b&gt;value&lt;/b&gt; and &lt;b&gt;currency&lt;/b&gt; fields are required/always returned when expressing cost.</summary>
+        public global::EBay.OtherApis.Generated.InternationalShipping.Models.CurrencyCodeEnum? Currency { get; set; }
         /// <summary>The monetary amount, in the currency specified by the &lt;b&gt;currency&lt;/b&gt; field.&lt;br&gt;&lt;br&gt;Both the &lt;b&gt;value&lt;/b&gt; and &lt;b&gt;currency&lt;/b&gt; fields are required/always returned when expressing cost.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,7 +64,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "currency", n => { Currency = n.GetStringValue(); } },
+                { "currency", n => { Currency = n.GetEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.CurrencyCodeEnum>(); } },
                 { "value", n => { Value = n.GetStringValue(); } },
             };
         }
@@ -81,7 +75,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("currency", Currency);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.CurrencyCodeEnum>("currency", Currency);
             writer.WriteStringValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -22,14 +22,14 @@ using System;
 namespace EBay.OtherApis.Generated.InternationalShipping.Models
 {
     /// <summary>
-    /// DeletePackagesRequestData
+    /// This type is used to specify the package ID values for the packages being deleted.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeletePackagesRequestData : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>This comma-delimited array lists the unique identifiers of the packages being deleted. These values must be for packages that have been cancelled and do not have tracking numbers associated with them.&lt;br&gt;&lt;br&gt;Package ID values are returned when creating a package through the &lt;a href=&quot;/api-docs/sell/edelivery_international_shipping/resources/package/methods/createPackage&quot; target=&quot;_blank&quot;&gt;createPackage&lt;/a&gt; method.</summary>
+        /// <summary>This comma-delimited array lists the unique identifiers of the packages being deleted. These values must be for packages that have been cancelled and do not have tracking numbers associated with them.&lt;br&gt;&lt;br&gt;Package ID values are returned when creating a package through the &lt;a href=&quot;/develop/api/sell/edelivery_international_shipping_api#sell-edelivery_international_shipping_api-package-createpackage&quot;&gt;createPackage&lt;/a&gt; method.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? PackageIds { get; set; }

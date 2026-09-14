@@ -29,7 +29,7 @@ namespace EBay.OtherApis.Generated.Identity.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The first line of the street address.</summary>
+        /// <summary>The first line of the street address for the user&apos;s location.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AddressLine1 { get; set; }
@@ -53,14 +53,8 @@ namespace EBay.OtherApis.Generated.Identity.Models
 #else
         public string City { get; set; }
 #endif
-        /// <summary>The two-letter &lt;a href=&quot;https://www.iso.org/iso-3166-country-codes.html&quot;&gt;ISO 3166&lt;/a&gt; standard of the country of the address. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/identity/types/bas:CountryCodeEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Country { get; set; }
-#nullable restore
-#else
-        public string Country { get; set; }
-#endif
+        /// <summary>The two-letter &lt;a href=&quot;https://www.iso.org/iso-3166-country-codes.html&quot;&gt;ISO 3166&lt;/a&gt; standard of the country of the address.</summary>
+        public global::EBay.OtherApis.Generated.Identity.Models.CountryCodeEnum? Country { get; set; }
         /// <summary>The county of the address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -113,7 +107,7 @@ namespace EBay.OtherApis.Generated.Identity.Models
                 { "addressLine1", n => { AddressLine1 = n.GetStringValue(); } },
                 { "addressLine2", n => { AddressLine2 = n.GetStringValue(); } },
                 { "city", n => { City = n.GetStringValue(); } },
-                { "country", n => { Country = n.GetStringValue(); } },
+                { "country", n => { Country = n.GetEnumValue<global::EBay.OtherApis.Generated.Identity.Models.CountryCodeEnum>(); } },
                 { "county", n => { County = n.GetStringValue(); } },
                 { "postalCode", n => { PostalCode = n.GetStringValue(); } },
                 { "stateOrProvince", n => { StateOrProvince = n.GetStringValue(); } },
@@ -129,7 +123,7 @@ namespace EBay.OtherApis.Generated.Identity.Models
             writer.WriteStringValue("addressLine1", AddressLine1);
             writer.WriteStringValue("addressLine2", AddressLine2);
             writer.WriteStringValue("city", City);
-            writer.WriteStringValue("country", Country);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.Identity.Models.CountryCodeEnum>("country", Country);
             writer.WriteStringValue("county", County);
             writer.WriteStringValue("postalCode", PostalCode);
             writer.WriteStringValue("stateOrProvince", StateOrProvince);

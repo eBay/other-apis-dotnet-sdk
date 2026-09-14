@@ -16,6 +16,9 @@
 
 set -euo pipefail
 
+echo "Pinning Kiota to 1.35.0..."
+dotnet tool update microsoft.openapi.kiota --local --version 1.35.0 --allow-downgrade
+
 echo "Restoring tools..."
 dotnet tool restore
 
@@ -24,7 +27,7 @@ rm -rf ./EBay.OtherApis/Generated
 
 dotnet kiota generate \
   -l csharp \
-  -d specs/openapi/identity.yaml \
+  -d specs/openapi/identity.json \
   -c IdentityApiClient \
   -n EBay.OtherApis.Generated.Identity \
   -o EBay.OtherApis/Generated/Identity \
@@ -32,7 +35,7 @@ dotnet kiota generate \
 
 dotnet kiota generate \
   -l csharp \
-  -d specs/openapi/international-shipping.yaml \
+  -d specs/openapi/international-shipping.json \
   -c InternationalShippingApiClient \
   -n EBay.OtherApis.Generated.InternationalShipping \
   -o EBay.OtherApis/Generated/InternationalShipping \
@@ -40,7 +43,7 @@ dotnet kiota generate \
 
 dotnet kiota generate \
   -l csharp \
-  -d specs/openapi/translation.yaml \
+  -d specs/openapi/translation.json \
   -c TranslationApiClient \
   -n EBay.OtherApis.Generated.Translation \
   -o EBay.OtherApis/Generated/Translation \
@@ -48,7 +51,15 @@ dotnet kiota generate \
 
 dotnet kiota generate \
   -l csharp \
-  -d specs/openapi/vero.yaml \
+  -d specs/openapi/vero-api-v2.json \
+  -c VeroApiV2ApiClient \
+  -n EBay.OtherApis.Generated.VeroApiV2 \
+  -o EBay.OtherApis/Generated/VeroApiV2 \
+  --ebc --co
+
+dotnet kiota generate \
+  -l csharp \
+  -d specs/openapi/vero.json \
   -c VeroApiClient \
   -n EBay.OtherApis.Generated.Vero \
   -o EBay.OtherApis/Generated/Vero \

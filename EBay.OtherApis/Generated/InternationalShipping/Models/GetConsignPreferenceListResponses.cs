@@ -29,7 +29,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>This type defines the fields associated with a seller&apos;s consign addresses, including the location and contact details of the address, as well as its unique identifiers.</summary>
+        /// <summary>This container returns a list of all consign addresses associated with a seller&apos;s eDIS account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.GetConsignPreferenceListResponsesData? ConsignPreferenceList { get; set; }

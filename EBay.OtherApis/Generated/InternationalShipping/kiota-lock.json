@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "B99BC94FCD71CB994A27536546C8B787307F8060273BE0B216055DF0095D1841AC0913D6D5214813A81B8C42D07152AC560C81BCCCADD59B2264A0A3FD741BA6",
-  "descriptionLocation": "../../../specs/openapi/international-shipping.yaml",
+  "descriptionHash": "B88A106939BDF229AFE9CBE59147078C9A170933D4C29C209285AD94A24427886907BEF10A1666F03F8BA85C043E358B356187AE8BEF086C943F4BD828D307FA",
+  "descriptionLocation": "../../../specs/openapi/international-shipping.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.30.0",
+  "kiotaVersion": "1.35.0",
   "clientClassName": "InternationalShippingApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "EBay.OtherApis.Generated.InternationalShipping",
@@ -30,5 +30,6 @@
   ],
   "includePatterns": [],
   "excludePatterns": [],
-  "disabledValidationRules": []
+  "disabledValidationRules": [],
+  "allowedExternalOrigins": []
 }

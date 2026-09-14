@@ -22,7 +22,7 @@ using System;
 namespace EBay.OtherApis.Generated.Identity.Models
 {
     /// <summary>
-    /// The type that defines the fields for the information of an individual account.
+    /// The type that defines the fields for information about an individual eBay account.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class IndividualAccount : IAdditionalDataHolder, IParsable
@@ -53,7 +53,7 @@ namespace EBay.OtherApis.Generated.Identity.Models
 #else
         public string LastName { get; set; }
 #endif
-        /// <summary>The type that defines the fields for the details of a phone.</summary>
+        /// <summary>The primary phone number associated with the individual account, if available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.Identity.Models.Phone? PrimaryPhone { get; set; }
@@ -61,7 +61,7 @@ namespace EBay.OtherApis.Generated.Identity.Models
 #else
         public global::EBay.OtherApis.Generated.Identity.Models.Phone PrimaryPhone { get; set; }
 #endif
-        /// <summary>The type that defines the fields for an address.</summary>
+        /// <summary>The container that returns the eBay user&apos;s address information.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.Identity.Models.Address? RegistrationAddress { get; set; }
@@ -69,7 +69,7 @@ namespace EBay.OtherApis.Generated.Identity.Models
 #else
         public global::EBay.OtherApis.Generated.Identity.Models.Address RegistrationAddress { get; set; }
 #endif
-        /// <summary>The type that defines the fields for the details of a phone.</summary>
+        /// <summary>A secondary phone number registered with the individual eBay account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.Identity.Models.Phone? SecondaryPhone { get; set; }

@@ -53,6 +53,10 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Actual_costs
         /// <returns>A <see cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.GetActualCostResponses"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::EBay.OtherApis.Generated.InternationalShipping.Models.GetActualCostResponses?> GetAsync(Action<RequestConfiguration<global::EBay.OtherApis.Generated.InternationalShipping.Actual_costs.Actual_costsRequestBuilder.Actual_costsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -63,7 +67,14 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Actual_costs
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::EBay.OtherApis.Generated.InternationalShipping.Models.GetActualCostResponses>(requestInfo, global::EBay.OtherApis.Generated.InternationalShipping.Models.GetActualCostResponses.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+                { "401", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+                { "404", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::EBay.OtherApis.Generated.InternationalShipping.Models.GetActualCostResponses>(requestInfo, global::EBay.OtherApis.Generated.InternationalShipping.Models.GetActualCostResponses.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// &lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; This method is only available for Greater-China based sellers with an active eDIS account.&lt;/p&gt;&lt;/div&gt;&lt;br&gt;This method is used to retrieve the actual weight and cost for one or more packages based on the provided input criteria.&lt;br&gt;&lt;br&gt;Responses can be filtered by the &lt;b&gt;tracking_numbers&lt;/b&gt; query parameter. If this parameter is used, actual costs for each package associated with the provided tracking numbers are returned.&lt;br&gt;&lt;br&gt;Alternatively, responses can be filtered by the &lt;b&gt;trans_begin_time&lt;/b&gt; and &lt;b&gt;trans_end_time&lt;/b&gt; query parameters. If these parameters are used, the actual costs of all packages created within this date range are returned.&lt;br&gt;&lt;br&gt;Only one filtering method can be used per call.
@@ -99,7 +110,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Actual_costs
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class Actual_costsRequestBuilderGetQueryParameters 
         {
-            /// <summary>This query parameter specifies the tracking number(s) of the package(s) for which to retrieve the actual weight and cost. Tracking numbers are returned when creating packages through the &lt;a href=&quot;/api-docs/sell/edelivery_international_shipping/resources/package/methods/createPackage&quot; target=&quot;_blank&quot;&gt;createPackage&lt;/a&gt; method.&lt;br&gt;&lt;br&gt;Up to 200 tracking numbers can be provided.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This query parameter is required if &lt;b&gt;trans_begin_time&lt;/b&gt; and &lt;b&gt;trans_end_time&lt;/b&gt; is not provided.&lt;/span&gt;</summary>
+            /// <summary>This query parameter specifies the tracking number(s) of the package(s) for which to retrieve the actual weight and cost. Tracking numbers are returned when creating packages through the &lt;a href=&quot;/develop/api/sell/edelivery_international_shipping_api#sell-edelivery_international_shipping_api-package-createpackage&quot;&gt;createPackage&lt;/a&gt; method.&lt;br&gt;&lt;br&gt;Up to 200 tracking numbers can be provided.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This query parameter is required if &lt;b&gt;trans_begin_time&lt;/b&gt; and &lt;b&gt;trans_end_time&lt;/b&gt; is not provided.&lt;/span&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("tracking_numbers")]
@@ -109,7 +120,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Actual_costs
             [QueryParameter("tracking_numbers")]
             public string TrackingNumbers { get; set; }
 #endif
-            /// <summary>This query parameter specifies the start time of a transaction in UTC format.&lt;br&gt;&lt;br&gt;If the the &lt;/b&gt;trans_begin_time&lt;/b&gt; and &lt;b&gt;trans_end_time&lt;/b&gt; query parameters are used, the actual costs of all packages created within this date range are returned.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This query parameter and &lt;b&gt;trans_end_time&lt;/b&gt; are required if &lt;b&gt;tracking_numbers&lt;/b&gt; is not provided.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Format&lt;/b&gt;: &lt;code&gt;YYYY-MM-DDTHH:MM:SS.SSSZ&lt;/code&gt;</summary>
+            /// <summary>This query parameter specifies the start time of a transaction in UTC format.&lt;br&gt;&lt;br&gt;If the the &lt;b&gt;trans_begin_time&lt;/b&gt; and &lt;b&gt;trans_end_time&lt;/b&gt; query parameters are used, the actual costs of all packages created within this date range are returned.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This query parameter and &lt;b&gt;trans_end_time&lt;/b&gt; are required if &lt;b&gt;tracking_numbers&lt;/b&gt; is not provided.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Format&lt;/b&gt;: &lt;code&gt;YYYY-MM-DDTHH:MM:SS.SSSZ&lt;/code&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("trans_begin_time")]
@@ -119,7 +130,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Actual_costs
             [QueryParameter("trans_begin_time")]
             public string TransBeginTime { get; set; }
 #endif
-            /// <summary>This query parameter specifies ending time of a transaction in UTC format.&lt;br&gt;&lt;br&gt;If the the &lt;/b&gt;trans_begin_time&lt;/b&gt; and &lt;b&gt;trans_end_time&lt;/b&gt; query parameters are used, the actual costs of all packages created within this date range are returned.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This query parameter and &lt;b&gt;trans_start_time&lt;/b&gt; are required if &lt;b&gt;tracking_numbers&lt;/b&gt; is not provided.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Format&lt;/b&gt;: &lt;code&gt;YYYY-MM-DDTHH:MM:SS.SSSZ&lt;/code&gt;</summary>
+            /// <summary>This query parameter specifies ending time of a transaction in UTC format.&lt;br&gt;&lt;br&gt;If the the &lt;b&gt;trans_begin_time&lt;/b&gt; and &lt;b&gt;trans_end_time&lt;/b&gt; query parameters are used, the actual costs of all packages created within this date range are returned.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This query parameter and &lt;b&gt;trans_start_time&lt;/b&gt; are required if &lt;b&gt;tracking_numbers&lt;/b&gt; is not provided.&lt;/span&gt;&lt;br&gt;&lt;b&gt;Format&lt;/b&gt;: &lt;code&gt;YYYY-MM-DDTHH:MM:SS.SSSZ&lt;/code&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("trans_end_time")]

@@ -65,6 +65,9 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Bundle.Item
         /// <returns>A <see cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.BundleDetailResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.Error">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::EBay.OtherApis.Generated.InternationalShipping.Models.BundleDetailResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -75,7 +78,13 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Bundle.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::EBay.OtherApis.Generated.InternationalShipping.Models.BundleDetailResponse>(requestInfo, global::EBay.OtherApis.Generated.InternationalShipping.Models.BundleDetailResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+                { "401", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+                { "500", global::EBay.OtherApis.Generated.InternationalShipping.Models.Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::EBay.OtherApis.Generated.InternationalShipping.Models.BundleDetailResponse>(requestInfo, global::EBay.OtherApis.Generated.InternationalShipping.Models.BundleDetailResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// &lt;div class=&quot;msgbox_important&quot;&gt;&lt;p class=&quot;msgbox_importantInDiv&quot; data-mc-autonum=&quot;&amp;lt;b&amp;gt;&amp;lt;span style=&amp;quot;color: #dd1e31;&amp;quot; class=&amp;quot;mcFormatColor&amp;quot;&amp;gt;Important! &amp;lt;/span&amp;gt;&amp;lt;/b&amp;gt;&quot;&gt;&lt;span class=&quot;autonumber&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;span style=&quot;color: #dd1e31;&quot; class=&quot;mcFormatColor&quot;&gt;Important!&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;/span&gt; This method is only available for Greater-China based sellers with an active eDIS account.&lt;/p&gt;&lt;/div&gt;&lt;br&gt;This method is used to retrieved information about a specific bundle based on the provided bundle ID value.&lt;br&gt;&lt;br&gt;The &lt;b&gt;bundle_id&lt;/b&gt; value of the bundle to be retrieved must be input as a path parameter in the request. If the call is successful, information about the bundle is returned, such as its associated consign preference ID and the tracking numbers of each package in the bundle.

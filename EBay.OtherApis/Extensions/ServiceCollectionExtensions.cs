@@ -50,6 +50,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped(sp => sp.GetRequiredService<OtherApisClient>().Identity);
         services.AddScoped(sp => sp.GetRequiredService<OtherApisClient>().InternationalShipping);
         services.AddScoped(sp => sp.GetRequiredService<OtherApisClient>().Translation);
+        services.AddScoped(sp => sp.GetRequiredService<OtherApisClient>().VeroApiV2);
         services.AddScoped(sp => sp.GetRequiredService<OtherApisClient>().Vero);
         return services;
     }

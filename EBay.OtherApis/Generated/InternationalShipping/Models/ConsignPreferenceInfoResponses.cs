@@ -53,7 +53,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string DropoffSiteId { get; set; }
 #endif
-        /// <summary>This type defines the fields used to specify location and contact information for a pickup-from consign address associated with a seller&apos;s eDIS account.</summary>
+        /// <summary>This container returns the address and contact information for a pickup address.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; This container is always returned, but will show as null or have an empty value if not defined/applicable.&lt;/span&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.PickupAddressResponsesData? PickupAddress { get; set; }
@@ -61,22 +61,10 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.PickupAddressResponsesData PickupAddress { get; set; }
 #endif
-        /// <summary>The supported pickup window that the pickup location supports.&lt;br&gt;&lt;br&gt;This field is only returned if the consign address is a pickup-from location For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/edelivery_international_shipping/types/api:PickUpTimeTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? PickupTime { get; set; }
-#nullable restore
-#else
-        public string PickupTime { get; set; }
-#endif
-        /// <summary>The address type of the consign address.&lt;br&gt;&lt;br&gt;&lt;b&gt;Valid values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;PICK_UP&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;DROP_OFF&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;FORWARD_DEPLOYMENT&lt;/code&gt;&lt;/ul&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/sell/edelivery_international_shipping/types/api:ConsignTypeEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        /// <summary>The supported pickup window that the pickup location supports.&lt;br&gt;&lt;br&gt;This field is only returned if the consign address is a pickup-from location</summary>
+        public global::EBay.OtherApis.Generated.InternationalShipping.Models.PickUpTimeTypeEnum? PickupTime { get; set; }
+        /// <summary>The address type of the consign address.&lt;br&gt;&lt;br&gt;&lt;b&gt;Valid values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;PICK_UP&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;DROP_OFF&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;FORWARD_DEPLOYMENT&lt;/code&gt;&lt;/ul&gt;</summary>
+        public global::EBay.OtherApis.Generated.InternationalShipping.Models.ConsignTypeEnum? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.ConsignPreferenceInfoResponses"/> and sets the default values.
         /// </summary>
@@ -106,8 +94,8 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
                 { "consignPreferenceName", n => { ConsignPreferenceName = n.GetStringValue(); } },
                 { "dropoffSiteId", n => { DropoffSiteId = n.GetStringValue(); } },
                 { "pickupAddress", n => { PickupAddress = n.GetObjectValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.PickupAddressResponsesData>(global::EBay.OtherApis.Generated.InternationalShipping.Models.PickupAddressResponsesData.CreateFromDiscriminatorValue); } },
-                { "pickupTime", n => { PickupTime = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "pickupTime", n => { PickupTime = n.GetEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.PickUpTimeTypeEnum>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.ConsignTypeEnum>(); } },
             };
         }
         /// <summary>
@@ -121,8 +109,8 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
             writer.WriteStringValue("consignPreferenceName", ConsignPreferenceName);
             writer.WriteStringValue("dropoffSiteId", DropoffSiteId);
             writer.WriteObjectValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.PickupAddressResponsesData>("pickupAddress", PickupAddress);
-            writer.WriteStringValue("pickupTime", PickupTime);
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.PickUpTimeTypeEnum>("pickupTime", PickupTime);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.ConsignTypeEnum>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

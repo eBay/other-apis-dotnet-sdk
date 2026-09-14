@@ -29,15 +29,9 @@ namespace EBay.OtherApis.Generated.Translation.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The language of the input text to be translated. Not all &lt;b&gt;LanguageEnum&lt;/b&gt; values are supported in this field. For a full list of supported language pairings, see the Supported languages &lt;a href=&quot;/develop/guides-v2/other-apis/other-apis-guide#supported-languages&quot;target=&quot;_blank &quot;&gt;table&lt;/a&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/translation/types/api:LanguageEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? From { get; set; }
-#nullable restore
-#else
-        public string From { get; set; }
-#endif
-        /// <summary>The input text to translate. The maximum number of characters permitted is determined by the &lt;b&gt;translationContext&lt;/b&gt; value:&lt;ul&gt;&lt;li&gt;&lt;code&gt;ITEM_TITLE&lt;/code&gt;: 1000 characters maximum&lt;/li&gt;&lt;li&gt;&lt;code&gt;ITEM_DESCRIPTION&lt;/code&gt;: 20,000 characters maximum.&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; When translating &lt;code&gt;ITEM_DESCRIPTION&lt;/code&gt; text, HTML/CSS markup and links can be included and will not count toward this 20,000 character limit.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Currently, only one input string can be translated per API call. Support for multiple continuous text strings is expected in the future.&lt;/span&gt;</summary>
+        /// <summary>The language of the input text to be translated. Not all &lt;b&gt;LanguageEnum&lt;/b&gt; values are supported in this field. For a full list of supported language pairings, see the Supported languages &lt;a href=&quot;https://developer.ebay.com/develop/guides-v2/other-apis/other-apis-guide#supported-languages&quot; target=&quot;_blank &quot;&gt;table&lt;/a&gt;.</summary>
+        public global::EBay.OtherApis.Generated.Translation.Models.LanguageEnum? From { get; set; }
+        /// <summary>The input text to translate. The maximum number of characters permitted is determined by the &lt;b&gt;translationContext&lt;/b&gt; value:&lt;ul&gt;&lt;li&gt;&lt;code&gt;ITEM_TITLE&lt;/code&gt;: 1000 characters maximum&lt;/li&gt;&lt;li&gt;&lt;code&gt;ITEM_DESCRIPTION&lt;/code&gt;: 20,000 characters maximum.&lt;br&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; When translating &lt;code&gt;ITEM_DESCRIPTION&lt;/code&gt; text, HTML/CSS markup and links can be included and will not count toward this 20,000 character limit.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;span class=&quot;tablenote&quot;&gt;&lt;b&gt;Note:&lt;/b&gt; Currently, only one input string can be translated per API call. Support for multiple continuous text strings are expected in the future.&lt;/span&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Text { get; set; }
@@ -45,22 +39,10 @@ namespace EBay.OtherApis.Generated.Translation.Models
 #else
         public List<string> Text { get; set; }
 #endif
-        /// <summary>The target language for the translation of the input text. Not all &lt;b&gt;LanguageEnum&lt;/b&gt; values are supported in this field. For a full list of supported language pairings, see the Supported languages &lt;a href=&quot;/develop/guides-v2/other-apis/other-apis-guide#supported-languages&quot;target=&quot;_blank &quot;&gt;table&lt;/a&gt;. For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/translation/types/api:LanguageEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? To { get; set; }
-#nullable restore
-#else
-        public string To { get; set; }
-#endif
-        /// <summary>Input the listing entity to be translated.&lt;br&gt;&lt;br&gt;&lt;b&gt;Valid Values:&lt;/b&gt; &lt;code&gt;ITEM_TITLE&lt;/code&gt; and &lt;code&gt;ITEM_DESCRIPTION&lt;/code&gt;&lt;/p&gt; For implementation help, refer to &lt;a href=&apos;https://developer.ebay.com/api-docs/commerce/translation/types/api:TranslationContextEnum&apos;&gt;eBay API documentation&lt;/a&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TranslationContext { get; set; }
-#nullable restore
-#else
-        public string TranslationContext { get; set; }
-#endif
+        /// <summary>The target language for the translation of the input text. Not all &lt;b&gt;LanguageEnum&lt;/b&gt; values are supported in this field. For a full list of supported language pairings, see the Supported languages &lt;a href=&quot;https://developer.ebay.com/develop/guides-v2/other-apis/other-apis-guide#supported-languages&quot; target=&quot;_blank &quot;&gt;table&lt;/a&gt;.</summary>
+        public global::EBay.OtherApis.Generated.Translation.Models.LanguageEnum? To { get; set; }
+        /// <summary>Input the listing entity to be translated.&lt;br&gt;&lt;br&gt;&lt;b&gt;Valid Values:&lt;/b&gt; &lt;code&gt;ITEM_TITLE&lt;/code&gt; and &lt;code&gt;ITEM_DESCRIPTION&lt;/code&gt;&lt;/p&gt;</summary>
+        public global::EBay.OtherApis.Generated.Translation.Models.TranslationContextEnum? TranslationContext { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::EBay.OtherApis.Generated.Translation.Models.TranslateRequest"/> and sets the default values.
         /// </summary>
@@ -86,10 +68,10 @@ namespace EBay.OtherApis.Generated.Translation.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "from", n => { From = n.GetStringValue(); } },
+                { "from", n => { From = n.GetEnumValue<global::EBay.OtherApis.Generated.Translation.Models.LanguageEnum>(); } },
                 { "text", n => { Text = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "to", n => { To = n.GetStringValue(); } },
-                { "translationContext", n => { TranslationContext = n.GetStringValue(); } },
+                { "to", n => { To = n.GetEnumValue<global::EBay.OtherApis.Generated.Translation.Models.LanguageEnum>(); } },
+                { "translationContext", n => { TranslationContext = n.GetEnumValue<global::EBay.OtherApis.Generated.Translation.Models.TranslationContextEnum>(); } },
             };
         }
         /// <summary>
@@ -99,10 +81,10 @@ namespace EBay.OtherApis.Generated.Translation.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("from", From);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.Translation.Models.LanguageEnum>("from", From);
             writer.WriteCollectionOfPrimitiveValues<string>("text", Text);
-            writer.WriteStringValue("to", To);
-            writer.WriteStringValue("translationContext", TranslationContext);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.Translation.Models.LanguageEnum>("to", To);
+            writer.WriteEnumValue<global::EBay.OtherApis.Generated.Translation.Models.TranslationContextEnum>("translationContext", TranslationContext);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

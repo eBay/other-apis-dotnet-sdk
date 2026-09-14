@@ -35,6 +35,7 @@ public sealed class VeroClient
     }
 
     /// <summary>
+    /// <b>Note:</b> All methods of the <b>VeRO API</b> have been deprecated, and will be decommissioned on September 30th, 2026.
     /// Important! </b>"&gt;<b>Important!</b> You must be a member of the Verified Rights Owner (VeRO) Program to use this call.
     /// This method is used to retrieve the details of a specific VeRO reason code, including a description of the code and the marketplace associated with the code.
     /// The <b>vero_reason_code_id</b> of the VeRO reason code for which to retrieve details is required as a path parameter.
@@ -53,6 +54,7 @@ public sealed class VeroClient
         }, ct));
 
     /// <summary>
+    /// <b>Note:</b> All methods of the <b>VeRO API</b> have been deprecated, and will be decommissioned on September 30th, 2026.
     /// Important! </b>"&gt;<b>Important!</b> You must be a member of the Verified Rights Owner (VeRO) Program to use this call.
     /// This method is used to retrieve the details of an array of VeRO reason codes. This information includes the descriptions of each code, as well as the marketplace associated with each code.
     /// If the <b>X-EBAY-C-MARKETPLACE-ID</b> header is present, only VeRO reason codes for that specific site will be returned. If this header is not included, all reason codes for all sites are returned.
@@ -75,6 +77,7 @@ public sealed class VeroClient
         }, ct));
 
     /// <summary>
+    /// <b>Note:</b> All methods of the <b>VeRO API</b> have been deprecated, and will be decommissioned on September 30th, 2026.
     /// Important! </b>"&gt;<b>Important!</b> You must be a member of the Verified Rights Owner (VeRO) Program to use this call.
     /// This method can be used to create a VeRO report for a listing. VeRO reports can be used to report items that your copyright, trademark, or other intellectual property rights.
     /// The <b>itemId</b> of the item being reported must be provided in the request, as well as the <b>veroReasonCodeId</b> of the claimed infringement.
@@ -94,6 +97,7 @@ public sealed class VeroClient
         }, ct));
 
     /// <summary>
+    /// <b>Note:</b> All methods of the <b>VeRO API</b> have been deprecated, and will be decommissioned on September 30th, 2026.
     /// Important! </b>"&gt;<b>Important!</b> You must be a member of the Verified Rights Owner (VeRO) Program to use this call.
     /// This method can be used to retrieve status information about a VeRO report you have submitted to eBay for copyright, trademark, or other intellectual property rights infringement.
     /// The <b>vero_report_id</b> path parameter is used to specify the eBay report for which to retrieve status information.

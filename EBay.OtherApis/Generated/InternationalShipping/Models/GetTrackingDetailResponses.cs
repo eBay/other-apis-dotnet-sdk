@@ -22,7 +22,7 @@ using System;
 namespace EBay.OtherApis.Generated.InternationalShipping.Models
 {
     /// <summary>
-    /// This container defines the response container for the &lt;b&gt;getTracking&lt;/b&gt; method.
+    /// This type defines the response container for the &lt;b&gt;getTracking&lt;/b&gt; method.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GetTrackingDetailResponses : IAdditionalDataHolder, IParsable

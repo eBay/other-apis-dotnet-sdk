@@ -14,14 +14,14 @@
 
 | Operation | Previous parameters | Current parameters |
 | --- | --- | --- |
-| `GetVeroReasonCodesAsync` | `(string?, RequestOptions?, CancellationToken)` | `(string?, string?, RequestOptions?, CancellationToken)` |
-| `GetVeroReportAsync` | `(string, string?, RequestOptions?, CancellationToken)` | `(string, string?, string?, RequestOptions?, CancellationToken)` |
-| `GetVeroReportItemsAsync` | `(string?, RequestOptions?, CancellationToken)` | `(string?, string?, string?, string?, string?, RequestOptions?, CancellationToken)` |
+| `GetVeroReasonCodesAsync` | `(string? accessToken, RequestOptions? requestOptions, CancellationToken ct)` | `(string? xEBAYCMARKETPLACEID, string? accessToken, RequestOptions? requestOptions, CancellationToken ct)` |
+| `GetVeroReportAsync` | `(string veroReportId, string? accessToken, RequestOptions? requestOptions, CancellationToken ct)` | `(string veroReportId, string? includeItemDetails, string? accessToken, RequestOptions? requestOptions, CancellationToken ct)` |
+| `GetVeroReportItemsAsync` | `(string? accessToken, RequestOptions? requestOptions, CancellationToken ct)` | `(string? filter, string? itemId, string? limit, string? offset, string? accessToken, RequestOptions? requestOptions, CancellationToken ct)` |
 
 ### Added
 
 - Client `InternationalShippingClient`
 - Client `VeroApiV2Client`
-- `InternationalShippingClient.GetCpscProfilesAsync(string?, string?, string?, RequestOptions?, CancellationToken)`
+- `InternationalShippingClient.GetCpscProfilesAsync(string? limit, string? offset, string? accessToken, RequestOptions? requestOptions, CancellationToken ct)`
 - Member `OtherApisClient.VeroApiV2`
 - Member `OtherApisConfiguration.VeroApiV2BaseUrl`

@@ -1,25 +1,27 @@
 # ChangeLog
 
-## 1.1.0 (09/14/2026)
+## 0.2.0 (09/14/2026)
 
-- The following clients were added:
-  - `VeroApiV2Client`
-- The following operations were added to `InternationalShippingClient`:
-  - `GetCpscProfilesAsync(string?, string?, string?, RequestOptions?, CancellationToken)`
-- The following members were added to `OtherApisClient`:
-  - `VeroApiV2`
-- The following members were added to `OtherApisConfiguration`:
-  - `VeroApiV2BaseUrl`
+### Breaking changes
 
-## 1.0.0 (09/14/2026)
+#### Removed clients
 
-**Breaking changes**
-- The following clients were removed:
-  - `ShippingClient`
-- The following operations changed signature on `VeroClient`:
-  - `GetVeroReasonCodesAsync`: `(string?, RequestOptions?, CancellationToken)` → `(string?, string?, RequestOptions?, CancellationToken)`
-  - `GetVeroReportAsync`: `(string, string?, RequestOptions?, CancellationToken)` → `(string, string?, string?, RequestOptions?, CancellationToken)`
-  - `GetVeroReportItemsAsync`: `(string?, RequestOptions?, CancellationToken)` → `(string?, string?, string?, string?, string?, RequestOptions?, CancellationToken)`
+- `ShippingClient`
 
-- The following clients were added:
-  - `InternationalShippingClient`
+#### Changed signatures
+
+`VeroClient`:
+
+| Operation | Previous parameters | Current parameters |
+| --- | --- | --- |
+| `GetVeroReasonCodesAsync` | `(string? accessToken, RequestOptions? requestOptions, CancellationToken ct)` | `(string? xEBAYCMARKETPLACEID, string? accessToken, RequestOptions? requestOptions, CancellationToken ct)` |
+| `GetVeroReportAsync` | `(string veroReportId, string? accessToken, RequestOptions? requestOptions, CancellationToken ct)` | `(string veroReportId, string? includeItemDetails, string? accessToken, RequestOptions? requestOptions, CancellationToken ct)` |
+| `GetVeroReportItemsAsync` | `(string? accessToken, RequestOptions? requestOptions, CancellationToken ct)` | `(string? filter, string? itemId, string? limit, string? offset, string? accessToken, RequestOptions? requestOptions, CancellationToken ct)` |
+
+### Added
+
+- Client `InternationalShippingClient`
+- Client `VeroApiV2Client`
+- `InternationalShippingClient.GetCpscProfilesAsync(string? limit, string? offset, string? accessToken, RequestOptions? requestOptions, CancellationToken ct)`
+- Member `OtherApisClient.VeroApiV2`
+- Member `OtherApisConfiguration.VeroApiV2BaseUrl`

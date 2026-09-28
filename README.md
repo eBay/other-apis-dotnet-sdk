@@ -4,7 +4,7 @@ A .NET SDK for eBay Other APIs. Wraps four REST APIs (Kiota-generated) behind a 
 
 ## Target framework
 
-`net10.0`
+`net8.0`, `net9.0`, and `net10.0`
 
 ## What's included
 

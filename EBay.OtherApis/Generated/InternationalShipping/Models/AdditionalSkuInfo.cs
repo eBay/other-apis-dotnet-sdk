@@ -19,17 +19,17 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace EBay.OtherApis.Generated.Vero.Models
+namespace EBay.OtherApis.Generated.InternationalShipping.Models
 {
     /// <summary>
-    /// This type defines the parameters returned in an error.
+    /// This array is used if one or more products in the package requires additional SKU-related name-value pairs.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ErrorParameter : IAdditionalDataHolder, IParsable
+    public partial class AdditionalSkuInfo : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The object of the error.</summary>
+        /// <summary>The name of the additional SKU information attribute.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -37,7 +37,7 @@ namespace EBay.OtherApis.Generated.Vero.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The value of the object.</summary>
+        /// <summary>The value of the additional SKU information attribute.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Value { get; set; }
@@ -46,21 +46,21 @@ namespace EBay.OtherApis.Generated.Vero.Models
         public string Value { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::EBay.OtherApis.Generated.Vero.Models.ErrorParameter"/> and sets the default values.
+        /// Instantiates a new <see cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.AdditionalSkuInfo"/> and sets the default values.
         /// </summary>
-        public ErrorParameter()
+        public AdditionalSkuInfo()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::EBay.OtherApis.Generated.Vero.Models.ErrorParameter"/></returns>
+        /// <returns>A <see cref="global::EBay.OtherApis.Generated.InternationalShipping.Models.AdditionalSkuInfo"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::EBay.OtherApis.Generated.Vero.Models.ErrorParameter CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::EBay.OtherApis.Generated.InternationalShipping.Models.AdditionalSkuInfo CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::EBay.OtherApis.Generated.Vero.Models.ErrorParameter();
+            return new global::EBay.OtherApis.Generated.InternationalShipping.Models.AdditionalSkuInfo();
         }
         /// <summary>
         /// The deserialization information for the current model

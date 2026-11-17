@@ -20,7 +20,6 @@ public sealed class OtherApisConfiguration
     private string _internationalShippingBaseUrl = "https://api.ebay.com/sell/edelivery_international_shipping/v1";
     private string _translationBaseUrl = "https://api.ebay.com/commerce/translation/v1_beta";
     private string _veroApiV2BaseUrl = "https://api.ebay.com/commerce/vero/v2";
-    private string _veroBaseUrl = "https://api.ebay.com/commerce/vero/v1";
 
     public string IdentityBaseUrl
     {
@@ -46,12 +45,6 @@ public sealed class OtherApisConfiguration
         set => _veroApiV2BaseUrl = RequireHttps(value);
     }
 
-    public string VeroBaseUrl
-    {
-        get => _veroBaseUrl;
-        set => _veroBaseUrl = RequireHttps(value);
-    }
-
     /// <summary>Fallback bearer token used when no per-call accessToken is supplied.</summary>
     public string? AccessToken { get; set; }
 
@@ -66,7 +59,7 @@ public sealed class OtherApisConfiguration
     public bool DiagnosticLogging { get; set; }
 
     /// <summary>Timeout applied to all HTTP requests. Defaults to 30 seconds.</summary>
-    public TimeSpan HttpTimeout { get; init; } = TimeSpan.FromSeconds(30);
+    public TimeSpan HttpTimeout { get; set; } = TimeSpan.FromSeconds(30);
 
     /// <summary>Default headers applied to every REST request. Per-call RequestOptions override these.</summary>
     public RequestOptions DefaultRequestOptions { get; set; } = new();
@@ -77,15 +70,52 @@ public sealed class OtherApisConfiguration
         "international-shipping" => _internationalShippingBaseUrl,
         "translation" => _translationBaseUrl,
         "vero-api-v2" => _veroApiV2BaseUrl,
-        "vero" => _veroBaseUrl,
         _ => throw new ArgumentOutOfRangeException(nameof(apiId), apiId, "Unknown REST API.")
     };
 
-    internal static IEnumerable<string> AllowedHosts =>
-    [
+    /// <summary>eBay hosts that receive the access token by default.</summary>
+    public static IReadOnlyList<string> DefaultAllowedHosts { get; } = Array.AsReadOnly(new[]
+    {
+        "api.ebay.com",
+        "api.sandbox.ebay.com",
         "apiz.ebay.com",
-        "api.ebay.com"
-    ];
+        "apiz.sandbox.ebay.com"
+    });
+
+    /// <summary>
+    /// Additional hosts the SDK trusts with the access token, for example <c>api.sandbox.ebay.com</c>.
+    /// Every configured base URL must use a host from <see cref="DefaultAllowedHosts"/> or this list;
+    /// the client constructor throws otherwise. Requests to any other host never carry the token.
+    /// </summary>
+    public IList<string> AllowedHosts { get; set; } = new List<string>();
+
+    internal ISet<string> TrustedHosts() =>
+        new HashSet<string>(DefaultAllowedHosts.Concat(AllowedHosts ?? new List<string>()), StringComparer.OrdinalIgnoreCase);
+
+    internal bool IsTrustedHost(Uri? uri) =>
+        uri is not null
+        && string.Equals(uri.Scheme, Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase)
+        && TrustedHosts().Contains(uri.Host);
+
+    internal void ValidateTrustedHosts()
+    {
+        var trusted = TrustedHosts();
+        foreach (var (name, url) in new (string Name, string Url)[]
+        {
+            ("IdentityBaseUrl", IdentityBaseUrl),
+            ("InternationalShippingBaseUrl", InternationalShippingBaseUrl),
+            ("TranslationBaseUrl", TranslationBaseUrl),
+            ("VeroApiV2BaseUrl", VeroApiV2BaseUrl)
+        })
+        {
+            var host = new Uri(url).Host;
+            if (!trusted.Contains(host))
+            {
+                throw new InvalidOperationException(
+                    $"{name} uses host '{host}', which is not trusted with the access token. Add it to OtherApisConfiguration.AllowedHosts.");
+            }
+        }
+    }
 
     private static string RequireHttps(string value)
     {

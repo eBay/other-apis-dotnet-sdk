@@ -20,38 +20,17 @@ namespace EBay.OtherApis.Extensions;
 
 public static class ServiceCollectionExtensions
 {
+    /// <summary>
+    /// Registers <paramref name="config"/> and a singleton <see cref="OtherApisClient"/>. The client
+    /// owns its HTTP connections and is disposed with the container. Reach the individual APIs through
+    /// its properties.
+    /// </summary>
     public static IServiceCollection AddOtherApisSdk(
         this IServiceCollection services,
         OtherApisConfiguration config)
     {
         services.AddSingleton(config);
-        services.AddSingleton<ITokenContext, AsyncLocalTokenContext>();
-
-        foreach (var endpoint in OtherApisClient.RestEndpointNames)
-        {
-            var id = endpoint.ApiId;
-            services.AddHttpClient(endpoint.HttpClientName, (sp, c) =>
-                    c.BaseAddress = new Uri(sp.GetRequiredService<OtherApisConfiguration>().RestBaseUrl(id)))
-                .ConfigureHttpClient((sp, c) =>
-                    c.Timeout = sp.GetRequiredService<OtherApisConfiguration>().HttpTimeout)
-                .AddHttpMessageHandler(sp =>
-                    new DiagnosticLoggingHandler(sp.GetRequiredService<OtherApisConfiguration>()));
-        }
-
-        services.AddScoped<OtherApisClient>(sp =>
-        {
-            var factory = sp.GetRequiredService<IHttpClientFactory>();
-            return new OtherApisClient(
-                sp.GetRequiredService<OtherApisConfiguration>(),
-                factory,
-                sp.GetRequiredService<ITokenContext>());
-        });
-
-        services.AddScoped(sp => sp.GetRequiredService<OtherApisClient>().Identity);
-        services.AddScoped(sp => sp.GetRequiredService<OtherApisClient>().InternationalShipping);
-        services.AddScoped(sp => sp.GetRequiredService<OtherApisClient>().Translation);
-        services.AddScoped(sp => sp.GetRequiredService<OtherApisClient>().VeroApiV2);
-        services.AddScoped(sp => sp.GetRequiredService<OtherApisClient>().Vero);
+        services.AddSingleton(_ => new OtherApisClient(config));
         return services;
     }
 }

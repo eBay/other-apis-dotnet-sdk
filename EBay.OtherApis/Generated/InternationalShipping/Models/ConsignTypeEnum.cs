@@ -37,6 +37,10 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         #pragma warning disable CS1591
         RDC,
         #pragma warning restore CS1591
+        [EnumMember(Value = "RDC_DROP_OFF")]
+        #pragma warning disable CS1591
+        RDC_DROP_OFF,
+        #pragma warning restore CS1591
         [EnumMember(Value = "CN_POST_DROP_OFF")]
         #pragma warning disable CS1591
         CN_POST_DROP_OFF,

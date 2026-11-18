@@ -53,7 +53,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
 #else
         public string ComplaintReason { get; set; }
 #endif
-        /// <summary>The type of complaint being filed.&lt;br&gt;&lt;br&gt;&lt;b&gt;Valid values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;ABNORMAL_COLLECTION_COMPLAINT&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;LOST_PACKAGE_COMPLAINT&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
+        /// <summary>The type of complaint being filed.&lt;br&gt;&lt;br&gt;&lt;b&gt;Valid values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;ABNORMAL_COLLECTION_COMPLAINT&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;ABNORMAL_PICKUP_COMPLAINT&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;LOST_PACKAGE_COMPLAINT&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
         public global::EBay.OtherApis.Generated.InternationalShipping.Models.ComplaintTypeEnum? ComplaintType { get; set; }
         /// <summary>The unique identifier of the address associated with the complaint.&lt;br&gt;&lt;br&gt;This field is required if the complain being filed is associated with a specific address.</summary>
         public int? PreferenceId { get; set; }

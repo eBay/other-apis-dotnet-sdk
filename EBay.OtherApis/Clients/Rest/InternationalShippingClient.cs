@@ -35,7 +35,7 @@ public sealed class InternationalShippingClient
     }
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method is used to retrieve the actual weight and cost for one or more packages based on the provided input criteria.
     /// Responses can be filtered by the <b>tracking_numbers</b> query parameter. If this parameter is used, actual costs for each package associated with the provided tracking numbers are returned.
     /// Alternatively, responses can be filtered by the <b>trans_begin_time</b> and <b>trans_end_time</b> query parameters. If these parameters are used, the actual costs of all packages created within this date range are returned.
@@ -69,7 +69,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to retrieve information about all the ship-from and/or return addresses associated with a seller's eDIS account.
     /// </summary>
     public Task<GetAddressPreferenceListResponses?> GetAddressPreferencesAsync(
@@ -85,7 +85,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to create an address on your eDIS account.
     /// The following types of addresses can be created through this method:
     /// - <c>SHIP_FROM_ADDRESS</c>
@@ -106,7 +106,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to retrieve information about the EU Authorized Representative (AR) agent(s) associated with a seller's eDIS account.
     /// An EU AR agent acts as a liaison between non-EU manufacturers and European regulatory authorities to ensure compliance with EU regulations. This method returns contact information about each agent, as well as their eBay ID and the countries that they support.
     /// </summary>
@@ -133,7 +133,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method is used to retrieve all battery qualifications associated with your eDIS account. This includes the type, electronic qualification ID and name, and expiration date for each battery.
     /// </summary>
     public Task<GetBatteryQualListResponses?> GetBatteryQualificationsAsync(
@@ -159,7 +159,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method is used to cancel a bundle.
     /// The <b>bundleId</b> value of the bundle to be canceled must be input as a path parameter in the request.
     /// <b>Note:</b> Bundles cannot be canceled if they are currently being processed.
@@ -178,7 +178,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method is used to create a bundle for multiple packages in an order.
     /// To create a bundle, the consign address to be associated with the bundle and the tracking numbers of the packages to be used in the bundle must be specified in the request.
     /// If the call is successful, the <b>bundleId</b> for the newly created bundle will be returned.
@@ -198,7 +198,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method is used to retrieved information about a specific bundle based on the provided bundle ID value.
     /// The <b>bundle_id</b> value of the bundle to be retrieved must be input as a path parameter in the request. If the call is successful, information about the bundle is returned, such as its associated consign preference ID and the tracking numbers of each package in the bundle.
     /// </summary>
@@ -216,7 +216,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to retrieve the bundle label for a bundle of packages.
     /// The bundle for which to retrieve a bundle label is specified through the <b>bundleId</b> path parameter.
     /// Bundle labels will be returned as base64 string values which can be converted to PDF files.
@@ -235,7 +235,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to create a complaint about a shipment order. Complaints can be filed if there is a pickup delay on an order or if an item has been lost in transit.
     /// The complaint reason, complaint type, and the date the issue occurred must be specified in the request. If the complaint is being filed for a missing package, the affected <b>packageId</b> values must also be specified in the <b>affectedPackages</b> array.
     /// If the call was successful, HTTP status code <b>201 Created</b> will be returned, and the complaint will be created.
@@ -254,7 +254,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to retrieve information about all the pickup, drop-off, and/or forward deployment consign addresses associated with a seller's eDIS account.
     /// </summary>
     public Task<GetConsignPreferenceListResponses?> GetConsignPreferencesAsync(
@@ -270,7 +270,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to create a consign address.
     /// The following types of address preferences can be created via this method:
     /// - <c>PICK_UP</c>
@@ -296,7 +296,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to retrieve all Consumer Product Safety Committee (CPSC) profiles associated with a user's account.
     /// Pagination query parameters are provided that allow users to control how many profiles are returned in the response.
     /// </summary>
@@ -323,7 +323,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to retrieve metadata for one or more drop-off sites associated with a seller's eDIS account.
     /// Pagination query parameters are provided that allow users to control how many drop-off site locations are returned in the response.
     /// </summary>
@@ -350,7 +350,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to retrieve the handover sheet for one or more packages in a pickup request.
     /// The tracking numbers for the packages for which to retrieve handover sheets are specified through the <b>tracking_numbers</b> query parameter.
     /// The retrieved handover sheet will be returned as a base64 string value, and can be used for confirmation with a pickup contact. Only one handover sheet will be returned for the specified packages.
@@ -370,7 +370,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to retrieve shipping labels for the one or more specified packages.
     /// The packages for which to retrieve shipping labels can be specified through the <b>tracking_numbers</b> query parameter. The page size and print preference settings for the shipping label(s) can also be specified through the query parameters.
     /// Shipping labels are returned as base64 string values which can be converted to PDF files. A separate file will be returned for each tracking number specified in the request.
@@ -400,7 +400,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to cancel multiple packages and their associated tracking numbers.
     /// The package ID values for the packages to be canceled must be input in the <b>packageIds</b> array of the request.
     /// <b>Note:</b> Packages cannot be cancelled if they are currently being processed.
@@ -419,7 +419,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to confirm the shipping order for multiple packages.
     /// The package ID values for the packages to be confirmed must be input in the <b>packageIds</b> array of the request.
     /// After a package is confirmed, the estimated cost will be frozen in your wallet and the pickup request will be submitted.
@@ -438,7 +438,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to delete multiple packages.
     /// The package ID values for the packages to be deleted must be input in the <b>packageIds</b> array of the request.
     /// <b>Note:</b> Packages can only be deleted once they have been cancelled through the <b>cancelPackage</b> or <b>bulkCancelPackages</b> methods and no longer have a tracking number associated with them.
@@ -457,7 +457,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to cancel a package and its associated tracking number.
     /// The <b>packageId</b> value of the package to be canceled must be input as a path parameter in the request.
     /// <b>Note:</b> Packages cannot be canceled if they are currently being processed.
@@ -476,7 +476,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to clone a package for redelivery, resending the package with the same information input during the <b>createPackage</b> call.
     /// The <b>packageId</b> value of the package to be cloned must be input as a path parameter in the request.
     /// </summary>
@@ -494,7 +494,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to confirm the shipping order for a package.
     /// The <b>packageId</b> value of the package to be confirmed must be input as a path parameter in the request.
     /// After confirmation the estimated cost will be frozen in your wallet and the pickup request will be submitted.
@@ -513,7 +513,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to create a package for an order.
     /// To create a package, the package's shipping information, such as the dimensions, weight, ship from, and ship to address, as well as information about the item(s) it contains must be specified in the request.
     /// If the call is successful, the <b>packageId</b> and tracking number for the newly created package will be returned.
@@ -533,7 +533,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to retrieve a package based on the provided package ID value.
     /// The <b>packageId</b> value of the package to be retrieved must be input as a path parameter in the request. If the call is successful, information about the package is returned, such as the package's shipping information (its dimensions, weight, ship from, and ship to address) and information about the item(s) it contains.
     /// </summary>
@@ -551,7 +551,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to delete a package.
     /// The <b>packageId</b> value of the package to be deleted must be input as a path parameter in the request. If the call is successful, HTTP status code <b>204 No Content</b> will be returned, and the package will be deleted.
     /// <b>Note:</b> Packages can only be deleted once they have been cancelled through the <b>cancelPackage</b> or <b>bulkCancelPackages</b> methods and no longer have a tracking number associated with them.
@@ -570,9 +570,9 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to retrieve one or more packages based on the provided order line item ID.
-    /// This method can be followed up with <see href="/develop/api/sell/edelivery_international_shipping_api#sell-edelivery_international_shipping_api-package-getpackage">getPackage</see> call to retrieve more detailed information about a specific package.
+    /// This method can be followed up with <see href="https://developer.ebay.com/develop/api/sell/edelivery_international_shipping_api#sell-edelivery_international_shipping_api-package-getpackage">getPackage</see> call to retrieve more detailed information about a specific package.
     /// </summary>
     public Task<GetItemPackageIdResponses?> GetPackagesByLineItemIDAsync(
         string orderLineItemId,
@@ -588,7 +588,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to retrieve metadata on available shipping services, such as the name, description, and directions.
     /// </summary>
     public Task<GetServiceListResponses?> GetServicesAsync(
@@ -614,7 +614,7 @@ public sealed class InternationalShippingClient
         }, ct));
 
     /// <summary>
-    /// Important! </b>"&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
+    /// Important! "&gt;<b>Important!</b> This method is only available for Greater-China based sellers with an active eDIS account.
     /// This method can be used to retrieve tracking event details for a package associated with the provided tracking number.
     /// Each tracking event is returned in the <b>trackingDetails</b> array and includes the description, location, time, and status of the event.
     /// </summary>

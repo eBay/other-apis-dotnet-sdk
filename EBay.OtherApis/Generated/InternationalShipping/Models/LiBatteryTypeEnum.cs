@@ -45,6 +45,10 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         #pragma warning disable CS1591
         DRY_PACKED_WITH_EQUIPMENT,
         #pragma warning restore CS1591
+        [EnumMember(Value = "DRY_BATTERY_PACKED_WITH_EQUIPMENT")]
+        #pragma warning disable CS1591
+        DRY_BATTERY_PACKED_WITH_EQUIPMENT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SPECIAL_GOODS_WITH_NO_BATTERY")]
         #pragma warning disable CS1591
         SPECIAL_GOODS_WITH_NO_BATTERY,

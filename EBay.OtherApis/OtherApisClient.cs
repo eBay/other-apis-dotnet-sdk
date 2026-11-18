@@ -17,7 +17,6 @@ using EBay.OtherApis.Configuration;
 using EBay.OtherApis.Generated.Identity;
 using EBay.OtherApis.Generated.InternationalShipping;
 using EBay.OtherApis.Generated.Translation;
-using EBay.OtherApis.Generated.Vero;
 using EBay.OtherApis.Generated.VeroApiV2;
 using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
@@ -27,73 +26,88 @@ using System.Net.Http;
 
 namespace EBay.OtherApis;
 
+/// <summary>
+/// Entry point for the Other APIs APIs. The client owns its HTTP connections:
+/// create one per application (or register it with <c>AddOtherApisSdk</c>, which adds it
+/// as a singleton) and dispose it on shutdown. Reach the individual APIs through its properties.
+/// </summary>
 public class OtherApisClient : IDisposable
 {
-    internal const string IdentityClientName = "OtherApisClient.Identity";
-    internal const string InternationalShippingClientName = "OtherApisClient.InternationalShipping";
-    internal const string TranslationClientName = "OtherApisClient.Translation";
-    internal const string VeroApiV2ClientName = "OtherApisClient.VeroApiV2";
-    internal const string VeroClientName = "OtherApisClient.Vero";
-
     private readonly HttpClient[] _ownedClients;
 
     public IdentityClient Identity { get; private set; } = null!;
     public InternationalShippingClient InternationalShipping { get; private set; } = null!;
     public TranslationClient Translation { get; private set; } = null!;
     public VeroApiV2Client VeroApiV2 { get; private set; } = null!;
-    public VeroClient Vero { get; private set; } = null!;
 
-    /// <summary>
-    /// DI-friendly constructor. Named HttpClients come from <see cref="IHttpClientFactory"/>.
-    /// </summary>
-    internal OtherApisClient(
-        OtherApisConfiguration config,
-        IHttpClientFactory factory,
-        ITokenContext tokenContext)
+    /// <summary>Creates a client with its own HTTP connections.</summary>
+    public OtherApisClient(OtherApisConfiguration config)
+        : this(config, CreateDefaultPrimaryHandler, disposeHandlers: true)
     {
-        _ownedClients = [];
-        var auth = new BaseBearerTokenAuthenticationProvider(new KiotaAuthProvider(config, tokenContext));
-        InitializeRestClients(auth, config, tokenContext, endpoint => factory.CreateClient(endpoint.HttpClientName));
     }
 
     /// <summary>
-    /// Standalone constructor for use outside DI (tests, scripts).
-    /// Creates its own HttpClients with DiagnosticLoggingHandler.
+    /// Creates a client that sends every request through <paramref name="primaryHandler"/>, for example to
+    /// configure a proxy or client certificates, or to substitute a test double. The handler is shared by
+    /// all APIs and is not disposed by this client.
     /// </summary>
-    public OtherApisClient(OtherApisConfiguration config)
+    public OtherApisClient(OtherApisConfiguration config, HttpMessageHandler primaryHandler)
+        : this(config, RequireHandler(primaryHandler), disposeHandlers: false)
     {
+    }
+
+    private OtherApisClient(
+        OtherApisConfiguration config,
+        Func<HttpMessageHandler> primaryHandler,
+        bool disposeHandlers)
+    {
+        config.ValidateTrustedHosts();
         var tokenContext = new AsyncLocalTokenContext();
         var auth = new BaseBearerTokenAuthenticationProvider(new KiotaAuthProvider(config, tokenContext));
         var owned = new List<HttpClient>();
-        InitializeRestClients(auth, config, tokenContext, endpoint =>
+        HttpClient Build(DelegatingHandler logging, string baseUrl)
         {
-            var client = BuildStandaloneHttpClient(config, endpoint.BaseUrl);
+            logging.InnerHandler = primaryHandler();
+            var client = new HttpClient(logging, disposeHandlers)
+            {
+                BaseAddress = new Uri(baseUrl),
+                Timeout = config.HttpTimeout
+            };
             owned.Add(client);
             return client;
-        });
+        }
+        InitializeRestClients(auth, config, tokenContext, endpoint => Build(new DiagnosticLoggingHandler(config), endpoint.BaseUrl));
         _ownedClients = [.. owned];
     }
 
-    private static HttpClient BuildStandaloneHttpClient(OtherApisConfiguration config, string baseUrl)
+    private static HttpMessageHandler CreateDefaultPrimaryHandler() =>
+#if NETFRAMEWORK
+        // .NET Framework defaults to 2 connections per host outside ASP.NET.
+        new HttpClientHandler { MaxConnectionsPerServer = 64 };
+#else
+        new SocketsHttpHandler { PooledConnectionLifetime = TimeSpan.FromMinutes(2) };
+#endif
+
+    private static Func<HttpMessageHandler> RequireHandler(HttpMessageHandler primaryHandler)
     {
-        var handler = new DiagnosticLoggingHandler(config)
+#if NETFRAMEWORK
+        if (primaryHandler is null)
         {
-            InnerHandler = new SocketsHttpHandler { PooledConnectionLifetime = TimeSpan.FromMinutes(2) }
-        };
-        return new HttpClient(handler) { BaseAddress = new Uri(baseUrl), Timeout = config.HttpTimeout };
+            throw new ArgumentNullException(nameof(primaryHandler));
+        }
+#else
+        ArgumentNullException.ThrowIfNull(primaryHandler);
+#endif
+        return () => primaryHandler;
     }
 
-    internal static IReadOnlyList<(string ApiId, string HttpClientName)> RestEndpointNames { get; } =
-    [
-        ("identity", IdentityClientName),
-        ("international-shipping", InternationalShippingClientName),
-        ("translation", TranslationClientName),
-        ("vero-api-v2", VeroApiV2ClientName),
-        ("vero", VeroClientName)
-    ];
-
     internal static IReadOnlyList<RestEndpoint> RestEndpoints(OtherApisConfiguration config) =>
-        [.. RestEndpointNames.Select(name => new RestEndpoint(name.ApiId, name.HttpClientName, config.RestBaseUrl(name.ApiId)))];
+    [
+        new RestEndpoint("identity", config.RestBaseUrl("identity")),
+        new RestEndpoint("international-shipping", config.RestBaseUrl("international-shipping")),
+        new RestEndpoint("translation", config.RestBaseUrl("translation")),
+        new RestEndpoint("vero-api-v2", config.RestBaseUrl("vero-api-v2"))
+    ];
 
     private void InitializeRestClients(
         IAuthenticationProvider auth,
@@ -110,8 +124,6 @@ public class OtherApisClient : IDisposable
         Translation = new TranslationClient(new TranslationApiClient(translationAdapter), config, tokenContext, translationAdapter);
         var veroApiV2Adapter = new HttpClientRequestAdapter(auth, httpClient: httpClientFor(endpoints.First(endpoint => endpoint.ApiId == "vero-api-v2")));
         VeroApiV2 = new VeroApiV2Client(new VeroApiV2ApiClient(veroApiV2Adapter), config, tokenContext, veroApiV2Adapter);
-        var veroAdapter = new HttpClientRequestAdapter(auth, httpClient: httpClientFor(endpoints.First(endpoint => endpoint.ApiId == "vero")));
-        Vero = new VeroClient(new VeroApiClient(veroAdapter), config, tokenContext, veroAdapter);
     }
 
     public void Dispose()
@@ -124,6 +136,6 @@ public class OtherApisClient : IDisposable
     }
 }
 
-internal sealed record RestEndpoint(string ApiId, string HttpClientName, string BaseUrl);
+internal sealed record RestEndpoint(string ApiId, string BaseUrl);
 
 internal delegate HttpClient RestHttpClientProvider(RestEndpoint endpoint);

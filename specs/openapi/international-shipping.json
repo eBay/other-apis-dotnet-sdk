@@ -145,6 +145,15 @@
                   "$ref": "#/components/schemas/Error"
                 }
               }
+            },
+            "x-response-codes": {
+              "errors": {
+                "2002": {
+                  "domain": "ACCESS",
+                  "category": "REQUEST",
+                  "description": "A resource (URI) associated with the request could not be resolved."
+                }
+              }
             }
           },
           "500": {
@@ -342,6 +351,15 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "2002": {
+                  "domain": "ACCESS",
+                  "category": "REQUEST",
+                  "description": "A resource (URI) associated with the request could not be resolved."
                 }
               }
             }
@@ -1604,6 +1622,15 @@
                   "$ref": "#/components/schemas/Error"
                 }
               }
+            },
+            "x-response-codes": {
+              "errors": {
+                "2002": {
+                  "domain": "ACCESS",
+                  "category": "REQUEST",
+                  "description": "A resource (URI) associated with the request could not be resolved."
+                }
+              }
             }
           },
           "500": {
@@ -1749,6 +1776,15 @@
                   "$ref": "#/components/schemas/Error"
                 }
               }
+            },
+            "x-response-codes": {
+              "errors": {
+                "2002": {
+                  "domain": "ACCESS",
+                  "category": "REQUEST",
+                  "description": "A resource (URI) associated with the request could not be resolved."
+                }
+              }
             }
           },
           "500": {
@@ -1855,6 +1891,15 @@
                   "$ref": "#/components/schemas/Error"
                 }
               }
+            },
+            "x-response-codes": {
+              "errors": {
+                "355400": {
+                  "domain": "API_EDIS",
+                  "category": "REQUEST",
+                  "description": "The access token provided in the Authorization header is not for an eBay user account that is currently allowed to call this API. Please go to account settings to add to your account list."
+                }
+              }
             }
           },
           "404": {
@@ -1863,6 +1908,15 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "2002": {
+                  "domain": "ACCESS",
+                  "category": "REQUEST",
+                  "description": "A resource (URI) associated with the request could not be resolved."
                 }
               }
             }
@@ -1995,6 +2049,15 @@
                   "$ref": "#/components/schemas/Error"
                 }
               }
+            },
+            "x-response-codes": {
+              "errors": {
+                "2002": {
+                  "domain": "ACCESS",
+                  "category": "REQUEST",
+                  "description": "A resource (URI) associated with the request could not be resolved."
+                }
+              }
             }
           },
           "500": {
@@ -2105,6 +2168,15 @@
                   "$ref": "#/components/schemas/Error"
                 }
               }
+            },
+            "x-response-codes": {
+              "errors": {
+                "2002": {
+                  "domain": "ACCESS",
+                  "category": "REQUEST",
+                  "description": "A resource (URI) associated with the request could not be resolved."
+                }
+              }
             }
           },
           "500": {
@@ -2207,6 +2279,15 @@
                   "$ref": "#/components/schemas/Error"
                 }
               }
+            },
+            "x-response-codes": {
+              "errors": {
+                "355400": {
+                  "domain": "API_EDIS",
+                  "category": "REQUEST",
+                  "description": "The access token provided in the Authorization header is not for an eBay user account that is currently allowed to call this API. Please go to account settings to add to your account list."
+                }
+              }
             }
           },
           "404": {
@@ -2215,6 +2296,15 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "2002": {
+                  "domain": "ACCESS",
+                  "category": "REQUEST",
+                  "description": "A resource (URI) associated with the request could not be resolved."
                 }
               }
             }
@@ -2316,6 +2406,15 @@
                   "$ref": "#/components/schemas/Error"
                 }
               }
+            },
+            "x-response-codes": {
+              "errors": {
+                "355400": {
+                  "domain": "API_EDIS",
+                  "category": "REQUEST",
+                  "description": "The access token provided in the Authorization header is not for an eBay user account that is currently allowed to call this API. Please go to account settings to add to your account list."
+                }
+              }
             }
           },
           "404": {
@@ -2324,6 +2423,15 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "2002": {
+                  "domain": "ACCESS",
+                  "category": "REQUEST",
+                  "description": "A resource (URI) associated with the request could not be resolved."
                 }
               }
             }
@@ -2455,6 +2563,15 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "2002": {
+                  "domain": "ACCESS",
+                  "category": "REQUEST",
+                  "description": "A resource (URI) associated with the request could not be resolved."
                 }
               }
             }
@@ -2785,6 +2902,15 @@
                   "$ref": "#/components/schemas/Error"
                 }
               }
+            },
+            "x-response-codes": {
+              "errors": {
+                "2002": {
+                  "domain": "ACCESS",
+                  "category": "REQUEST",
+                  "description": "A resource (URI) associated with the request could not be resolved."
+                }
+              }
             }
           },
           "500": {
@@ -2887,6 +3013,15 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "2002": {
+                  "domain": "ACCESS",
+                  "category": "REQUEST",
+                  "description": "A resource (URI) associated with the request could not be resolved."
                 }
               }
             }
@@ -2995,6 +3130,15 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "2002": {
+                  "domain": "ACCESS",
+                  "category": "REQUEST",
+                  "description": "A resource (URI) associated with the request could not be resolved."
                 }
               }
             }
@@ -3116,6 +3260,15 @@
                   "$ref": "#/components/schemas/Error"
                 }
               }
+            },
+            "x-response-codes": {
+              "errors": {
+                "2002": {
+                  "domain": "ACCESS",
+                  "category": "REQUEST",
+                  "description": "A resource (URI) associated with the request could not be resolved."
+                }
+              }
             }
           },
           "500": {
@@ -3224,6 +3377,15 @@
                   "$ref": "#/components/schemas/Error"
                 }
               }
+            },
+            "x-response-codes": {
+              "errors": {
+                "2002": {
+                  "domain": "ACCESS",
+                  "category": "REQUEST",
+                  "description": "A resource (URI) associated with the request could not be resolved."
+                }
+              }
             }
           },
           "500": {
@@ -3295,7 +3457,7 @@
             "description": "This string specifies the reason the complaint was filed.<br><br><b>Max length</b>: 200 characters"
           },
           "complaintType": {
-            "description": "The type of complaint being filed.<br><br><b>Valid values</b>:<ul><li><code>ABNORMAL_COLLECTION_COMPLAINT</code></li><li><code>LOST_PACKAGE_COMPLAINT</code></li></ul>",
+            "description": "The type of complaint being filed.<br><br><b>Valid values</b>:<ul><li><code>ABNORMAL_COLLECTION_COMPLAINT</code></li><li><code>ABNORMAL_PICKUP_COMPLAINT</code></li><li><code>LOST_PACKAGE_COMPLAINT</code></li></ul>",
             "$ref": "#/components/schemas/ComplaintTypeEnum"
           },
           "preferenceId": {
@@ -3663,9 +3825,10 @@
       },
       "ComplaintTypeEnum": {
         "type": "object",
-        "description": "This enumerated type defines the types of complaints supported by the <b>createComplaint</b> method. | - **ABNORMAL_COLLECTION_COMPLAINT**: This enum value indicates that the complaint is being filed for an abnormal collection. This means there was an issue with the postman collecting the package. - **LOST_PACKAGE_COMPLAINT**: This enum value indicates that the complaint is being filed because a package has been lost in transit.",
+        "description": "This enumerated type defines the types of complaints supported by the <b>createComplaint</b> method. | - **ABNORMAL_COLLECTION_COMPLAINT**: This enum value indicates that the complaint is being filed for an abnormal collection. This means there was an issue with the carrier collecting the package.<br><br><b>Note</b>: This value is deprecated. Use <b>ABNORMAL_PICKUP_COMPLAINT</b> instead.  - **ABNORMAL_PICKUP_COMPLAINT**: This enum value indicates that the complaint is being filed for an abnormal pickup. This means there was an issue with the carrier collecting the package. - **LOST_PACKAGE_COMPLAINT**: This enum value indicates that the complaint is being filed because a package has been lost in transit.",
         "enum": [
           "ABNORMAL_COLLECTION_COMPLAINT",
+          "ABNORMAL_PICKUP_COMPLAINT",
           "LOST_PACKAGE_COMPLAINT"
         ]
       },
@@ -3775,12 +3938,13 @@
       },
       "ConsignTypeEnum": {
         "type": "object",
-        "description": "This enumerated type defines the type of consign address. | - **PICK_UP**: This enum value indicates that the consign address is a pickup-from address. - **DROP_OFF**: This enum value indicates that the consign address is a drop-off address. - **FORWARD_DEPLOYMENT**: This enum value indicates that the consign address is a forward deployment address. Confirm with customer service before using this method. - **RDC**: This enum value indicates that the consign address is for seller direct drop-off to a SpeedPAKC sorting center. - **CN_POST_DROP_OFF**: This enum value indicates that the consign address is for seller drop-off to a China Post pickup site. - **CN_POST_PICK_UP**: This enum value indicates that the consign address is for seller request China Post pickup service. - **HK_POST_DROP_OFF**: This enum value indicates that the consign address is for seller drop-off to a Hong Kong Postal office site.",
+        "description": "This enumerated type defines the type of consign address. | - **PICK_UP**: This enum value indicates that the consign address is a pickup-from address. - **DROP_OFF**: This enum value indicates that the consign address is a drop-off address. - **FORWARD_DEPLOYMENT**: This enum value indicates that the consign address is a forward deployment address. Confirm with customer service before using this method. - **RDC**: This enum value indicates that the consign address is for seller direct drop-off to a SpeedPACK sorting center. <br><br><b>Note</b>: This value is deprecated. Use <b>RDC_DROP_OFF</b> instead. - **RDC_DROP_OFF**: This enum value indicates that the consign address is for seller direct drop-off to a SpeedPACK sorting center. - **CN_POST_DROP_OFF**: This enum value indicates that the consign address is for seller drop-off to a China Post pickup site. - **CN_POST_PICK_UP**: This enum value indicates that the consign address is for seller request China Post pickup service. - **HK_POST_DROP_OFF**: This enum value indicates that the consign address is for seller drop-off to a Hong Kong Postal office site.",
         "enum": [
           "PICK_UP",
           "DROP_OFF",
           "FORWARD_DEPLOYMENT",
           "RDC",
+          "RDC_DROP_OFF",
           "CN_POST_DROP_OFF",
           "CN_POST_PICK_UP",
           "HK_POST_DROP_OFF"
@@ -4024,7 +4188,7 @@
             "$ref": "#/components/schemas/PickUpTimeTypeEnum"
           },
           "type": {
-            "description": "The address type of the consign address.<br><br><b>Valid values</b>:<ul><li><code>PICK_UP</code></li><li><code>DROP_OFF</code></li><li><code>FORWARD_DEPLOYMENT</code></li><li><code>RDC</code></li><li><code>CN_POST_DROP_OFF</code></li><li><code>CN_POST_PICK_UP</code></li><li><code>HK_POST_DROP_OFF</code></li></ul>",
+            "description": "The address type of the consign address.<br><br><b>Valid values</b>:<ul><li><code>PICK_UP</code></li><li><code>DROP_OFF</code></li><li><code>FORWARD_DEPLOYMENT</code></li><li><code>RDC</code></li><li><code>RDC_DROP_OFF</code></li><li><code>CN_POST_DROP_OFF</code></li><li><code>CN_POST_PICK_UP</code></li><li><code>HK_POST_DROP_OFF</code></li></ul>",
             "$ref": "#/components/schemas/ConsignTypeEnum"
           }
         },
@@ -4376,7 +4540,7 @@
       },
       "ExemptionTypeEnum": {
         "type": "object",
-        "description": "This enumerated type defines the exemption type associated with the CPSC profile. | - **TOY_VINTAGE**: This enum value indicates the exemption option for vintage toys. - **TOY_ANTIQUE**: This enum value indicates the exemption option for antique toys. - **TOY_AGE_LMT**: This enum value indicates the exemption option for toys intended for users over certain age. - **ADULT_PRODUCT_USED**: This enum value indicates the exemption option for used adult products. - **ADULT_APPAREL_SYNTHETIC_OR_WOOL**: This enum value indicates the eemption option for adult apparel with material includes acrylic, modacrylic, nylon, polyamide, olefin, polypropylene, polyester, wool, cashmere, OR polyester. - **ADULT_APPAREL_COTTON_100**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Cotton (100%) - **ADULT_APPAREL_COTTON_BLENDS**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Cotton Blends (any cotton mix). - **ADULT_APPAREL_RAYON_VISCOSE_100**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Rayon/Viscose (100%). - **ADULT_APPAREL_MODAL**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Modal. - **ADULT_APPAREL_BAMBOO**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Bamboo (rayon type). - **ADULT_APPAREL_LINEN_FLAX**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Linein/Flax. - **ADULT_APPAREL_SILK**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Silk (all forms, 100% silk). - **ADULT_APPAREL_ACETATE**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Acetate. - **ADULT_APPAREL_SPANDEX_ELASTANE**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Spandex/Elastane (alone). - **ADULT_APPAREL_NYLON_SPANDEX_BLENDS**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Nylon/Spandex blends. - **ADULT_APPAREL_POLYESTER_SPANDEX_BLENDS**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Polyester/Spandex blends. - **ADULT_APPAREL_POLYESTER_RAYON_BLENDS**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Polyester/Rayon blends. - **ADULT_APPAREL_WOOL_BLENDS**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Wool blends (with non-exempt fiber). - **ADULT_APPAREL_CASHMERE_BLENDS**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Cashmere blends (with non-exempt fiber). - **ADULT_APPAREL_LINEN_BLENDS**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Linen blends. - **ADULT_APPAREL_MODAL_BLENDS**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Modal blends - **ADULT_APPAREL_SATIN**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Satin (fiber unknown). - **ADULT_APPAREL_CHIFFON**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Chiffon (fiber unknown). - **ADULT_APPAREL_LACE**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Lace (fiber unknown) - **ADULT_APPAREL_TULLE**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Tulle (fiber unknown). - **ADULT_APPAREL_VOILE**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Voile. - **ADULT_APPAREL_ORGANZA**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Organza. - **ADULT_APPAREL_GEORGETTE**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Georgette. - **ADULT_APPAREL_CREPE**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Crepe. - **ADULT_APPAREL_TWILL**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Twill. - **ADULT_APPAREL_JERSEY**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Jersey. - **ADULT_APPAREL_OXFORD_CLOTH**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Oxford Cloth. - **ADULT_APPAREL_MESH_NET**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Mesh/Net. - **ADULT_APPAREL_GAUZE**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Gauze.- **ADULT_APPAREL_CANVAS**: This enum value indicates the exemption option for adult apparel with fabric weight ≥2.6oz/yard AND fabric type is Canvas. - **OTHER_ADULT_PRODUCT**: This enum value indicates the exemption option for other Adult Product.",
+        "description": "This enumerated type defines the exemption type associated with the CPSC profile. | - **TOY_VINTAGE**: This enum value indicates the exemption option for vintage toys. - **TOY_ANTIQUE**: This enum value indicates the exemption option for antique toys. - **TOY_AGE_LMT**: This enum value indicates the exemption option for toys intended for users over certain age. - **ADULT_PRODUCT_USED**: This enum value indicates the exemption option for used adult products. - **ADULT_APPAREL_SYNTHETIC_OR_WOOL**: This enum value indicates the eemption option for adult apparel with material includes acrylic, modacrylic, nylon, polyamide, olefin, polypropylene, polyester, wool, cashmere, OR polyester. - **ADULT_APPAREL_COTTON_100**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Cotton (100%) - **ADULT_APPAREL_COTTON_BLENDS**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Cotton Blends (any cotton mix). - **ADULT_APPAREL_RAYON_VISCOSE_100**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Rayon/Viscose (100%). - **ADULT_APPAREL_MODAL**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Modal. - **ADULT_APPAREL_BAMBOO**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Bamboo (rayon type). - **ADULT_APPAREL_LINEN_FLAX**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Linein/Flax. - **ADULT_APPAREL_SILK**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Silk (all forms, 100% silk). - **ADULT_APPAREL_ACETATE**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Acetate. - **ADULT_APPAREL_SPANDEX_ELASTANE**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Spandex/Elastane (alone). - **ADULT_APPAREL_NYLON_SPANDEX_BLENDS**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Nylon/Spandex blends. - **ADULT_APPAREL_POLYESTER_SPANDEX_BLENDS**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Polyester/Spandex blends. - **ADULT_APPAREL_POLYESTER_RAYON_BLENDS**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Polyester/Rayon blends. - **ADULT_APPAREL_WOOL_BLENDS**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Wool blends (with non-exempt fiber). - **ADULT_APPAREL_CASHMERE_BLENDS**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Cashmere blends (with non-exempt fiber). - **ADULT_APPAREL_LINEN_BLENDS**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Linen blends. - **ADULT_APPAREL_MODAL_BLENDS**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Modal blends - **ADULT_APPAREL_SATIN**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Satin (fiber unknown). - **ADULT_APPAREL_CHIFFON**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Chiffon (fiber unknown). - **ADULT_APPAREL_LACE**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Lace (fiber unknown) - **ADULT_APPAREL_TULLE**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Tulle (fiber unknown). - **ADULT_APPAREL_VOILE**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Voile. - **ADULT_APPAREL_ORGANZA**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Organza. - **ADULT_APPAREL_GEORGETTE**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Georgette. - **ADULT_APPAREL_CREPE**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Crepe. - **ADULT_APPAREL_TWILL**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Twill. - **ADULT_APPAREL_JERSEY**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Jersey. - **ADULT_APPAREL_OXFORD_CLOTH**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Oxford Cloth. - **ADULT_APPAREL_MESH_NET**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Mesh/Net. - **ADULT_APPAREL_GAUZE**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Gauze.- **ADULT_APPAREL_CANVAS**: This enum value indicates the exemption option for adult apparel with fabric weight >=2.6oz/yard AND fabric type is Canvas. - **OTHER_ADULT_PRODUCT**: This enum value indicates the exemption option for other Adult Product.",
         "enum": [
           "TOY_VINTAGE",
           "TOY_ANTIQUE",
@@ -5521,7 +5685,7 @@
       },
       "LiBatteryTypeEnum": {
         "type": "object",
-        "description": "This enumerated type defines the type of a battery. | - **NO_BATTERY**: This enum value indicates that there is no battery in the package. - **LITHIUM_ION_BATTERY_PACKED_WITH_EQUIPMENT**: This enum value indicates the battery is a lithium ion battery, and is packaged separately from the product. - **LITHIUM_ION_BATTERY_CONTAINED_IN_EQUIPMENT**: This enum value indicates that the battery is a lithium ion battery, and is shipped already installed in the product - **LITHIUM_METAL_BATTERY_PACKED_WITH_EQUIPMENT**: This enum value indicates that the battery is a lithium metal battery, and is packaged separately from the product. - **LITHIUM_METAL_BATTERY_CONTAINED_IN_EQUIPMENT**: This enum value indicates that the battery is a lithium metal battery, and is shipped already installed in the product. - **DRY_PACKED_WITH_EQUIPMENT**: This enum value indicates that the battery is dry packed with equipment. - **SPECIAL_GOODS_WITH_NO_BATTERY**: This enum value indicates there are special goods with no batteries in the package.",
+        "description": "This enumerated type defines the type of a battery. | - **NO_BATTERY**: This enum value indicates that there is no battery in the package. - **LITHIUM_ION_BATTERY_PACKED_WITH_EQUIPMENT**: This enum value indicates the battery is a lithium ion battery, and is packaged separately from the product. - **LITHIUM_ION_BATTERY_CONTAINED_IN_EQUIPMENT**: This enum value indicates that the battery is a lithium ion battery, and is shipped already installed in the product - **LITHIUM_METAL_BATTERY_PACKED_WITH_EQUIPMENT**: This enum value indicates that the battery is a lithium metal battery, and is packaged separately from the product. - **LITHIUM_METAL_BATTERY_CONTAINED_IN_EQUIPMENT**: This enum value indicates that the battery is a lithium metal battery, and is shipped already installed in the product. - **DRY_PACKED_WITH_EQUIPMENT**: This enum value indicates that the battery is dry packed with equipment. <br><br><b>Note</b>: This value is deprecated. Use <b>DRY_BATTERY_PACKED_WITH_EQUIPMENT</b> instead. - **DRY_BATTERY_PACKED_WITH_EQUIPMENT**: This enum value indicates that the battery is dry packed with equipment. - **SPECIAL_GOODS_WITH_NO_BATTERY**: This enum value indicates there are special goods with no batteries in the package.",
         "enum": [
           "NO_BATTERY",
           "LITHIUM_ION_BATTERY_PACKED_WITH_EQUIPMENT",
@@ -5529,6 +5693,7 @@
           "LITHIUM_METAL_BATTERY_PACKED_WITH_EQUIPMENT",
           "LITHIUM_METAL_BATTERY_CONTAINED_IN_EQUIPMENT",
           "DRY_PACKED_WITH_EQUIPMENT",
+          "DRY_BATTERY_PACKED_WITH_EQUIPMENT",
           "SPECIAL_GOODS_WITH_NO_BATTERY"
         ]
       },
@@ -5615,24 +5780,36 @@
       },
       "PackageStatusEnum": {
         "type": "object",
-        "description": "This enumerated type defines the supported package status possible for a package. | - **DECLARED_FAILED**: This enum value indicates the declaration of the package failed. - **PACKAGE_INFO_LACK**: This enum value indicates the package is lacking required information for shipping. - **NO_USEFUL_SHIPPING**: This enum value indicates that the package did not pair with any valid shipping service. - **SELECTED_SHIPPING**: This enum value indicates the package has selected shipping. - **APPLIED_TRACKING_CODE**: This enum value indicates the package has applied the tracking code. - **TO_BE_SHIPPED**: This enum value indicates that the package is waiting to be shipped. - **TO_BE_RECEIVED**: This enum value indicates that the package is waiting to be received. - **DELIVERED**: This enum value indicates that the package has been delivered. - **ON_SHIPPING**: This enum value indicates the package is in transit. - **DELETED**: This enum value indicates that the package has been shipped. - **SHIPPED_ERROR**: This enum value indicates that there was an error when shipping the package. - **DELIVERY_ERROR**: This enum value indicates that there was an error when delivering the package. - **RETURNED**: This enum value indicates that the package has been returned. - **EXCEPTION**: This enum value indicates that the package has a shipping exception. - **FDCVALIDATIONFAILED**: This enum value indicates that FDC validation has failed for the package. - **FDCVALIDATIONINPROGRESS**: This enum value indicates that FDC validation is in progress for the package. - **DELIVERY_EXCEPTION**: This enum value indicates that the package has a delivery exception.",
+        "description": "This enumerated type defines the supported package status possible for a package. | - **DECLARED_FAILED**: This enum value indicates the declaration of the package failed. <br><br><b>Note</b>: This value is deprecated. Use <b>PREDECLARATION_FAILED</b> instead. - **PREDECLARATION_FAILED**: This enum value indicates the declaration of the package failed. - **PACKAGE_INFO_LACK**: This enum value indicates the package is lacking required information for shipping. <br><br><b>Note</b>: This value is deprecated. Use <b>INCOMPLETE_PACKAGE_INFO</b> instead. - **INCOMPLETE_PACKAGE_INFO**: This enum value indicates the package is lacking required information for shipping. - **NO_USEFUL_SHIPPING**: This enum value indicates that the package did not pair with any valid shipping service. <br><br><b>Note</b>: This value is deprecated. Use <b>NO_AVAILABLE_SHIPPING</b> instead. - **NO_AVAILABLE_SHIPPING**: This enum value indicates that the package did not pair with any valid shipping service. - **SELECTED_SHIPPING**: This enum value indicates the package has selected shipping. <br><br><b>Note</b>: This value is deprecated. Use <b>PENDING_SHIPPING_SELECTION</b> instead. - **PENDING_SHIPPING_SELECTION**: This enum value indicates the package has selected shipping. - **APPLIED_TRACKING_CODE**: This enum value indicates the package has applied the tracking code. <br><br><b>Note</b>: This value is deprecated. Use <b>PENDING_TRACKING_NUMBER</b> instead. - **PENDING_TRACKING_NUMBER**: This enum value indicates the package has applied the tracking code. - **TO_BE_SHIPPED**: This enum value indicates that the package is waiting to be shipped. <br><br><b>Note</b>: This value is deprecated. Use <b>PENDING_CONFIRM</b> instead. - **PENDING_CONFIRM**: This enum value indicates that the package is waiting to be shipped. - **TO_BE_RECEIVED**: This enum value indicates that the package is waiting to be received. <br><br><b>Note</b>: This value is deprecated. Use <b>AWAITING_PICKUP</b> instead. - **AWAITING_PICKUP**: This enum value indicates that the package is waiting to be received. - **DELIVERED**: This enum value indicates that the package has been delivered. - **ON_SHIPPING**: This enum value indicates the package is in transit. <br><br><b>Note</b>: This value is deprecated. Use <b>IN_TRANSIT</b> instead. - **IN_TRANSIT**: This enum value indicates the package is in transit. - **DELETED**: This enum value indicates that the package has been deleted. - **SHIPPED_ERROR**: This enum value indicates that there was an error when shipping the package. <br><br><b>Note</b>: This value is deprecated. Use <b>SHIPPING_EXCEPTION</b> instead. - **SHIPPING_EXCEPTION**: This enum value indicates that there was an error when shipping the package. - **DELIVERY_ERROR**: This enum value indicates that there was an error when delivering the package. <br><br><b>Note</b>: This value is deprecated. Use <b>DELIVERY_FAILED</b> instead. - **DELIVERY_FAILED**: This enum value indicates that there was an error when delivering the package. - **RETURNED**: This enum value indicates that the package has been returned. - **EXCEPTION**: This enum value indicates that the package has a shipping exception. - **FDCVALIDATIONFAILED**: This enum value indicates that FDC validation has failed for the package. <br><br><b>Note</b>: This value is deprecated. Use <b>FDC_VALIDATION_FAILED</b> instead. - **FDC_VALIDATION_FAILED**: This enum value indicates that FDC validation has failed for the package. - **FDCVALIDATIONINPROGRESS**: This enum value indicates that FDC validation is in progress for the package. <br><br><b>Note</b>: This value is deprecated. Use <b>FDC_VALIDATION_IN_PROGRESS</b> instead. - **FDC_VALIDATION_IN_PROGRESS**: This enum value indicates that FDC validation is in progress for the package. - **DELIVERY_EXCEPTION**: This enum value indicates that the package has a delivery exception.",
         "enum": [
           "DECLARED_FAILED",
+          "PREDECLARATION_FAILED",
           "PACKAGE_INFO_LACK",
+          "INCOMPLETE_PACKAGE_INFO",
           "NO_USEFUL_SHIPPING",
+          "NO_AVAILABLE_SHIPPING",
           "SELECTED_SHIPPING",
+          "PENDING_SHIPPING_SELECTION",
           "APPLIED_TRACKING_CODE",
+          "PENDING_TRACKING_NUMBER",
           "TO_BE_SHIPPED",
+          "PENDING_CONFIRM",
           "TO_BE_RECEIVED",
+          "AWAITING_PICKUP",
           "DELIVERED",
           "ON_SHIPPING",
+          "IN_TRANSIT",
           "DELETED",
           "SHIPPED_ERROR",
+          "SHIPPING_EXCEPTION",
           "DELIVERY_ERROR",
+          "DELIVERY_FAILED",
           "RETURNED",
           "EXCEPTION",
           "FDCVALIDATIONFAILED",
+          "FDC_VALIDATION_FAILED",
           "FDCVALIDATIONINPROGRESS",
+          "FDC_VALIDATION_IN_PROGRESS",
           "DELIVERY_EXCEPTION"
         ]
       },
@@ -6038,6 +6215,13 @@
           "width": {
             "type": "number",
             "description": "The width of the item in centimeters."
+          },
+          "additionalSkuInfo": {
+            "type": "array",
+            "description": "Additional SKU information.",
+            "items": {
+              "$ref": "#/components/schemas/AdditionalSkuInfo"
+            }
           }
         },
         "description": "This type specifies information relating to the SKU item in a package."
@@ -6066,31 +6250,45 @@
           }
         },
         "description": "This type defines the special service details available for a package."
-      }
-    },
-    "securitySchemes": {
-      "api_auth": {
-        "type": "oauth2",
-        "description": "The security definitions for this API. Please check individual operations for applicable scopes.",
-        "flows": {
-          "clientCredentials": {
-            "tokenUrl": "https://api.ebay.com/identity/v1/oauth2/token",
-            "scopes": {
-              "https://api.ebay.com/oauth/scope/sell.edelivery": "This scope would allow sell.edelivery access to an operation."
-            }
+      },
+      "AdditionalSkuInfo": {
+        "type": "object",
+        "description": "This array is used if one or more products in the package requires additional SKU-related name-value pairs.",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the additional SKU information attribute."
           },
-          "authorizationCode": {
-            "authorizationUrl": "https://auth.ebay.com/oauth2/authorize",
-            "tokenUrl": "https://api.ebay.com/identity/v1/oauth2/token",
-            "scopes": {
-              "https://api.ebay.com/oauth/scope/sell.edelivery": "This scope would allow sell.edelivery access to an operation."
-            }
+          "value": {
+            "type": "string",
+            "description": "The value of the additional SKU information attribute."
           }
         }
       },
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+      "securitySchemes": {
+        "api_auth": {
+          "type": "oauth2",
+          "description": "The security definitions for this API. Please check individual operations for applicable scopes.",
+          "flows": {
+            "clientCredentials": {
+              "tokenUrl": "https://api.ebay.com/identity/v1/oauth2/token",
+              "scopes": {
+                "https://api.ebay.com/oauth/scope/sell.edelivery": "This scope would allow sell.edelivery access to an operation."
+              }
+            },
+            "authorizationCode": {
+              "authorizationUrl": "https://auth.ebay.com/oauth2/authorize",
+              "tokenUrl": "https://api.ebay.com/identity/v1/oauth2/token",
+              "scopes": {
+                "https://api.ebay.com/oauth/scope/sell.edelivery": "This scope would allow sell.edelivery access to an operation."
+              }
+            }
+          }
+        },
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer"
+        }
       }
     }
   }

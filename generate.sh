@@ -57,18 +57,10 @@ dotnet kiota generate \
   -o EBay.OtherApis/Generated/VeroApiV2 \
   --ebc --co
 
-dotnet kiota generate \
-  -l csharp \
-  -d specs/openapi/vero.json \
-  -c VeroApiClient \
-  -n EBay.OtherApis.Generated.Vero \
-  -o EBay.OtherApis/Generated/Vero \
-  --ebc --co
-
 echo "Adding license headers to generated files..."
 ./add-license-headers.sh ./EBay.OtherApis/Generated
 
-echo "Building (triggers StrawberryShake GraphQL codegen)..."
+echo "Building (compile check)..."
 DOTNET_ROLL_FORWARD=LatestMajor dotnet build EBay.OtherApis/EBay.OtherApis.csproj
 
 echo "Done."

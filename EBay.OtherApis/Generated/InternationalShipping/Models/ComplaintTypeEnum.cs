@@ -17,13 +17,17 @@ using System.Runtime.Serialization;
 using System;
 namespace EBay.OtherApis.Generated.InternationalShipping.Models
 {
-    /// <summary>The type of complaint being filed.&lt;br&gt;&lt;br&gt;&lt;b&gt;Valid values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;ABNORMAL_COLLECTION_COMPLAINT&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;LOST_PACKAGE_COMPLAINT&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
+    /// <summary>The type of complaint being filed.&lt;br&gt;&lt;br&gt;&lt;b&gt;Valid values&lt;/b&gt;:&lt;ul&gt;&lt;li&gt;&lt;code&gt;ABNORMAL_COLLECTION_COMPLAINT&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;ABNORMAL_PICKUP_COMPLAINT&lt;/code&gt;&lt;/li&gt;&lt;li&gt;&lt;code&gt;LOST_PACKAGE_COMPLAINT&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ComplaintTypeEnum
     {
         [EnumMember(Value = "ABNORMAL_COLLECTION_COMPLAINT")]
         #pragma warning disable CS1591
         ABNORMAL_COLLECTION_COMPLAINT,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ABNORMAL_PICKUP_COMPLAINT")]
+        #pragma warning disable CS1591
+        ABNORMAL_PICKUP_COMPLAINT,
         #pragma warning restore CS1591
         [EnumMember(Value = "LOST_PACKAGE_COMPLAINT")]
         #pragma warning disable CS1591

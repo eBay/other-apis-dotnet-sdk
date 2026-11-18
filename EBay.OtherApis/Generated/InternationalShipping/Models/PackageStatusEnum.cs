@@ -25,29 +25,57 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         #pragma warning disable CS1591
         DECLARED_FAILED,
         #pragma warning restore CS1591
+        [EnumMember(Value = "PREDECLARATION_FAILED")]
+        #pragma warning disable CS1591
+        PREDECLARATION_FAILED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "PACKAGE_INFO_LACK")]
         #pragma warning disable CS1591
         PACKAGE_INFO_LACK,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "INCOMPLETE_PACKAGE_INFO")]
+        #pragma warning disable CS1591
+        INCOMPLETE_PACKAGE_INFO,
         #pragma warning restore CS1591
         [EnumMember(Value = "NO_USEFUL_SHIPPING")]
         #pragma warning disable CS1591
         NO_USEFUL_SHIPPING,
         #pragma warning restore CS1591
+        [EnumMember(Value = "NO_AVAILABLE_SHIPPING")]
+        #pragma warning disable CS1591
+        NO_AVAILABLE_SHIPPING,
+        #pragma warning restore CS1591
         [EnumMember(Value = "SELECTED_SHIPPING")]
         #pragma warning disable CS1591
         SELECTED_SHIPPING,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "PENDING_SHIPPING_SELECTION")]
+        #pragma warning disable CS1591
+        PENDING_SHIPPING_SELECTION,
         #pragma warning restore CS1591
         [EnumMember(Value = "APPLIED_TRACKING_CODE")]
         #pragma warning disable CS1591
         APPLIED_TRACKING_CODE,
         #pragma warning restore CS1591
+        [EnumMember(Value = "PENDING_TRACKING_NUMBER")]
+        #pragma warning disable CS1591
+        PENDING_TRACKING_NUMBER,
+        #pragma warning restore CS1591
         [EnumMember(Value = "TO_BE_SHIPPED")]
         #pragma warning disable CS1591
         TO_BE_SHIPPED,
         #pragma warning restore CS1591
+        [EnumMember(Value = "PENDING_CONFIRM")]
+        #pragma warning disable CS1591
+        PENDING_CONFIRM,
+        #pragma warning restore CS1591
         [EnumMember(Value = "TO_BE_RECEIVED")]
         #pragma warning disable CS1591
         TO_BE_RECEIVED,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "AWAITING_PICKUP")]
+        #pragma warning disable CS1591
+        AWAITING_PICKUP,
         #pragma warning restore CS1591
         [EnumMember(Value = "DELIVERED")]
         #pragma warning disable CS1591
@@ -57,6 +85,10 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         #pragma warning disable CS1591
         ON_SHIPPING,
         #pragma warning restore CS1591
+        [EnumMember(Value = "IN_TRANSIT")]
+        #pragma warning disable CS1591
+        IN_TRANSIT,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DELETED")]
         #pragma warning disable CS1591
         DELETED,
@@ -65,9 +97,17 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         #pragma warning disable CS1591
         SHIPPED_ERROR,
         #pragma warning restore CS1591
+        [EnumMember(Value = "SHIPPING_EXCEPTION")]
+        #pragma warning disable CS1591
+        SHIPPING_EXCEPTION,
+        #pragma warning restore CS1591
         [EnumMember(Value = "DELIVERY_ERROR")]
         #pragma warning disable CS1591
         DELIVERY_ERROR,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "DELIVERY_FAILED")]
+        #pragma warning disable CS1591
+        DELIVERY_FAILED,
         #pragma warning restore CS1591
         [EnumMember(Value = "RETURNED")]
         #pragma warning disable CS1591
@@ -81,9 +121,17 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         #pragma warning disable CS1591
         FDCVALIDATIONFAILED,
         #pragma warning restore CS1591
+        [EnumMember(Value = "FDC_VALIDATION_FAILED")]
+        #pragma warning disable CS1591
+        FDC_VALIDATION_FAILED,
+        #pragma warning restore CS1591
         [EnumMember(Value = "FDCVALIDATIONINPROGRESS")]
         #pragma warning disable CS1591
         FDCVALIDATIONINPROGRESS,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "FDC_VALIDATION_IN_PROGRESS")]
+        #pragma warning disable CS1591
+        FDC_VALIDATION_IN_PROGRESS,
         #pragma warning restore CS1591
         [EnumMember(Value = "DELIVERY_EXCEPTION")]
         #pragma warning disable CS1591

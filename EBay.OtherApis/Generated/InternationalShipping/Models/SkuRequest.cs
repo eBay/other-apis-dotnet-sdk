@@ -29,6 +29,14 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Additional SKU information.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::EBay.OtherApis.Generated.InternationalShipping.Models.AdditionalSkuInfo>? AdditionalSkuInfo { get; set; }
+#nullable restore
+#else
+        public List<global::EBay.OtherApis.Generated.InternationalShipping.Models.AdditionalSkuInfo> AdditionalSkuInfo { get; set; }
+#endif
         /// <summary>The unique identifier of a CPSC profile.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -148,6 +156,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "additionalSkuInfo", n => { AdditionalSkuInfo = n.GetCollectionOfObjectValues<global::EBay.OtherApis.Generated.InternationalShipping.Models.AdditionalSkuInfo>(global::EBay.OtherApis.Generated.InternationalShipping.Models.AdditionalSkuInfo.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "cpscProfileId", n => { CpscProfileId = n.GetStringValue(); } },
                 { "elecQualificationId", n => { ElecQualificationId = n.GetStringValue(); } },
                 { "exemptionType", n => { ExemptionType = n.GetEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.ExemptionTypeEnum>(); } },
@@ -174,6 +183,7 @@ namespace EBay.OtherApis.Generated.InternationalShipping.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfObjectValues<global::EBay.OtherApis.Generated.InternationalShipping.Models.AdditionalSkuInfo>("additionalSkuInfo", AdditionalSkuInfo);
             writer.WriteStringValue("cpscProfileId", CpscProfileId);
             writer.WriteStringValue("elecQualificationId", ElecQualificationId);
             writer.WriteEnumValue<global::EBay.OtherApis.Generated.InternationalShipping.Models.ExemptionTypeEnum>("exemptionType", ExemptionType);
